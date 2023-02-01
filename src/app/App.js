@@ -6,6 +6,7 @@ import Main from "./layouts/main";
 import Login from "./layouts/login";
 import NavBar from "./components/navBar";
 import PageNotFound from "./components/pageNotFound";
+import Loading from "./components/loading";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path = "/" exact component={Main}/>
                 <Route path = "/login" component={Login}/>
                 <Route path = "/articles" component={Articles}/>
+                <Route path= "/loading" component={Loading}/>
                 {/* <Route path = "/users/:userId?" component={UsersList}/> */}
                 <Route path = "/404" component = {PageNotFound}/>
                 <Redirect to = "/404"/>
@@ -22,6 +24,6 @@ function App() {
             </Switch>
         </div>
     );
-}
+};
 
 export default App;
