@@ -7,10 +7,11 @@ import Login from "./layouts/login";
 import NavBar from "./components/navBar";
 import PageNotFound from "./components/pageNotFound";
 import Loading from "./components/loading";
+// Кправлять цветом фона можно таким образом https://bootstrap-4.ru/docs/5.1/utilities/background/#background-color
 
 function App() {
     return (
-        <div className="App">
+        <div className="App bg-secondary bg-opacity-75">
             <NavBar/>
             <Switch>
                 <Route path = "/" exact component={Main}/>
