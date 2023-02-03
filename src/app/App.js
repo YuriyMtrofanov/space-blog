@@ -11,7 +11,7 @@ import Loading from "./components/loading";
 
 function App() {
     return (
-        <div className="App bg-secondary bg-opacity-75">
+        <div className="App bg-light bg-opacity-75">
             <NavBar/>
             <Switch>
                 <Route path = "/" exact component={Main}/>

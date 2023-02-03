@@ -6,13 +6,13 @@ const NavBar = () => {
         <nav className="navbar navbar-light bg-dark bg-gradient">
             <ul className="nav">
                 <li className="nav-item">
-                    <Link className="nav-link active text-light" aria-current="page" to="/">Main</Link>
+                    <Link className="nav-link active text-light" aria-current="page" to="/"><h3>Главная</h3></Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link active text-light" aria-current="page" to="/login">Login</Link>
+                    <Link className="nav-link active text-light" aria-current="page" to="/login"><h3>Логин</h3></Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link active text-light" aria-current="page" to="/articles">Articles</Link>
+                    <Link className="nav-link active text-light" aria-current="page" to="/articles"><h3>Статьи</h3></Link>
                 </li>
             </ul>
         </nav>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import api from "../../api/index.js";
 import Loading from "./loading";
+import ArticlesTable from "./articlesTable";
+import TopArticles from "./topArticles.jsx";
+import Categories from "./categories";
 // аналог UsersTable в курсовом проекте
 // В идеале бы реализовать картояку с изображением на фоне («Наложение» изображений className="card-img-overlay")
 
@@ -11,23 +14,52 @@ const ArticlesList = () => {
             setArticlesList(data);
         });
     },[]);
+
+    const [categories, setCategories] = useState();
+    useEffect(() => {
+        api.categories.fetchAll().then(data => {
+            setCategories(data);
+        });
+    }, []);
+
+    const [selectedProperty, setSelectedProperty] = useState();
+    const handleItemSelect = (params) => {
+        setSelectedProperty(params);
+    };
+
+    // Для пагинации потребуется отрисовать по 6 компонентов на страницу
     if (articlesList) {
+        const filteredArticles = selectedProperty
+            ? articlesList.filter(article => article.category._id === selectedProperty)
+            : articlesList;
+
+        const handleClearList = () => {
+            setSelectedProperty();
+        };
+
         return (
-            <>
-                {articlesList && 
-                    articlesList.map(article => (
-                        <div key = {article._id} className="card card-sm text-dark bg-light bg-opacity-75 m-3">
-                            <div className="card-header p-2">
-                                <h3>{article.name}</h3>
-                            </div>
-                            <div className="card-body p-2">
-                                <h5 className="card-title">{article.header}</h5>
-                                <p className="card-text">{`Атор: ${article.author}, Рейтинг статьи: ${article.rate}`}</p>
-                            </div>
-                        </div>
-                    ))
+            <div className="d-flex">
+                {categories &&
+                    <div className="d-flex flex-column flex-shrink-0 p-3">
+                        <h1>Категории</h1>
+                        <Categories
+                            items = {categories}
+                            selectedItem = { selectedProperty }
+                            onItemSelect = { handleItemSelect }
+                            valueProperty = "_id"
+                            contentProperty = "name"
+                        />
+                        <button
+                            className = "btn btn-secondary mt-2"
+                            onClick = {handleClearList}
+                        > Сброс </button>
+                    </div>
                 }
-            </>
+                <div className="d-flex flex-column m-3">
+                    <h1>Все статьи</h1>
+                    <ArticlesTable {...{articles: filteredArticles}}/>
+                </div>
+            </div>
         );
     } else {
         return <Loading />;
