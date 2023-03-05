@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import api from "../../api/index.js";
-import Loading from "./loading";
-import ArticlesTable from "./articlesTable";
-import TopArticles from "./topArticles.jsx";
-import Categories from "./categories";
+import api from "../../../../api/index.js";
+import Loading from "../../ui/loading";
+import ArticlesTable from "../../articlesTable";
+// import TopArticles from "./topArticles.jsx";
+import Categories from "../../categories";
 // аналог UsersTable в курсовом проекте
 // В идеале бы реализовать картояку с изображением на фоне («Наложение» изображений className="card-img-overlay")
 
-const ArticlesList = () => {
+const ArticlesListPage = () => {
     const [articlesList, setArticlesList] = useState();
-    useEffect(()=>{
+    useEffect(() => {
         api.articles.fetchAll().then(data => {
             setArticlesList(data);
         });
-    },[]);
+    }, []);
 
     const [categories, setCategories] = useState();
     useEffect(() => {
@@ -57,7 +57,7 @@ const ArticlesList = () => {
                 }
                 <div className="d-flex flex-column m-3">
                     <h1>Все статьи</h1>
-                    <ArticlesTable {...{articles: filteredArticles}}/>
+                    <ArticlesTable {...{ articles: filteredArticles }}/>
                 </div>
             </div>
         );
@@ -66,4 +66,4 @@ const ArticlesList = () => {
     };
 };
 
-export default ArticlesList;
+export default ArticlesListPage;

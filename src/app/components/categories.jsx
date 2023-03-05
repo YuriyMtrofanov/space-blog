@@ -10,7 +10,7 @@ const Сategories = ({
     valueProperty,
     contentProperty
 }) => {
-    if (_.isArray(items) === true){
+    if (_.isArray(items) === true) {
         return (
             <ul className="list-group">
                 <h1>Группы статей</h1>

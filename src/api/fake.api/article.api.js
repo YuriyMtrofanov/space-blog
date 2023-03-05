@@ -44,9 +44,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 15,
-        // bookmark: false
-        // qualities: [qualities.tedious, qualities.uncertain, qualities.strange],
-        // completedMeetings: 36,
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471816",
@@ -58,7 +56,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 10,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471817",
@@ -70,7 +68,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 31,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471818",
@@ -82,7 +80,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 7,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471819",
@@ -94,7 +92,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 3,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471820",
@@ -106,7 +104,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 24,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471821",
@@ -118,7 +116,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 13,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471822",
@@ -130,7 +128,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 18,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471823",
@@ -142,7 +140,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 27,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed471824",
@@ -154,7 +152,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 19,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed47181f",
@@ -166,7 +164,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 33,
-        // bookmark: false
+        bookmark: false
     },
     {
         _id: "67rdca3eeb7f6fgeed47181r",
@@ -177,7 +175,7 @@ const articles = [
         img: "URL",
         textContent: "Текст статьи",
         rate: 7,
-        // bookmark: false
+        bookmark: false
     }
 ];
 

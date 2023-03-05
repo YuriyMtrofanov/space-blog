@@ -7,13 +7,13 @@ const ArticlesTable = ({ articles }) => {
         <div>
             {articles &&
                 articles.map(article => (
-                    <ArticlesCard key={article._id} {...{article}}/>
+                    <ArticlesCard key={article._id} {...{ article }}/>
                 ))}
         </div>
     );
 };
 
-ArticlesTable.propTypes ={
+ArticlesTable.propTypes = {
     articles: PropTypes.array.isRequired
 };
 
