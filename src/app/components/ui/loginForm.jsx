@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/forms/textField";
-// import CheckBoxField from "../common/forms/checkBoxField";
+import CheckBoxField from "../common/forms/checkBoxField";
 
 const loginForm = () => {
     const [inputData, setInputData] = useState({
         email: "",
-        password: ""
-        // stayOn: false
+        password: "",
+        stayOn: false
     });
     const [errors, setErrors] = useState({});
     const validationConfig = {
@@ -80,17 +80,17 @@ const loginForm = () => {
                 onChange = {handleChange}
                 error = {errors.password}
             />
-            {/* <CheckBoxField
+            <CheckBoxField
                 name = "stayOn"
                 value = {inputData.stayOn}
                 onChange = {handleChange}
             >
                 Оставаться в системе
-            </CheckBoxField> */}
+            </CheckBoxField>
             <button
                 type="submit"
                 disabled = {!isAbled}
-                className = "btn btn-primary w-100 mx-auto"
+                className = "btn btn-dark w-100 mx-auto"
             >Submit</button>
         </form>
     );

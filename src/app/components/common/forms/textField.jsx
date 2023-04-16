@@ -39,11 +39,15 @@ const TextField = ({
                 />
                 {type === "password" && (
                     <button
-                        className ="btn btn-outline-secondary"
-                        type = "button"
-                        onClick = {changeShowPassword}
+                        className="btn btn-outline-secondary"
+                        type="button"
+                        onClick={changeShowPassword}
                     >
-                        <i className = {"bi bi-eye" + (showPassword ? "-slash" : "")}></i>
+                        <i
+                            className={
+                                "bi bi-eye" + (showPassword ? "-slash" : "")
+                            }
+                        ></i>
                     </button>
                 )}
                 {error &&
