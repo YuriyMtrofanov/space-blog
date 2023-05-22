@@ -4,9 +4,7 @@ import ArticlesList from "../components/page/articlesListPage/articlesListPage";
 
 const Articles = () => {
     return (
-        <>
-            <ArticlesList />
-        </>
+        <ArticlesList />
     );
 };
 

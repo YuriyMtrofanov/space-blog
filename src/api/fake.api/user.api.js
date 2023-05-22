@@ -22,22 +22,15 @@ const users = [
             { _id: "3", title: "telegram.com", link: "https://web.telegram.org/k/#@Mitrofanov_Yuriy", img: "" }
         ], // нужно поместить в отдельную сущность
         selectedArticlesList: [
-            "67rdca3eeb7f6fgeed471816",
-            "67rdca3eeb7f6fgeed471817",
-            "67rdca3eeb7f6fgeed471819"
-        ], // массив из id издбранных статей
+        ], // массив из id избранных статей
         likedArticles: [
-            "67rdca3eeb7f6fgeed471816",
-            "67rdca3eeb7f6fgeed471817",
-            "67rdca3eeb7f6fgeed471819",
-            "67rdca3eeb7f6fgeed471821",
-            "67rdca3eeb7f6fgeed471823"
-        ], // массив из id понравившихся статей статей
+            // "67rdca3eeb7f6fgeed471816",
+            // "67rdca3eeb7f6fgeed471817",
+            // "67rdca3eeb7f6fgeed471819",
+            // "67rdca3eeb7f6fgeed471821",
+            // "67rdca3eeb7f6fgeed471823"
+        ], // ссылка на отдельную сущность (пересекается с articles) массив из id понравившихся статей статей
         selectedAuthorsList: [
-            "67rdca3eeb7f6fgeed471818",
-            "67rdca3eeb7f6fgeed471819",
-            "67rdca3eeb7f6fgeed471816",
-            "67rdca3eeb7f6fgeed471817"
         ] // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
     },
     {
@@ -262,7 +255,7 @@ const getById = (id) =>
     });
 
 export default {
-    users,
+    // users,
     fetchAll,
     getById,
     update

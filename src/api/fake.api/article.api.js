@@ -2,146 +2,138 @@ const articles = [
     {
         _id: "67rdca3eeb7f6fgeed471815",
         name: "Квазары - монстры вселенной",
-        author: "Джон Дориан",
+        author: "67rdca3eeb7f6fgeed471815",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471820", // id категории
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 15,
-        bookmark: false
+        likes: [], // ссылка на отдельную сущность (пересекается с articles) массив из id понравившихся статей статей
+        rate: 15
     },
     {
         _id: "67rdca3eeb7f6fgeed471816",
         name: "Новые снимки телескопа Джеймса Уебба",
-        author: "Кокс",
+        author: "67rdca3eeb7f6fgeed471816",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471824",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 10,
-        bookmark: false
+        likes: [],
+        rate: 10
     },
     {
         _id: "67rdca3eeb7f6fgeed471817",
         name: "Обзор любительских телескопов для съемки объектов дальнего космоса",
-        author: "Боб Келсо",
+        author: "67rdca3eeb7f6fgeed471815",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471829",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 31,
-        bookmark: false
+        likes: [],
+        rate: 31
     },
     {
         _id: "67rdca3eeb7f6fgeed471818",
         name: "Космические лучи. Разбираемся",
-        author: "Рэйчел Грин",
+        author: "67rdca3eeb7f6fgeed471817",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471820",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 7,
-        bookmark: false
+        likes: [],
+        rate: 7
     },
     {
         _id: "67rdca3eeb7f6fgeed471819",
-        name: "Название статьи",
-        author: "Вояджеры. Где они сейчас",
+        name: "Вояджеры. Где они сейчас",
+        author: "67rdca3eeb7f6fgeed471817",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471814",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 3,
-        bookmark: false
+        rate: 3
     },
     {
         _id: "67rdca3eeb7f6fgeed471820",
         name: "Венера. Парниковый эффект на макималках",
-        author: "Леонард Хофстедтер",
+        author: "67rdca3eeb7f6fgeed471818",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 24,
-        bookmark: false
+        rate: 24
     },
     {
         _id: "67rdca3eeb7f6fgeed471821",
         name: "Фотографии объектов каталога Месье",
-        author: "Говард Воловиц",
+        author: "67rdca3eeb7f6fgeed471815",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471829",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 13,
-        bookmark: false
+        rate: 13
     },
     {
         _id: "67rdca3eeb7f6fgeed471822",
         name: "Варп-двигаетль. Теоретические основы",
-        author: "Никола Тесла",
+        author: "67rdca3eeb7f6fgeed471816",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471822",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 18,
-        bookmark: false
+        rate: 18
     },
     {
         _id: "67rdca3eeb7f6fgeed471823",
         name: "Миссия к комете Чурюмова-Герасименко",
-        author: "Моника Геллер",
+        author: "67rdca3eeb7f6fgeed471815",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471814",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 27,
-        bookmark: false
+        rate: 27
     },
     {
         _id: "67rdca3eeb7f6fgeed471824",
         name: "Геостационарная орбита Земли. Разбираемся в вопросе",
-        author: "Рататуй",
+        author: "67rdca3eeb7f6fgeed471816",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 19,
-        bookmark: false
+        rate: 19
     },
     {
         _id: "67rdca3eeb7f6fgeed47181f",
         name: "Название статьи",
-        author: "Джоуи Триббиани",
+        author: "67rdca3eeb7f6fgeed471817",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 33,
-        bookmark: false
+        rate: 33
     },
     {
         _id: "67rdca3eeb7f6fgeed47181r",
         name: "Название статьи",
-        author: "Брэд Питт",
+        author: "67rdca3eeb7f6fgeed471819",
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
-        rate: 7,
-        bookmark: false
+        rate: 7
     }
 ];
 

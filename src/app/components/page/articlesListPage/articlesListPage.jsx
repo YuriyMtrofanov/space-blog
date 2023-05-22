@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../../../../api/index.js";
+import api from "../../../../api";
 import Loading from "../../ui/loading";
 import ArticlesTable from "../../articlesTable";
 // import TopArticles from "./topArticles.jsx";
@@ -8,31 +8,29 @@ import Categories from "../../categories";
 // В идеале бы реализовать картояку с изображением на фоне («Наложение» изображений className="card-img-overlay")
 
 const ArticlesListPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [articlesList, setArticlesList] = useState();
+    const [categories, setCategories] = useState();
     useEffect(() => {
         api.articles.fetchAll().then(data => {
             setArticlesList(data);
         });
-        console.log("Список статей: ", articlesList);
-    }, [articlesList]);
-
-    const [categories, setCategories] = useState();
-    useEffect(() => {
         api.categories.fetchAll().then(data => {
             setCategories(data);
         });
-        console.log("Категории: ", categories);
-    }, [categories]);
+    }, []);
+    useEffect(() => {
+        if (articlesList && categories) return setIsLoading(false);
+    }, [articlesList, categories]);
 
     const [selectedProperty, setSelectedProperty] = useState();
     const handleItemSelect = (params) => {
         setSelectedProperty(params);
     };
-
     // Для пагинации потребуется отрисовать по 6 компонентов на страницу
-    if (articlesList) {
+    if (!isLoading) {
         const filteredArticles = selectedProperty
-            ? articlesList.filter(article => article.category._id === selectedProperty)
+            ? articlesList.filter(article => article.category === selectedProperty)
             : articlesList;
 
         const handleClearList = () => {
@@ -48,8 +46,8 @@ const ArticlesListPage = () => {
                             items = {categories}
                             selectedItem = { selectedProperty }
                             onItemSelect = { handleItemSelect }
-                            valueProperty = "_id"
-                            contentProperty = "name"
+                            valueProperty = "_id" // параметр по умолчанию
+                            contentProperty = "name" // параметр по умолчанию
                         />
                         <button
                             className = "btn btn-secondary mt-2"
@@ -64,7 +62,7 @@ const ArticlesListPage = () => {
             </div>
         );
     } else {
-        return <Loading />;
+        return <Loading />; // спиннер
     };
 };
 

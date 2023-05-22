@@ -34,7 +34,7 @@ const getById = (id) => {
 };
 
 export default {
-    categories,
+    // categories,
     fetchAll,
     getById
 };
