@@ -4,13 +4,13 @@ import Loading from "../../ui/loading";
 import ArticlesTable from "../../articlesTable";
 // import TopArticles from "./topArticles.jsx";
 import Categories from "../../categories";
-// аналог UsersTable в курсовом проекте
-// В идеале бы реализовать картояку с изображением на фоне («Наложение» изображений className="card-img-overlay")
+import TextField from "../../common/forms/textField";
 
 const ArticlesListPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [articlesList, setArticlesList] = useState();
     const [categories, setCategories] = useState();
+    const [inputData, setInputData] = useState("");
     useEffect(() => {
         api.articles.fetchAll().then(data => {
             setArticlesList(data);
@@ -27,39 +27,65 @@ const ArticlesListPage = () => {
     const handleItemSelect = (params) => {
         setSelectedProperty(params);
     };
-    // Для пагинации потребуется отрисовать по 6 компонентов на страницу
+    const handleClearList = () => {
+        setSelectedProperty();
+    };
+    const handleInputChange = (target) => {
+        handleClearList();
+        setInputData(target.value);
+        console.log(target.value);
+    };
+    function filterArticles(data) {
+        let filteredData = data;
+        if (inputData) {
+            filteredData = data.filter(article => article.textContent.toLowerCase().includes(inputData.toLowerCase()));
+        } else if (selectedProperty) {
+            filteredData = data.filter(article => article.category === selectedProperty);
+        } return filteredData;
+    };
     if (!isLoading) {
-        const filteredArticles = selectedProperty
-            ? articlesList.filter(article => article.category === selectedProperty)
-            : articlesList;
-
-        const handleClearList = () => {
-            setSelectedProperty();
-        };
-
+        const filteredArticles = filterArticles(articlesList);
         return (
-            <div className="d-flex">
-                {categories &&
-                    <div className="d-flex flex-column flex-shrink-0 p-3">
-                        <h1>Категории</h1>
-                        <Categories
-                            items = {categories}
-                            selectedItem = { selectedProperty }
-                            onItemSelect = { handleItemSelect }
-                            valueProperty = "_id" // параметр по умолчанию
-                            contentProperty = "name" // параметр по умолчанию
-                        />
-                        <button
-                            className = "btn btn-secondary mt-2"
-                            onClick = {handleClearList}
-                        > Сброс </button>
+            <>
+                <div className='container mt-2'>
+                    {/* <Breadcrumbs
+                        state={state}
+                        memberName={`${member.name} ${member.lastName}`}
+                    /> */}
+                    <h3>Breadcrumbs / articles /</h3>
+                    <div className="row gutters">
+                        {categories &&
+                            <div className="col-4 mt-4 mb-2">
+                                <h1>Категории</h1>
+                                <Categories
+                                    items = {categories}
+                                    selectedItem = { selectedProperty }
+                                    onItemSelect = { handleItemSelect }
+                                    valueProperty = "_id" // параметр по умолчанию
+                                    contentProperty = "name" // параметр по умолчанию
+                                />
+                                <button
+                                    className = "btn btn-secondary mt-2"
+                                    onClick = {handleClearList}
+                                > Сброс </button>
+                            </div>
+                        }
+                        <div className="col-md-8 mb-2">
+                            <form>
+                                {/* <h1>Все статьи: </h1> */}
+                                <TextField
+                                    type = "text"
+                                    name = "search"
+                                    placeholder = "Search"
+                                    value = {inputData}
+                                    onChange = {handleInputChange}
+                                />
+                            </form>
+                            <ArticlesTable {...{ articles: filteredArticles }}/>
+                        </div>
                     </div>
-                }
-                <div className="d-flex flex-column m-3">
-                    <h1>Все статьи</h1>
-                    <ArticlesTable {...{ articles: filteredArticles }}/>
                 </div>
-            </div>
+            </>
         );
     } else {
         return <Loading />; // спиннер

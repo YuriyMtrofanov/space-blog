@@ -1,42 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import api from "../../api";
+import { Link } from "react-router-dom";
 
-const ArticleCard = ({ article }) => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [author, setAuthor] = useState();
-    useEffect(() => {
-        setIsLoading(true);
-        api.users.getById(article.author).then(data => {
-        // console.log("author", data);
-            setAuthor(data);
-        });
-    }, []);
-    useEffect(() => {
-        setIsLoading(false);
-        console.log("author", author);
-    }, [author]);
-
+const ArticleCard = ({ article, author }) => {
+    console.log(author);
     return (
         <>
-            {!isLoading
-                ? (<div className="card card-sm text-dark bg-light bg-opacity-75 m-3">
-                    <div className="card-header p-2">
+            <div className="card card-sm text-dark bg-light bg-opacity-75 mb-2">
+                <div className="card-header p-2">
+                    <Link to={`/articles/${article._id}`}>
                         <h3>{article.name}</h3>
-                    </div>
-                    <div className="card-body p-2">
-                        <h5 className="card-title">{article.header}</h5>
-                        <p className="card-text">{`Атор: ${article.author}, Рейтинг статьи: ${article.rate}`}</p>
-                    </div>
-                </div>)
-                : ("Loading...")
-            }
+                    </Link>
+                </div>
+                <div className="card-body p-2">
+                    <h5 className="card-title">{article.header}</h5>
+                    <ul>
+                        <li>{article.textContent}</li>
+                    </ul>
+                    <span className="card-text">
+                        {`Атор: ${author},
+                        Рейтинг статьи: ${article.rate}
+                        Like: 
+                        `}</span>
+                    <i className="bi bi-hand-thumbs-up"></i>
+                    {/* <i className="bi bi-hand-thumbs-up"></i> */}
+                </div>
+            </div>
         </>
     );
 };
 
 ArticleCard.propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.object.isRequired,
+    author: PropTypes.string.isRequired
 };
 
 export default ArticleCard;

@@ -141,7 +141,7 @@ const fetchAll = () => {
     return new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(articles);
-        }, 500);
+        }, 200);
     });
 };
 
@@ -149,7 +149,7 @@ const getById = (id) => {
     return new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(articles.find((uarticle) => uarticle._id === id));
-        }, 1000);
+        }, 200);
     });
 };
 

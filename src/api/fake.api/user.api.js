@@ -251,7 +251,7 @@ const getById = (id) =>
                     (user) => user._id === id
                 )
             );
-        }, 1000);
+        }, 100);
     });
 
 export default {

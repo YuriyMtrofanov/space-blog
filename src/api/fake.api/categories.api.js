@@ -21,7 +21,7 @@ function fetchAll() {
         setTimeout(function () {
             // resolve(categoriesObject);
             resolve(categories);
-        }, 500);
+        }, 200);
     });
 };
 
@@ -29,7 +29,7 @@ const getById = (id) => {
     return new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(categories.find((category) => category._id === id));
-        }, 500);
+        }, 200);
     });
 };
 

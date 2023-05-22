@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css"; // bootstrap -v 5.1.0
-// import "./App.css";
 import Articles from "../app/layouts/articles";
 import Main from "./layouts/main";
 import Login from "./layouts/login";
