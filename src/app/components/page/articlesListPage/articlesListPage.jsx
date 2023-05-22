@@ -13,14 +13,16 @@ const ArticlesListPage = () => {
         api.articles.fetchAll().then(data => {
             setArticlesList(data);
         });
-    }, []);
+        console.log("Список статей: ", articlesList);
+    }, [articlesList]);
 
     const [categories, setCategories] = useState();
     useEffect(() => {
         api.categories.fetchAll().then(data => {
             setCategories(data);
         });
-    }, []);
+        console.log("Категории: ", categories);
+    }, [categories]);
 
     const [selectedProperty, setSelectedProperty] = useState();
     const handleItemSelect = (params) => {

@@ -1,12 +1,10 @@
-import { categoriesObject as categories } from "./categories.api";
-
 const articles = [
     {
         _id: "67rdca3eeb7f6fgeed471815",
         name: "Квазары - монстры вселенной",
         author: "Джон Дориан",
-        date: "01.01.2023",
-        category: categories.openSpace,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471820", // id категории
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -17,8 +15,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471816",
         name: "Новые снимки телескопа Джеймса Уебба",
         author: "Кокс",
-        date: "01.01.2023",
-        category: categories.news,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471824",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -29,8 +27,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471817",
         name: "Обзор любительских телескопов для съемки объектов дальнего космоса",
         author: "Боб Келсо",
-        date: "01.01.2023",
-        category: categories.hobbyAstronomy,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471829",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -41,8 +39,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471818",
         name: "Космические лучи. Разбираемся",
         author: "Рэйчел Грин",
-        date: "01.01.2023",
-        category: categories.openSpace,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471820",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -53,8 +51,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471819",
         name: "Название статьи",
         author: "Вояджеры. Где они сейчас",
-        date: "01.01.2023",
-        category: categories.spaceExploration,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471814",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -65,8 +63,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471820",
         name: "Венера. Парниковый эффект на макималках",
         author: "Леонард Хофстедтер",
-        date: "01.01.2023",
-        category: categories.solarSystem,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -77,8 +75,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471821",
         name: "Фотографии объектов каталога Месье",
         author: "Говард Воловиц",
-        date: "01.01.2023",
-        category: categories.hobbyAstronomy,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471829",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -89,8 +87,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471822",
         name: "Варп-двигаетль. Теоретические основы",
         author: "Никола Тесла",
-        date: "01.01.2023",
-        category: categories.universe,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471822",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -101,8 +99,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471823",
         name: "Миссия к комете Чурюмова-Герасименко",
         author: "Моника Геллер",
-        date: "01.01.2023",
-        category: categories.spaceExploration,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471814",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -113,8 +111,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed471824",
         name: "Геостационарная орбита Земли. Разбираемся в вопросе",
         author: "Рататуй",
-        date: "01.01.2023",
-        category: categories.solarSystem,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -125,8 +123,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed47181f",
         name: "Название статьи",
         author: "Джоуи Триббиани",
-        date: "01.01.2023",
-        category: categories.solarSystem,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -137,7 +135,8 @@ const articles = [
         _id: "67rdca3eeb7f6fgeed47181r",
         name: "Название статьи",
         author: "Брэд Питт",
-        category: categories.solarSystem,
+        date: 1684750058473,
+        category: "67rdca3eeb7f6fgeed471818",
         header: "Заголовок статьи",
         img: "URL",
         textContent: "Текст статьи",
@@ -150,7 +149,7 @@ const fetchAll = () => {
     return new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(articles);
-        }, 1000);
+        }, 500);
     });
 };
 
@@ -162,7 +161,8 @@ const getById = (id) => {
     });
 };
 
-export {
+export default {
+    // articles,
     fetchAll,
     getById
 };

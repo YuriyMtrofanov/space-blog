@@ -4,16 +4,16 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 
 const Сategories = ({
-    items,
-    selectedItem,
-    onItemSelect,
-    valueProperty,
-    contentProperty
+    items, // список всех тем
+    selectedItem, // выбранная тема в списке фильтрации
+    onItemSelect, // хендлер обнуляющий список фильтрации
+    valueProperty, // "_id"
+    contentProperty // "name"
 }) => {
     if (_.isArray(items) === true) {
         return (
             <ul className="list-group">
-                <h1>Группы статей</h1>
+                {/* <h1>Группы статей</h1> */}
                 {items.map(item => (
                     <li
                         key = { item[valueProperty] }
