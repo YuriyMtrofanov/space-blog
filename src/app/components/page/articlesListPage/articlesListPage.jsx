@@ -11,6 +11,8 @@ const ArticlesListPage = () => {
     const [articlesList, setArticlesList] = useState();
     const [categories, setCategories] = useState();
     const [inputData, setInputData] = useState("");
+    // const params = useParams();
+
     useEffect(() => {
         api.articles.fetchAll().then(data => {
             setArticlesList(data);

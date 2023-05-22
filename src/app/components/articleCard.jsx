@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ArticleCard = ({ article, author }) => {
-    console.log(author);
     return (
         <>
             <div className="card card-sm text-dark bg-light bg-opacity-75 mb-2">

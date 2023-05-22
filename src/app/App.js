@@ -4,6 +4,7 @@ import Articles from "../app/layouts/articles";
 import Main from "./layouts/main";
 import Login from "./layouts/login";
 import NavBar from "./components/ui/navBar";
+import User from "./layouts/user";
 // import NotFoundPage from "./components/page/notFoundPage/notFoundPage";
 // import Loading from "./components/ui/loading";
 // Управлять цветом фона можно таким образом https://bootstrap-4.ru/docs/5.1/utilities/background/#background-color
@@ -13,7 +14,7 @@ function App() {
         <div className="App bg-opacity-75">
             <NavBar/>
             <Switch>
-                {/* <Route path = "/users/:userId?/:edit?" component={UsersList}/> */}
+                <Route path = "/users/:userId?/:edit?" component={User}/>
                 <Route path = "/login/:type?" component={Login}/>
                 <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
                 {/* <Route path = "/admin" component={AdminPage}/> */}

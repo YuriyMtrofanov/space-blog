@@ -14,6 +14,9 @@ const NavBar = () => {
                 <li className="nav-item">
                     <Link className="nav-link active text-light" aria-current="page" to="/articles"><h3>Статьи</h3></Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link active text-light" aria-current="page" to="/users"><h3>Пользователи</h3></Link>
+                </li>
             </ul>
         </nav>
         // <nav className="navbar navbar-expand-lg navbar-light bg-light">
