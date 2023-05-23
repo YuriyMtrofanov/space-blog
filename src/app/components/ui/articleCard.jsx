@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ArticleCard = ({ article, author }) => {
     return (
         <>
-            <div className="card card-sm text-dark bg-light bg-opacity-75 mb-2">
+            <div className="card card-sm text-dark bg-opacity-75 mb-2">
                 <div className="card-header p-2">
                     <Link to={`/articles/${article._id}`}>
                         <h3>{article.name}</h3>

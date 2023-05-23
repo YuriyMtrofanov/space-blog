@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import api from "../../api";
+import api from "../../../api";
 import PropTypes from "prop-types";
 import ArticlesCard from "./articleCard";
-import Loading from "./ui/loading";
+import Loading from "./loading";
 
 const ArticlesTable = ({ articles }) => {
     const [authorsList, setAuthorsList] = useState([]);
