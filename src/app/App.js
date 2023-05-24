@@ -3,8 +3,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Articles from "../app/layouts/articles";
 import Main from "./layouts/main";
 import Login from "./layouts/login";
+import LogOut from "./layouts/logOut";
 import NavBar from "./components/ui/navBar";
-import User from "./layouts/user";
+import Users from "./layouts/users";
 // import NotFoundPage from "./components/page/notFoundPage/notFoundPage";
 // import Loading from "./components/ui/loading";
 // Управлять цветом фона можно таким образом https://bootstrap-4.ru/docs/5.1/utilities/background/#background-color
@@ -14,8 +15,9 @@ function App() {
         <div className="App bg-opacity-75">
             <NavBar/>
             <Switch>
-                <Route path = "/users/:userId?/:edit?" component={User}/>
+                <Route path = "/users/:userId?/:edit?" component={Users}/>
                 <Route path = "/login/:type?" component={Login}/>
+                <Route path="/logout" component={LogOut} />
                 <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
                 {/* <Route path = "/admin" component={AdminPage}/> */}
                 <Route path = "/" exact component={Main}/>

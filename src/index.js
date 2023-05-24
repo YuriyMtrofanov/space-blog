@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom"; // react-router-dom -v 5.3.0
 import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

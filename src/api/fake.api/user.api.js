@@ -31,7 +31,8 @@ const users = [
             // "67rdca3eeb7f6fgeed471823"
         ], // ссылка на отдельную сущность (пересекается с articles) массив из id понравившихся статей статей
         selectedAuthorsList: [
-        ] // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
+        ], // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
+        rate: 15
     },
     {
         _id: "67rdca3eeb7f6fgeed471816",
@@ -53,7 +54,8 @@ const users = [
         ],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 10
     },
     {
         _id: "67rdca3eeb7f6fgeed471817",
@@ -75,7 +77,8 @@ const users = [
         ],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 18
     },
     {
         _id: "67rdca3eeb7f6fgeed471818",
@@ -97,7 +100,8 @@ const users = [
         ],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 12
     },
     {
         _id: "67rdca3eeb7f6fgeed471819",
@@ -119,7 +123,8 @@ const users = [
         ],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 0
     },
     {
         _id: "67rdca3eeb7f6fgeed471820",
@@ -139,7 +144,8 @@ const users = [
         socialТetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 4
     },
     {
         _id: "67rdca3eeb7f6fgeed471821",
@@ -161,7 +167,8 @@ const users = [
         ],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 0
     },
     {
         _id: "67rdca3eeb7f6fgeed471822",
@@ -181,7 +188,8 @@ const users = [
         socialТetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 0
     },
     {
         _id: "67rdca3eeb7f6fgeed471823",
@@ -201,7 +209,8 @@ const users = [
         socialТetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 0
     },
     {
         _id: "67rdca3eeb7f6fgeed471824",
@@ -221,7 +230,8 @@ const users = [
         socialТetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
-        selectedAuthorsList: []
+        selectedAuthorsList: [],
+        rate: 0
     }
 ];
 if (!localStorage.getItem("users")) {
@@ -247,12 +257,23 @@ const getById = (id) =>
     new Promise((resolve) => {
         window.setTimeout(function () {
             resolve(
-                JSON.parse(localStorage.getItem("users")).find(
+                users.find(
                     (user) => user._id === id
                 )
             );
         }, 100);
     });
+
+// const getById = (id) =>
+// new Promise((resolve) => {
+//     window.setTimeout(function () {
+//         resolve(
+//             JSON.parse(localStorage.getItem("users")).find(
+//                 (user) => user._id === id
+//             )
+//         );
+//     }, 100);
+// });
 
 export default {
     // users,

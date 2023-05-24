@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../../api";
 import Loading from "../../ui/loading";
-import ArticlesTable from "../../articlesTable";
+import ArticlesTable from "../../ui/articlesTable";
 // import TopArticles from "./topArticles.jsx";
-import Categories from "../../categories";
+import Categories from "../../ui/categories";
 import TextField from "../../common/forms/textField";
 
 const ArticlesListPage = () => {
@@ -49,15 +49,15 @@ const ArticlesListPage = () => {
         const filteredArticles = filterArticles(articlesList);
         return (
             <>
-                <div className='container mt-2'>
+                <div className='container mt-2 pb-5 shadow'>
                     {/* <Breadcrumbs
                         state={state}
                         memberName={`${member.name} ${member.lastName}`}
                     /> */}
                     <h3>Breadcrumbs / articles /</h3>
-                    <div className="row gutters">
+                    <div className="row">
                         {categories &&
-                            <div className="col-4 mt-4 mb-2">
+                            <div className="col-lg-3 mt-4 mb-2">
                                 <h1>Категории</h1>
                                 <Categories
                                     items = {categories}
@@ -72,7 +72,7 @@ const ArticlesListPage = () => {
                                 > Сброс </button>
                             </div>
                         }
-                        <div className="col-md-8 mb-2">
+                        <div className="col-lg-9 mb-2">
                             <form>
                                 {/* <h1>Все статьи: </h1> */}
                                 <TextField
