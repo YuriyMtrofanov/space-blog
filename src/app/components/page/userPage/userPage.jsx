@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import UserImageCard from "../../common/cards/UserImageCard";
 import UserSocialNetworksCard from "../../common/cards/UserSocialNetworksCard";
 import UserInfoCard from "../../common/cards/UserInfoCard";
 // import ArticleCard from "../../common/cards/articleCard";
 import { Redirect } from "react-router-dom";
+import api from "../../../../api";
+import ArticlesTable from "../../ui/articlesTable";
+import Loading from "../../ui/loading";
 
 const UserPage = ({ id }) => {
+    const [articlesList, setArticlesList] = useState();
     // const { userId } = useParams()
     // const { state } = useLocation() // это для хлебных крошек
     // const member = useSelector(getMemberById(memberId))
@@ -40,6 +44,12 @@ const UserPage = ({ id }) => {
         ], // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
         rate: 15
     }; // затычка
+    useEffect(() => {
+        api.articles.fetchAll().then(data => {
+            // user._id это currentUser
+            setArticlesList(data.filter(item => item.author === user._id));
+        });
+    }, []);
 
     if (!user) return <Redirect to='/' />;
     return (
@@ -57,9 +67,15 @@ const UserPage = ({ id }) => {
                     </div>
                     <div className='col-md-8 p-1 mb-2'>
                         <UserInfoCard />
+                        <div className="container flex p-1">
+                            <h3>Список статей</h3>
+                            {articlesList
+                                ? (<ArticlesTable { ...{ articles: articlesList } }/>)
+                                : (<Loading/>)
+                            }
+                        </div>
                     </div>
                     <div className='col-md-8 p-1 mb-2'>
-                        {/* <ArticleCard /> */}
                     </div>
                 </div>
             </div>

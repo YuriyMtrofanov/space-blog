@@ -12,13 +12,18 @@ const ArticleCard = ({ article }) => {
     return (
         <>
             <div className="card card-sm text-dark bg-opacity-75 mb-2">
-                <div className="card-header p-2">
+                {/* <div className="card-header p-2">
                     <Link to={`/articles/${article._id}`}>
-                        <h3>{article.name}</h3>
+                        <h5>{article.name}</h5>
                     </Link>
-                </div>
+                </div> */}
                 <div className="card-body p-2">
-                    <h5 className="card-title">{article.header}</h5>
+                    {/* <h5 className="card-title">{article.header}</h5> */}
+                    <div className="card-title text-dark p-1">
+                        <Link to={`/articles/${article._id}`}>
+                            <h4>{article.name}</h4>
+                        </Link>
+                    </div>
                     <ul>
                         <li>{article.textContent}</li>
                     </ul>
