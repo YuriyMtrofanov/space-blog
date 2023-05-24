@@ -17,20 +17,19 @@ const ArticleCard = ({ article }) => {
                         <h5>{article.name}</h5>
                     </Link>
                 </div> */}
+                <img src={article.img} className="card-img-top" alt="image"/>
                 <div className="card-body p-2">
                     {/* <h5 className="card-title">{article.header}</h5> */}
-                    <div className="card-title text-dark p-1">
-                        <Link to={`/articles/${article._id}`}>
-                            <h4>{article.name}</h4>
-                        </Link>
-                    </div>
+                    <Link to={`/articles/${article._id}`}>
+                        <h5 className="card-title text-dark p-1">{article.name}</h5>
+                    </Link>
                     <ul>
                         <li>{article.textContent}</li>
                     </ul>
-                    <span className="card-text">
+                    <span className="card-subtitle mb-2 text-muted">
                         {authorName}
+                        <i className="bi bi-hand-thumbs-up"></i>
                     </span>
-                    <i className="bi bi-hand-thumbs-up"></i>
                     {/* <i className="bi bi-hand-thumbs-up"></i> */}
                 </div>
             </div>

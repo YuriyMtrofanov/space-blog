@@ -1,16 +1,31 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 // import { Link } from "react-router-dom";
 
-const ArticleCardSmall = () => {
+const ArticleCardSmall = ({ article }) => {
     return (
-        <div className="card" style={{ width: "18rem" }}>
-            <img src="..." className="card-img-top" alt="..."/>
-            <div className="card-body">
-                <p className="card-text">Content</p>
-            </div>
-        </div>
+        <>
+            {article &&
+                <div className="col-md-3 col-sm-6 p-3">
+                    <div className="card" style={{ height: "18rem" }}>
+                        <img src={article.img} className="card-img-top" alt="image"/>
+                        <div className="card-body">
+                            <h6 >{article.name}</h6>
+                            <p className="card-text">{article.prevue}</p>
+                        </div>
+                        <span className="card-subtitle p-2 text-muted">
+                            {new Date(article.date).toLocaleDateString()}{" "}
+                            <i className="bi bi-hand-thumbs-up"></i>{" "}
+                            <i className="bi bi-hand-thumbs-down"></i>
+                        </span>
+                    </div>
+                </div>}
+        </>
     );
+};
+
+ArticleCardSmall.propTypes = {
+    article: PropTypes.object
 };
 
 export default ArticleCardSmall;
