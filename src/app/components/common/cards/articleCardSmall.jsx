@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 const ArticleCardSmall = ({ article }) => {
@@ -10,7 +11,9 @@ const ArticleCardSmall = ({ article }) => {
                     <div className="card" style={{ height: "18rem" }}>
                         <img src={article.img} className="card-img-top" alt="image"/>
                         <div className="card-body">
-                            <h6 >{article.name}</h6>
+                            <Link className= "text-dark" to={`/articles/${article._id}`}>
+                                <h6 >{article.name}</h6>
+                            </Link>
                             <p className="card-text">{article.prevue}</p>
                         </div>
                         <span className="card-subtitle p-2 text-muted">
@@ -19,7 +22,8 @@ const ArticleCardSmall = ({ article }) => {
                             <i className="bi bi-hand-thumbs-down"></i>
                         </span>
                     </div>
-                </div>}
+                </div>
+            }
         </>
     );
 };
