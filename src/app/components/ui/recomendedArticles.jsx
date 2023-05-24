@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 // { useEffect, useState }
 import API from "../../../api";
-import ArticleCardSmall from "./articleCardSmall";
+import ArticleCardSmall from "../common/cards/articleCardSmall";
 
 const RecomendedArticles = () => {
     const [topArticles, setTopArticles] = useState();

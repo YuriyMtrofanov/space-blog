@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../api";
 import PropTypes from "prop-types";
-import ArticlesCard from "./articleCard";
+import ArticleCard from "../common/cards/articleCard";
 import Loading from "./loading";
 
 const ArticlesTable = ({ articles }) => {
@@ -11,17 +11,12 @@ const ArticlesTable = ({ articles }) => {
             setAuthorsList(data);
         });
     }, []);
-
-    function authorsName(id) {
-        const { firstName, lastName } = authorsList.find(author => author._id === id);
-        return `${firstName} ${lastName}`;
-    };
     if (articles.length > 0 && authorsList.length) {
         return (
             <div>
                 {articles.length > 0 && authorsList.length > 0 &&
                     articles.map(article => (
-                        <ArticlesCard key={article._id} {...{ article }} author={authorsName(article.author)}/>
+                        <ArticleCard key={article._id} {...{ article }}/>
                     ))}
             </div>
         );

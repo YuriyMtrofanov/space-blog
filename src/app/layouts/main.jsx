@@ -1,5 +1,5 @@
 import React from "react";
-import ArticleCard from "../components/ui/articleCard";
+import ArticleCard from "../components/common/cards/articleCard";
 import RecomendedArticles from "../components/ui/recomendedArticles";
 // Можно реализовать карусель. Скролл картинок слева направо
 // https://bootstrap-4.ru/docs/5.1/components/carousel/
