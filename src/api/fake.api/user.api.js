@@ -22,6 +22,11 @@ const users = [
             { _id: "3", title: "telegram.com", link: "https://web.telegram.org/k/#@Mitrofanov_Yuriy", img: "" }
         ], // нужно поместить в отдельную сущность
         selectedArticlesList: [
+            "67rdca3eeb7f6fgeed471816",
+            "67rdca3eeb7f6fgeed471817",
+            "67rdca3eeb7f6fgeed471819",
+            "67rdca3eeb7f6fgeed471821",
+            "67rdca3eeb7f6fgeed471823"
         ], // массив из id избранных статей
         // likedArticles: [
         //     "67rdca3eeb7f6fgeed471816",
