@@ -15,6 +15,11 @@ const NavBar = () => {
                     <li className="nav-item">
                         <Link className="nav-link active text-light" aria-current="page" to="/articles"><h5>Публикации</h5></Link>
                     </li>
+                    {isLoggedIn &&
+                        <li className="nav-item">
+                            <Link className="nav-link active text-light" aria-current="page" to="/favorites"><h5>Избранное</h5></Link>
+                        </li>
+                    }
                     {/* {isLoggedIn &&
                         <li className="nav-item">
                             <Link className="nav-link active text-light" aria-current="page" to="/users"><h5>Авторы</h5></Link>

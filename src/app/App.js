@@ -6,6 +6,7 @@ import Login from "./layouts/login";
 import LogOut from "./layouts/logOut";
 import NavBar from "./components/ui/navBar";
 import Users from "./layouts/users";
+import Favorites from "./layouts/favorites";
 // import NotFoundPage from "./components/page/notFoundPage/notFoundPage";
 // import Loading from "./components/ui/loading";
 // Управлять цветом фона можно таким образом https://bootstrap-4.ru/docs/5.1/utilities/background/#background-color
@@ -19,6 +20,7 @@ function App() {
                 <Route path = "/login/:type?" component={Login}/>
                 <Route path="/logout" component={LogOut} />
                 <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
+                <Route path = "/favorites/:articleId?" component={Favorites}/>
                 {/* <Route path = "/admin" component={AdminPage}/> */}
                 <Route path = "/" exact component={Main}/>
                 {/* <Route path = "/404" component = {NotFoundPage}/> */}

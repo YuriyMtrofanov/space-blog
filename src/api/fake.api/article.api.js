@@ -148,7 +148,7 @@ const fetchAll = () => {
 const getById = (id) => {
     return new Promise((resolve) => {
         window.setTimeout(function () {
-            resolve(articles.find((uarticle) => uarticle._id === id));
+            resolve(articles.find((article) => article._id === id));
         }, 200);
     });
 };

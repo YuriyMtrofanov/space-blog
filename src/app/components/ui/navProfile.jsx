@@ -38,6 +38,9 @@ function NavProfile() {
                 >
                     Profile
                 </Link>
+                <Link to="/favorites/" className="dropdown-item">
+                    Избранное
+                </Link>
                 <Link to="/logout" className="dropdown-item">
                     Log Out
                 </Link>
