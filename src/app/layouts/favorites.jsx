@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import api from "../../api";
 
 const Favorites = () => {
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // затычка
+    const currentUserId = "67rdca3eeb7f6fgeed471815"; // получаем из localStorage
     const { articleId } = useParams();
     const [favoritesIds, setFavoritesIds] = useState();
     const [articles, setArticles] = useState();

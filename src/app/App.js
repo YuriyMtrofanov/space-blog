@@ -7,6 +7,7 @@ import LogOut from "./layouts/logOut";
 import NavBar from "./components/ui/navBar";
 import Users from "./layouts/users";
 import Favorites from "./layouts/favorites";
+import ArticleCreatePage from "./components/page/articleCreatePage/articleCreatePage";
 // import NotFoundPage from "./components/page/notFoundPage/notFoundPage";
 // import Loading from "./components/ui/loading";
 // Управлять цветом фона можно таким образом https://bootstrap-4.ru/docs/5.1/utilities/background/#background-color
@@ -17,10 +18,11 @@ function App() {
             <NavBar/>
             <Switch>
                 <Route path = "/users/:userId?/:edit?" component={Users}/>
-                <Route path = "/login/:type?" component={Login}/>
-                <Route path="/logout" component={LogOut} />
                 <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
                 <Route path = "/favorites/:articleId?" component={Favorites}/>
+                <Route path="/create" component={ArticleCreatePage} />
+                <Route path = "/login/:type?" component={Login}/>
+                <Route path="/logout" component={LogOut} />
                 {/* <Route path = "/admin" component={AdminPage}/> */}
                 <Route path = "/" exact component={Main}/>
                 {/* <Route path = "/404" component = {NotFoundPage}/> */}
@@ -32,11 +34,3 @@ function App() {
 };
 
 export default App;
-
-// 1.
-// 2.
-// 3.1 При рендере компонента "Articles", рендерится список статей.
-// 3.2 При выборе отдельной статьи отлавливается её id и мы можем перейти на страницу
-// самой статьи, указав этот id в ссылке.
-// 3.3 При выборе параметра type = edit переходим на страницу редактирования статьи,
-// но доступ для этого открыт только для пользователя со статусом: admin и author.
