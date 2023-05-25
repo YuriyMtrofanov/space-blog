@@ -6,17 +6,19 @@ import CommentsList from "./commentsList";
 // import { createComment, getComments, getCommentsLoadStatus, loadCommentsList, removeComment } from "../../store/comments";
 import { useParams } from "react-router-dom";
 import API from "../../../../api";
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
+import Loading from "../../ui/loading";
 // import { getCurrentUserId } from "../../store/users";
 
 const Comments = () => {
     // const dispatch = useDispatch();
-    const params = useParams(); // pageId === params.userId
-    console.log("params: ", params.articleId);
+    const params = useParams(); // pageId === params.articleId
     // const currentUserId = useSelector(getCurrentUserId()); // currentUserId
     const currentUserId = "67rdca3eeb7f6fgeed471815";
     // const comments = useSelector(getComments());
-    const comments = API.comments;
+    const comments = API.comments.filter(item => item.pageId === params.articleId);
+    console.log("Comments: ", comments);
+    console.log("Comments article id: ", params.articleId);
     // const isLoading = useSelector(getCommentsLoadStatus());
     const isLoading = false;
     // useEffect(() => {
@@ -26,11 +28,12 @@ const Comments = () => {
     const handleSubmit = (data) => {
         const comment = {
             ...data,
+            _id: nanoid(),
             pageId: params.articleId,
             created_at: Date.now(),
             userId: currentUserId
         };
-        console.log(comment);
+        console.log("Comments: ", comment);
         // dispatch(createComment(comment));
     };
     const handleRemoveComment = (id) => {
@@ -49,14 +52,14 @@ const Comments = () => {
             {sortedComments.length > 0 && (
                 <div className="card mb-3">
                     <div className="card-body ">
-                        <h2>Comments</h2>
+                        <h2>Комментарии</h2>
                         <hr />
                         {!isLoading
                             ? (<CommentsList
                                 comments={sortedComments}
                                 onRemove={handleRemoveComment}
                             />)
-                            : ("loading...")
+                            : <Loading />
                         }
                     </div>
                 </div>

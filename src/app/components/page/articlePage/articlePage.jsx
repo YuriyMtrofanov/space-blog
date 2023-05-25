@@ -11,7 +11,7 @@ const ArticlePage = ({ id }) => {
             setArticle(data);
         });
     }, []);
-    console.log("article: ", article);
+    console.log("ArticlePage id: ", id);
     return (
         <>
             {article
