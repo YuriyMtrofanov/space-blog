@@ -17,7 +17,7 @@ const ArticleCard = ({ article }) => {
                         <h5>{article.name}</h5>
                     </Link>
                 </div> */}
-                <img src={article.img} className="card-img-top" alt="image"/>
+                <img src={article.img} style={{ height: "30rem" }}className="card-img-top" alt="image"/>
                 <div className="card-body p-2">
                     {/* <h5 className="card-title">{article.header}</h5> */}
                     <Link to={`/articles/${article._id}`}>

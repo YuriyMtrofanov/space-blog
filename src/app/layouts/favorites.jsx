@@ -24,12 +24,15 @@ const Favorites = () => {
             <>
                 {articleId
                     ? (<ArticlePage id={articleId}/>)
-                    : (<div className="row">
-                        <div className="col-lg-9 mb-2">
-                            <h1>список избранных статей</h1>
-                            <ArticlesTable {...{ articles: favoriteArticles }}/>
+                    : (<div className="container mt-2 pb-5">
+                        <div className="row">
+                            <div className="col-lg-9 mb-2">
+                                <h1>список избранных статей</h1>
+                                <ArticlesTable {...{ articles: favoriteArticles }}/>
+                            </div>
                         </div>
-                    </div>)
+                    </div>
+                    )
                 }
             </>
         );

@@ -12,7 +12,7 @@ const Main = () => {
         date: 1684750058473,
         category: "67rdca3eeb7f6fgeed471824",
         header: "Заголовок статьи",
-        img: "URL",
+        img: "https://naukatehnika.com/files/journal/tehnika-vooruzhenie/15.07.20-varp-dvigatel/varp-dvigatel-2.jpg",
         textContent: "Текст статьи",
         likes: [],
         rate: 10
