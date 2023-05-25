@@ -14,7 +14,7 @@ const ArticleCardSmall = ({ article }) => {
                             <Link className= "text-dark" to={`/articles/${article._id}`}>
                                 <h6 >{article.name}</h6>
                             </Link>
-                            <p className="card-text">{article.prevue}</p>
+                            <p className="card-text">{article.content}</p>
                         </div>
                         <span className="card-subtitle p-2 text-muted">
                             {new Date(article.date).toLocaleDateString()}{" "}

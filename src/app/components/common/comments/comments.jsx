@@ -17,8 +17,6 @@ const Comments = () => {
     const currentUserId = "67rdca3eeb7f6fgeed471815";
     // const comments = useSelector(getComments());
     const comments = API.comments.filter(item => item.pageId === params.articleId);
-    console.log("Comments: ", comments);
-    console.log("Comments article id: ", params.articleId);
     // const isLoading = useSelector(getCommentsLoadStatus());
     const isLoading = false;
     // useEffect(() => {

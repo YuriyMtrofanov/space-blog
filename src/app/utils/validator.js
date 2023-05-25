@@ -7,13 +7,18 @@ export function validator(data, config) {
             if (typeof data === "boolean") {
                 statusValidate = !data;
             } else {
-                statusValidate = data.trim() === "";
+                statusValidate = data.trim() === ""; // ранее было data.trim()
             }
             break;
         }
         case "isEmail": {
             const emailRegExp = /^\S+@\S+\.\S+$/g;
             statusValidate = !emailRegExp.test(data);
+            break;
+        }
+        case "isUrl": {
+            const urlRegExp = /^https?:\/\/\S+$/g;
+            statusValidate = !urlRegExp.test(data);
             break;
         }
         case "isCapitalSymbol": {
@@ -28,6 +33,10 @@ export function validator(data, config) {
         }
         case "min": {
             statusValidate = data.length < config.value;
+            break;
+        }
+        case "max": {
+            statusValidate = data.length > config.value;
             break;
         }
         default:

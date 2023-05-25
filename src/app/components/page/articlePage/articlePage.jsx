@@ -23,7 +23,7 @@ const ArticlePage = ({ id }) => {
                         </div>
                         <div className="body mx-5 mt-3">
                             <div className="text-start">
-                                <p>{article.textContent}</p>
+                                <p>{article.content}</p>
                             </div>
                             <hr/>
                         </div>

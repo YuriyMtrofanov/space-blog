@@ -40,7 +40,7 @@ const ArticlesListPage = () => {
     function filterArticles(data) {
         let filteredData = data;
         if (inputData) {
-            filteredData = data.filter(article => article.textContent.toLowerCase().includes(inputData.toLowerCase()));
+            filteredData = data.filter(article => article.content.toLowerCase().includes(inputData.toLowerCase()));
         } else if (selectedProperty) {
             filteredData = data.filter(article => article.category === selectedProperty);
         } return filteredData;

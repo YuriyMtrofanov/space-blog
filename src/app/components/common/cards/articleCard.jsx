@@ -24,7 +24,7 @@ const ArticleCard = ({ article }) => {
                         <h5 className="card-title text-dark p-1">{article.name}</h5>
                     </Link>
                     <ul>
-                        <li>{article.textContent}</li>
+                        <li>{article.content}</li>
                     </ul>
                     <span className="card-subtitle mb-2 text-muted">
                         {authorName}
