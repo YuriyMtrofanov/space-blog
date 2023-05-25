@@ -28,7 +28,7 @@ const UserInfoCard = ({ id }) => {
             { _id: "2", content: "Данный проект является моим дипломом по курсу junior Frontend Developer от Result School" },
             { _id: "3", content: "Мне очень хотелось бы успешно завершить обучение и получить новую востребованную профессию" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/mitrofanov_yuriy", img: "" },
             { _id: "2", title: "github.com", link: "https://github.com/YuriyMtrofanov", img: "" },
             { _id: "3", title: "telegram.com", link: "https://web.telegram.org/k/#@Mitrofanov_Yuriy", img: "" }

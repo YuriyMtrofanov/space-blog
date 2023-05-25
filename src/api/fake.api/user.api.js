@@ -16,22 +16,22 @@ const users = [
             { _id: "2", content: "Данный проект является моим дипломом по курсу junior Frontend Developer от Result School" },
             { _id: "3", content: "Мне очень хотелось бы успешно завершить обучение и получить новую востребованную профессию" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/mitrofanov_yuriy", img: "" },
             { _id: "2", title: "github.com", link: "https://github.com/YuriyMtrofanov", img: "" },
             { _id: "3", title: "telegram.com", link: "https://web.telegram.org/k/#@Mitrofanov_Yuriy", img: "" }
         ], // нужно поместить в отдельную сущность
         selectedArticlesList: [
         ], // массив из id избранных статей
-        likedArticles: [
-            // "67rdca3eeb7f6fgeed471816",
-            // "67rdca3eeb7f6fgeed471817",
-            // "67rdca3eeb7f6fgeed471819",
-            // "67rdca3eeb7f6fgeed471821",
-            // "67rdca3eeb7f6fgeed471823"
-        ], // ссылка на отдельную сущность (пересекается с articles) массив из id понравившихся статей статей
-        selectedAuthorsList: [
-        ], // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
+        // likedArticles: [
+        //     "67rdca3eeb7f6fgeed471816",
+        //     "67rdca3eeb7f6fgeed471817",
+        //     "67rdca3eeb7f6fgeed471819",
+        //     "67rdca3eeb7f6fgeed471821",
+        //     "67rdca3eeb7f6fgeed471823"
+        // ], // ссылка на отдельную сущность (пересекается с articles) массив из id понравившихся статей статей
+        // selectedAuthorsList: [
+        // ], // массив из id избранных авторов. Важно чтобы в этот список не попадали учетки с accountType: "visitor"
         rate: 15
     },
     {
@@ -49,7 +49,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/the_exalt", img: "" }
         ],
         selectedArticlesList: [],
@@ -72,7 +72,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/shock_in", img: "" }
         ],
         selectedArticlesList: [],
@@ -95,7 +95,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/nikanigga1?z=photo43332207_457241293%2Falbum43332207_0%2Frev", img: "" }
         ],
         selectedArticlesList: [],
@@ -118,7 +118,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/oksana_raido", img: "" }
         ],
         selectedArticlesList: [],
@@ -141,7 +141,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [],
+        socialNetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
         selectedAuthorsList: [],
@@ -162,7 +162,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [
+        socialNetworks: [
             { _id: "1", title: "vk.com", link: "https://vk.com/my_margaret", img: "" }
         ],
         selectedArticlesList: [],
@@ -185,7 +185,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [],
+        socialNetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
         selectedAuthorsList: [],
@@ -206,7 +206,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [],
+        socialNetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
         selectedAuthorsList: [],
@@ -227,7 +227,7 @@ const users = [
         about: [
             { _id: "1", content: "Информация о пользователе" }
         ],
-        socialТetworks: [],
+        socialNetworks: [],
         selectedArticlesList: [],
         likedArticles: [],
         selectedAuthorsList: [],
@@ -276,7 +276,7 @@ const getById = (id) =>
 // });
 
 export default {
-    // users,
+    users,
     fetchAll,
     getById,
     update

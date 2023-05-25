@@ -8,8 +8,8 @@ const ArticleCardSmall = ({ article }) => {
         <>
             {article &&
                 <div className="col-md-3 col-sm-6 p-3">
-                    <div className="card" style={{ height: "18rem" }}>
-                        <img src={article.img} className="card-img-top" alt="image"/>
+                    <div className="card" style={{ height: "25rem", maxHeight: "30rem" }}>
+                        <img src={article.img} className="img-fluid" style={{ maxHeight: "12rem" }} alt="image"/>
                         <div className="card-body">
                             <Link className= "text-dark" to={`/articles/${article._id}`}>
                                 <h6 >{article.name}</h6>
