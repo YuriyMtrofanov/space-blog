@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
+import { nanoid } from "nanoid";
 import TextField from "../common/forms/textField";
 import RadioField from "../common/forms/radioField";
 import TextAreaField from "../common/forms/textAreaField";
 import CheckBoxField from "../common/forms/checkBoxField";
-import AddLinksForm from "./addLinkForm";
+import DateField from "../common/forms/dateField";
+// import AddLinksForm from "./addLinkForm";
 // import { socialNetworksList } from "../../../references/socialNetworksList";
 // import SelectField from "../common/forms/selectField";
 
 const RegisterForm = () => {
     // const [socialNetworks, setSocialNetworks] = useState([]);
-    const links = [];
+    // const [birthDate, setBirthDate] = useState("");
     const [inputData, setInputData] = useState({
         firstName: "",
         lastName: "",
@@ -20,12 +22,12 @@ const RegisterForm = () => {
         country: "",
         sex: "male", // задано значение по умолчанию
         img: "http://...",
-        birthDay: 0, // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
+        birthDate: "", // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
         about: "",
-        // socialNetworks: [{}],
-        // selectedArticlesList: [], // массив из id избранных статей по умолчанию пустой
+        socialNetworks: [],
         accountType: "reader", // задается по умолчанию, вручную изменю в БД на "admin"
-        rate: 15
+        licence: false,
+        rate: 0
     });
     const [errors, setErrors] = useState({});
     const validatorConfig = {
@@ -100,16 +102,6 @@ const RegisterForm = () => {
         }));
     };
 
-    const handleChangeLink = (changedLink) => {
-        if (links.find((link) => link.id === changedLink.id)) { // если в масссиве links есть эл-т с id полученного элекмента
-            const index = links.findIndex((link) => link.id === changedLink.id); // то по id полученного элекмента ищем индекс эл-та в массиве links
-            links[index] = changedLink; // в массиве links по индексу index находим элемент и меняем его на changedLink
-            // console.log("RegisterForm: ", links);
-        } else {
-            links.push(changedLink);
-        }
-    };
-
     const validate = () => {
         const errors = validator(inputData, validatorConfig);
         setErrors(errors);
@@ -126,7 +118,13 @@ const RegisterForm = () => {
         event.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        console.log("register data", inputData);
+        const outputData = {
+            ...inputData,
+            _id: nanoid(),
+            // socialNetworks: [],
+            rate: 0
+        };
+        console.log("register data", outputData);
     };
 
     return (
@@ -227,8 +225,16 @@ const RegisterForm = () => {
                     onChange={handleChange}
                     label="Регистрируетесь как:"
                 />
-                <p>Социальные сети</p>
-                <AddLinksForm changeLink={handleChangeLink} />
+                {/* <p>Социальные сети</p>
+                <AddLinksForm changeLink={handleChangeLink} /> */}
+                <DateField
+                    label="Дата рождения"
+                    type="text"
+                    name="birthDate"
+                    // value={birthDate}
+                    value={inputData.birthDate}
+                    onChange={handleChange}
+                />
                 <CheckBoxField
                     value={inputData.licence}
                     onChange={handleChange}
