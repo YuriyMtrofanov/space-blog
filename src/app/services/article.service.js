@@ -18,6 +18,10 @@ const articleService = {
     edit: async (payload) => {
         const { data } = await httpService.patch(articleEndpoint + payload._id, payload); // payload._id - id статьи
         return data;
+    },
+    delete: async (articleId) => {
+        const { data } = await httpService.delete(articleEndpoint + articleId);
+        return data;
     }
 };
 
