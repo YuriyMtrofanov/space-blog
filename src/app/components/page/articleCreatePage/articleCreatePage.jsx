@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../../../../api";
-// import { nanoid } from "nanoid";
 import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import CheckBoxField from "../../common/forms/checkBoxField";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
     const currentUserId = "67rdca3eeb7f6fgeed471815"; // получаем из localStorage
@@ -18,7 +17,7 @@ const ArticleCreatePage = () => {
     }, []);
 
     const [inputData, setInputData] = useState({
-        _id: "",
+        // _id: "",
         name: "", // валидация min/max
         author: "", // currentUserId
         date: "", // автоматически Date.now()
@@ -93,7 +92,7 @@ const ArticleCreatePage = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            _id: nanoid(),
+            // _id: nanoid(),
             date: Date.now(),
             author: currentUserId
         };

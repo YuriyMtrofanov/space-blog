@@ -4,7 +4,7 @@ import NavProfile from "./navProfile";
 
 const NavBar = () => {
     // const isLoggedIn = useSelector(getIsLoggedIn());
-    const isLoggedIn = false; // затычка
+    const isLoggedIn = true; // затычка
     return (
         <nav className="navbar navbar-light bg-dark bg-gradient">
             <div className="container-fluid">

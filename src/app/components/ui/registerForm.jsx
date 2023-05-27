@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import TextField from "../common/forms/textField";
 import RadioField from "../common/forms/radioField";
 import TextAreaField from "../common/forms/textAreaField";
@@ -12,7 +12,6 @@ import DateField from "../common/forms/dateField";
 
 const RegisterForm = () => {
     // const [socialNetworks, setSocialNetworks] = useState([]);
-    // const [birthDate, setBirthDate] = useState("");
     const [inputData, setInputData] = useState({
         firstName: "",
         lastName: "",
@@ -24,10 +23,11 @@ const RegisterForm = () => {
         img: "http://...",
         birthDate: "", // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
         about: "",
-        socialNetworks: [],
+        // socialNetworks: [],
+        // selectedArticlesList: [],
         accountType: "reader", // задается по умолчанию, вручную изменю в БД на "admin"
-        licence: false,
-        rate: 0
+        // rate: 0,
+        licence: false
     });
     const [errors, setErrors] = useState({});
     const validatorConfig = {
@@ -120,8 +120,9 @@ const RegisterForm = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            _id: nanoid(),
-            // socialNetworks: [],
+            // _id: nanoid(),
+            socialNetworks: [],
+            selectedArticlesList: [],
             rate: 0
         };
         console.log("register data", outputData);
@@ -131,6 +132,21 @@ const RegisterForm = () => {
         <>
             <p>Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
             <form onSubmit={handleSubmit}>
+                <TextField
+                    label="Электронная почта"
+                    name="email"
+                    value={inputData.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                />
+                <TextField
+                    label="Пароль"
+                    type="password"
+                    name="password"
+                    value={inputData.password}
+                    onChange={handleChange}
+                    error={errors.password}
+                />
                 <div className="row">
                     <div className="col-6">
                         <TextField
@@ -153,21 +169,6 @@ const RegisterForm = () => {
                         />
                     </div>
                 </div>
-                <TextField
-                    label="Электронная почта"
-                    name="email"
-                    value={inputData.email}
-                    onChange={handleChange}
-                    error={errors.email}
-                />
-                <TextField
-                    label="Пароль"
-                    type="password"
-                    name="password"
-                    value={inputData.password}
-                    onChange={handleChange}
-                    error={errors.password}
-                />
                 <div className="row">
                     <div className="col-6">
                         <TextField
