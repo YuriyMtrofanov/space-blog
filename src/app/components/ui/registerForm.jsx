@@ -9,9 +9,11 @@ import DateField from "../common/forms/dateField";
 // import AddLinksForm from "./addLinkForm";
 // import { socialNetworksList } from "../../../references/socialNetworksList";
 // import SelectField from "../common/forms/selectField";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../store/users";
 
 const RegisterForm = () => {
-    // const [socialNetworks, setSocialNetworks] = useState([]);
+    const dispatch = useDispatch();
     const [inputData, setInputData] = useState({
         firstName: "",
         lastName: "",
@@ -29,6 +31,7 @@ const RegisterForm = () => {
         // rate: 0,
         licence: false
     });
+    // const [socialNetworks, setSocialNetworks] = useState([]);
     const [errors, setErrors] = useState({});
     const validatorConfig = {
         firstName: {
@@ -102,15 +105,15 @@ const RegisterForm = () => {
         }));
     };
 
+    useEffect(() => {
+        validate();
+    }, [inputData]);
+
     const validate = () => {
         const errors = validator(inputData, validatorConfig);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
-
-    useEffect(() => {
-        validate();
-    }, [inputData]);
 
     const isAbled = Object.keys(errors).length === 0;
 
@@ -126,6 +129,7 @@ const RegisterForm = () => {
             rate: 0
         };
         console.log("register data", outputData);
+        dispatch(signUp(outputData));
     };
 
     return (

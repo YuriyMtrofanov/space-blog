@@ -3,7 +3,7 @@ import userService from "../services/user.service";
 import authService from "../services/auth.service";
 import localStorageService from "../services/localStorage.service";
 import customHistory from "../utils/history";
-import httpService from "../services/http.service";
+// import httpService from "../services/http.service";
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -84,7 +84,7 @@ const {
     usersRequestFailed,
     authRequestSucceeded,
     authRequestFailed,
-    userCreated,
+    // userCreated,
     userEditSucceeded,
     userLoggedOut
 } = actions;
@@ -98,6 +98,7 @@ export const login = ({ payload, redirect }) => async (dispatch) => {
     dispatch(authRequested());
     try {
         const data = await authService.login({ email, password });
+        localStorageService.setTokens(data);
         dispatch(authRequestSucceeded({ userId: data.userId }));
         customHistory.push(redirect);
     } catch (error) {
@@ -126,7 +127,9 @@ export const signUp = (payload) => async (dispatch) => {
     dispatch(authRequested());
     try {
         const data = await authService.register(payload);
+        localStorageService.setTokens(data);
         dispatch(authRequestSucceeded({ userId: data.userId }));
+        history.push("/");
     } catch (error) {
         dispatch(authRequestFailed(error.message));
     }

@@ -10,14 +10,26 @@ const commentSlice = createSlice({
     },
     reducers: {
         // actions:
-        commentsRequested,
-        commentsReceived,
-        commentsRequestFailed,
+        commentsRequested: (state) => {
+            state.isLoading = true;
+        },
+        commentsReceived: (state, action) => {
+            state.entities = action.payload;
+            state.isLoading = false;
+        },
+        commentsRequestFailed: (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        },
         // commentCreateRequested, // createAction("comments/commentCreateRequested");
-        commentCreateSucceeded,
+        commentCreateSucceeded: (state, action) => {
+            state.entities.push(action.payload);
+        },
         // commentCreateFailed, // createAction("comments/commentCreateFailed");
         // commentRemoveRequest, // createAction("comments/commentRemoveRequest");
-        commentRemoveSuccessed,
+        commentRemoveSuccessed: (state, action) => {
+            state.entities = state.entities.filter(comment => comment._id !== action.payload);
+        }
         // commentRemoveFailed, // createAction("comments/commentRemoveFailed");
     }
 });
@@ -66,7 +78,7 @@ export const removeComment = (commentId) => async (dispatch) => {
     } catch (error) {
         dispatch(commentRemoveFailed(error.message));
     }
-}; 
+};
 
 export const getComments = () => (state) => state.comments.entities;
 export const getCommentsLoadStatus = () => (state) => state.comments.isLoading;
