@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 // import Loading from "./loading";
-import API from "../../../api";
+// import API from "../../../api";
 import { Link } from "react-router-dom";
+import { getCurrentUserData } from "../../store/users";
+// import axios from "axios";
 
 function NavProfile() {
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // пока заглушка
-    const [currentUser, setCurrentUser] = useState();
+    // const currentUserId = "67rdca3eeb7f6fgeed471815"; // пока заглушка
+    // const usersList = useSelector(loadUsersList());
+    // console.log("loadUsersList: ", usersList);
+    // const usersList = axios.get("http://localhost:8080/api/user/", {
+
+    // })
+    const currentUser = useSelector(getCurrentUserData());
+    // const [currentUser, setCurrentUser] = useState();
     const [isOpen, setOpen] = useState(false);
     const toggleMenu = () => {
         setOpen((prevState) => !prevState);
     };
-    useEffect(() => {
-        API.users.getById(currentUserId)
-            .then((data) => setCurrentUser(data));
-    }, []);
     if (!currentUser) return "Loading...";
     return (
         <div className="dropdown" onClick={toggleMenu}>

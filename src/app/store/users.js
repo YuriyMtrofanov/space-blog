@@ -2,8 +2,8 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 import userService from "../services/user.service";
 import authService from "../services/auth.service";
 import localStorageService from "../services/localStorage.service";
-import customHistory from "../utils/history";
-// import httpService from "../services/http.service";
+// import history from "../utils/history";
+// import { useHistory } from "react-router-dom";
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -93,43 +93,15 @@ const authRequested = createAction("users/authRequested");
 const userEditRequested = createAction("users/userEditRequested");
 const userEditFailed = createAction("users/userEditFailed");
 
-export const login = ({ payload, redirect }) => async (dispatch) => {
-    const { email, password } = payload;
-    dispatch(authRequested());
-    try {
-        const data = await authService.login({ email, password });
-        localStorageService.setTokens(data);
-        dispatch(authRequestSucceeded({ userId: data.userId }));
-        customHistory.push(redirect);
-    } catch (error) {
-        dispatch(authRequestFailed(error.message));
-    }
-};
-
-export const logout = () => (dispatch) => {
-    localStorageService.removeAuthData();
-    dispatch(userLoggedOut());
-    customHistory.push("/login");
-};
-
-export const editUserInfo = (payload) => async (dispatch) => {
-    dispatch(userEditRequested());
-    try {
-        const { content } = await userService.edit(payload);
-        dispatch(userEditSucceeded(content));
-        customHistory.push(`/users/${content._id}`);
-    } catch (error) {
-        dispatch(userEditFailed(error.message));
-    }
-};
-
+// отрабатывает полностью
 export const signUp = (payload) => async (dispatch) => {
+    // const history = useHistory();
     dispatch(authRequested());
     try {
         const data = await authService.register(payload);
-        localStorageService.setTokens(data);
-        dispatch(authRequestSucceeded({ userId: data.userId }));
-        history.push("/");
+        localStorageService.setTokens(data); // записываем ключи в localStorage
+        dispatch(authRequestSucceeded({ userId: data.userId })); // state.auth = { userId: data.userId }
+        // history.push("/");
     } catch (error) {
         dispatch(authRequestFailed(error.message));
     }
@@ -139,9 +111,44 @@ export const loadUsersList = () => async (dispatch) => {
     dispatch(usersRequested());
     try {
         const { content } = await userService.get();
+        // console.log("users store usersReceived: ", content);
         dispatch(usersReceived(content));
     } catch (error) {
         dispatch(usersRequestFailed(error.message));
+    }
+};
+
+// отрабатывает полностью
+export const login = ({ payload, redirect }) => async (dispatch) => {
+    const { email, password } = payload;
+    // const history = useHistory();
+    dispatch(authRequested());
+    try {
+        const data = await authService.login({ email, password });
+        localStorageService.setTokens(data);
+        dispatch(authRequestSucceeded({ userId: data.userId }));
+        // history.push(redirect);
+    } catch (error) {
+        dispatch(authRequestFailed(error.message));
+    }
+};
+
+export const logout = () => (dispatch) => {
+    // const history = useHistory();
+    localStorageService.removeAuthData();
+    dispatch(userLoggedOut());
+    // history.push("/login");
+};
+
+export const editUserInfo = (payload) => async (dispatch) => {
+    // const history = useHistory();
+    dispatch(userEditRequested());
+    try {
+        const { content } = await userService.edit(payload);
+        dispatch(userEditSucceeded(content));
+        // history.push(`/users/${content._id}`);
+    } catch (error) {
+        dispatch(userEditFailed(error.message));
     }
 };
 

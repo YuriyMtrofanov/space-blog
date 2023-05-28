@@ -74,7 +74,6 @@ const ArticlesListPage = () => {
                         }
                         <div className="col-lg-9 mb-2">
                             <form>
-                                {/* <h1>Все статьи: </h1> */}
                                 <TextField
                                     type = "text"
                                     name = "search"

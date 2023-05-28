@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
-import api from "../../../../api";
+import React from "react";
+// import api from "../../../../api";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getUserById } from "../../../store/users";
 
 const ArticleCard = ({ article }) => {
-    const [authorName, setAuthorName] = useState("");
-    useEffect(() => {
-        api.users.getById(article.author)
-            .then((data) => setAuthorName(`${data.firstName} ${data.lastName}`));
-    }, []);
+    const { firstName, lastName } = useSelector(getUserById(article.author));
     return (
         <>
             <div className="card card-sm text-dark bg-opacity-75 mb-2">
@@ -19,7 +17,6 @@ const ArticleCard = ({ article }) => {
                 </div> */}
                 <img src={article.img} style={{ height: "30rem" }}className="card-img-top" alt="image"/>
                 <div className="card-body p-2">
-                    {/* <h5 className="card-title">{article.header}</h5> */}
                     <Link to={`/articles/${article._id}`}>
                         <h5 className="card-title text-dark p-1">{article.name}</h5>
                     </Link>
@@ -27,10 +24,11 @@ const ArticleCard = ({ article }) => {
                         <li>{article.content}</li>
                     </ul>
                     <span className="card-subtitle mb-2 text-muted">
-                        {authorName}
-                        <i className="bi bi-hand-thumbs-up"></i>
+                        {new Date(article.date).toLocaleDateString()}{" "}
+                        <b>{ firstName }{" "}{ lastName }</b>{" "}
+                        <i className="bi bi-hand-thumbs-up"></i>{" "}
+                        <i className="bi bi-hand-thumbs-down"></i>
                     </span>
-                    {/* <i className="bi bi-hand-thumbs-up"></i> */}
                 </div>
             </div>
         </>

@@ -1,22 +1,27 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams, Redirect } from "react-router-dom";
 import UserEditPage from "../components/page/userEditPage/userEditPage";
 import UserPage from "../components/page/userPage";
 import UsersListPage from "../components/page/usersListPage/usersListPage";
+import UsersLoader from "../components/ui/HOC/usersLoader";
+import { getCurrentUserId } from "../store/users";
 
 const Users = () => {
     const { userId, edit } = useParams();
-    // Нужно реализовать проверку совпадает ли id выбранного пользователя с
-    // id авторизованного и в случае несовпадения вместо направления на /edit
-    // перебросить его на страницу авторизованного пользователя
+    const currentUserId = useSelector(getCurrentUserId());
     return (
         <>
-            {userId
-                ? (edit
-                    ? (<UserEditPage id={userId}/>)
-                    : (<UserPage id={userId}/>))
-                : (<UsersListPage />)
-            }
+            <UsersLoader>
+                {userId
+                    ? (edit
+                        ? (userId === currentUserId
+                            ? <UserEditPage id={userId}/>
+                            : <Redirect to={`/users/${currentUserId}/edit`} />)
+                        : (<UserPage id={userId}/>))
+                    : (<UsersListPage />)
+                }
+            </UsersLoader>
         </>
     );
 };

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
-// import { nanoid } from "nanoid";
 import TextField from "../common/forms/textField";
 import RadioField from "../common/forms/radioField";
 import TextAreaField from "../common/forms/textAreaField";
 import CheckBoxField from "../common/forms/checkBoxField";
 import DateField from "../common/forms/dateField";
-// import AddLinksForm from "./addLinkForm";
-// import { socialNetworksList } from "../../../references/socialNetworksList";
-// import SelectField from "../common/forms/selectField";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../store/users";
 
@@ -25,13 +21,9 @@ const RegisterForm = () => {
         img: "http://...",
         birthDate: "", // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
         about: "",
-        // socialNetworks: [],
-        // selectedArticlesList: [],
         accountType: "reader", // задается по умолчанию, вручную изменю в БД на "admin"
-        // rate: 0,
         licence: false
     });
-    // const [socialNetworks, setSocialNetworks] = useState([]);
     const [errors, setErrors] = useState({});
     const validatorConfig = {
         firstName: {
@@ -123,7 +115,6 @@ const RegisterForm = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            // _id: nanoid(),
             socialNetworks: [],
             selectedArticlesList: [],
             rate: 0

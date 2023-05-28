@@ -2,14 +2,21 @@ import React, { useState, useEffect } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/forms/textField";
 import CheckBoxField from "../common/forms/checkBoxField";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/users";
+import { useHistory } from "react-router-dom";
+// import customHistory from "../../utils/history";
 
 const loginForm = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [inputData, setInputData] = useState({
         email: "",
         password: "",
         stayOn: false
     });
     const [errors, setErrors] = useState({});
+    const [enterError, setEnterError] = useState(null);
     const validationConfig = {
         email: {
             isRequired: {
@@ -41,6 +48,7 @@ const loginForm = () => {
             ...prevState,
             [target.name]: target.value
         }));
+        setEnterError(null);
     };
 
     const validate = () => {
@@ -59,7 +67,15 @@ const loginForm = () => {
         event.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        console.log(inputData);
+        // const redirect = customHistory.location.state
+        //     ? customHistory.location.state.from.pathname
+        //     : "/";
+        dispatch(login({
+            payload: inputData
+            // redirect
+        }));
+        history.replace("/");
+        // console.log("login", { payload: inputData, redirect });
     };
 
     return (
@@ -87,11 +103,14 @@ const loginForm = () => {
             >
                 Оставаться в системе
             </CheckBoxField>
+            {enterError && <p className="text-danger">{enterError}</p>}
             <button
+                className="btn btn-dark w-100 mx-auto"
                 type="submit"
-                disabled = {!isAbled}
-                className = "btn btn-dark w-100 mx-auto"
-            >Submit</button>
+                disabled={!isAbled || enterError}
+            >
+                Submit
+            </button>
         </form>
     );
 };
