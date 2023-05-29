@@ -15,12 +15,11 @@ const store = createStore();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <Provider store = { store }>
+        {/* <Router history = { customHistory }> */}
         <BrowserRouter>
             <App />
         </BrowserRouter>
-        {/* <Router history = { customHistory }>
-            <App />
-        </Router> */}
+        {/* </Router> */}
     </Provider>
 );
 

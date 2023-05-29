@@ -5,25 +5,21 @@ import ArticlesTable from "../../ui/articlesTable";
 // import TopArticles from "./topArticles.jsx";
 import Categories from "../../ui/categories";
 import TextField from "../../common/forms/textField";
+import { useSelector } from "react-redux";
+import { getArticlesList, getArticlesLoadStatus } from "../../../store/articles";
 
 const ArticlesListPage = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [articlesList, setArticlesList] = useState();
+    const articlesList = useSelector(getArticlesList());
+    const isLoading = useSelector(getArticlesLoadStatus());
+
     const [categories, setCategories] = useState();
     const [inputData, setInputData] = useState("");
-    // const params = useParams();
 
     useEffect(() => {
-        api.articles.fetchAll().then(data => {
-            setArticlesList(data);
-        });
         api.categories.fetchAll().then(data => {
             setCategories(data);
         });
     }, []);
-    useEffect(() => {
-        if (articlesList && categories) return setIsLoading(false);
-    }, [articlesList, categories]);
 
     const [selectedProperty, setSelectedProperty] = useState();
     const handleItemSelect = (params) => {

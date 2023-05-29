@@ -1,22 +1,26 @@
 import httpService from "./http.service";
 
-const articleEndpoint = "articles/";
+const articleEndpoint = "article/";
 
 const articleService = {
     get: async () => {
         const { data } = await httpService.get(articleEndpoint);
         return data;
     },
+    // getById: async (payload) => {
+    //     const { data } = await httpService.get(articleEndpoint + payload);
+    //     return data;
+    // },
     create: async (payload) => {
-        const { data } = await httpService.put(
+        const { data } = await httpService.post(
             articleEndpoint + payload._id,
             payload
         );
         return data;
     },
     // требует доработки...
-    edit: async (payload) => {
-        const { data } = await httpService.patch(articleEndpoint + payload._id, payload); // payload._id - id статьи
+    edit: async (articleId, payload) => {
+        const { data } = await httpService.patch(articleEndpoint + articleId, payload); // payload._id - id статьи
         return data;
     },
     delete: async (articleId) => {

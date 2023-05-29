@@ -17,15 +17,10 @@ const userService = {
     //     return data;
     // },
     getCurrentUser: async () => {
-        try {
-            const { data } = await httpService.get(
-                userEndpoint + localStorageService.getUserId()
-            );
-            console.log("getCurrentUser: ", userEndpoint + localStorageService.getUserId());
-            return data;
-        } catch (error) {
-            console.log("getCurrentUser: ", error.message);
-        }
+        const { data } = await httpService.get(
+            userEndpoint + localStorageService.getUserId()
+        );
+        return data;
     },
     edit: async (payload) => {
         const { data } = await httpService.patch(userEndpoint + localStorageService.getUserId(), payload);

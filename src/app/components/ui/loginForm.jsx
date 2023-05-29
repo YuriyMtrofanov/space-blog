@@ -4,11 +4,11 @@ import TextField from "../common/forms/textField";
 import CheckBoxField from "../common/forms/checkBoxField";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/users";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import customHistory from "../../utils/history";
 
 const loginForm = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
     const [inputData, setInputData] = useState({
         email: "",
@@ -74,7 +74,7 @@ const loginForm = () => {
             payload: inputData
             // redirect
         }));
-        history.replace("/");
+        // history.replace("/users");
         // console.log("login", { payload: inputData, redirect });
     };
 

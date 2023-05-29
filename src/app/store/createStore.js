@@ -3,10 +3,11 @@ import usersReducer from "./users";
 // import articlesReducer from "./articles";
 import categoriesReducer from "./categories";
 import commentsReducer from "./comments";
+import articlesReducer from "./articles";
 
 const rootReducer = combineReducers({
     users: usersReducer,
-    // articles: articlesReducer,
+    articles: articlesReducer,
     categories: categoriesReducer,
     comments: commentsReducer
 });

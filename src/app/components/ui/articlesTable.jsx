@@ -17,7 +17,7 @@ const ArticlesTable = ({ articles }) => {
 };
 
 ArticlesTable.propTypes = {
-    articles: PropTypes.array.isRequired
+    articles: PropTypes.array
 };
 
 export default ArticlesTable;
