@@ -13,7 +13,7 @@ const articleService = {
     // },
     create: async (payload) => {
         const { data } = await httpService.post(
-            articleEndpoint + payload._id,
+            articleEndpoint,
             payload
         );
         return data;

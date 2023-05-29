@@ -5,10 +5,16 @@ import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import CheckBoxField from "../../common/forms/checkBoxField";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUserId } from "../../../store/users";
+import { createArticle } from "../../../store/articles";
+import { useHistory } from "react-router-dom";
 // import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // получаем из localStorage
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const currentUserId = useSelector(getCurrentUserId());
     const [categories, setCategories] = useState();
     useEffect(() => {
         API.categories.fetchAll().then((data) => {
@@ -92,12 +98,11 @@ const ArticleCreatePage = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            // _id: nanoid(),
             date: Date.now(),
             author: currentUserId
         };
-        console.log("Output data", outputData);
-        // dispatch(createArticle(outputData));
+        dispatch(createArticle(outputData));
+        history.replace("/articles");
     };
 
     if (categories) {
