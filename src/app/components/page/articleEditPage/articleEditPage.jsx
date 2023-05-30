@@ -6,7 +6,8 @@ import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import { editArticleInfo, getArticById } from "../../../store/articles";
-import api from "../../../../api";
+// import api from "../../../../api";
+import { getCategories } from "../../../store/categories";
 
 const ArticleEditPage = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,8 @@ const ArticleEditPage = () => {
     const article = useSelector(getArticById(articleId));
 
     // затычка покачто:
-    const categories = api.categories.categories;
+    const categories = useSelector(getCategories());
+    // const categories = api.categories.categories;
     const categoriesList = categories.map(item => ({
         value: item._id,
         label: item.name

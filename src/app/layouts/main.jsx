@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleCard from "../components/common/cards/articleCard";
+import ArticlesLoader from "../components/ui/HOC/articlesLoader";
 import LatestArticles from "../components/ui/latestArticles";
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../store/users";
@@ -23,17 +24,18 @@ const Main = () => {
         <>
             {isLoggedIn
                 ? (<div className="container mt-2 pb-5 shadow">
-                    <p>В заголовок добавить карусель с картинками</p>
                     <h1>Читай, пиши сам, развивайся</h1>
                     <h5 className="text-secondary">Предлагаем вашему вниманию платформу для поиска информации о космосе</h5>
                     {/* <button>Регистрация</button>
                     <button>Логин</button> */}
                     <div className="row">
-                        <div className="p-3">
-                            <h3>Статья недели</h3>
-                            <ArticleCard article={recomendedArticle} author={"Автор статьи"}/>
-                        </div>
-                        <LatestArticles />
+                        <ArticlesLoader>
+                            <div className="p-3">
+                                <h3>Статья недели</h3>
+                                <ArticleCard article={recomendedArticle} author={"Автор статьи"}/>
+                            </div>
+                            <LatestArticles />
+                        </ArticlesLoader>
                         <div className="p-3">
                             <h3>Список топ-авторов</h3>
                         </div>

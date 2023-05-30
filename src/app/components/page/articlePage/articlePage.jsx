@@ -2,16 +2,33 @@ import React from "react";
 import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
 import Comments from "../../common/comments/comments";
-import { useSelector } from "react-redux";
-import { getArticById, getArticlesLoadStatus } from "../../../store/articles";
+import {
+    // useDispatch,
+    useSelector
+} from "react-redux";
+import {
+    // getArticlesList,
+    getArticById,
+    getArticlesDataStatus,
+    getArticlesLoadStatus
+    // loadArticlesList
+} from "../../../store/articles";
 import { getCurrentUserId, getUserById } from "../../../store/users";
 import { useHistory } from "react-router-dom";
 
 const ArticlePage = ({ id }) => {
-    const article = useSelector(getArticById(id));
-    const { author } = article;
-    const articleAuthor = useSelector(getUserById(author));
+    // const dispatch = useDispatch();
     const isLoading = useSelector(getArticlesLoadStatus());
+    const dataStatus = useSelector(getArticlesDataStatus());
+    // useEffect(() => {
+    //     dispatch(loadArticlesList());
+    // }, [id]);
+    // console.log("loadStatus", isLoading);
+    // console.log("dataStatus", dataStatus);
+    // if (isLoading) return "loading...";
+    const article = useSelector(getArticById(id));
+    // const article = useSelector(getArticlesList().find(article => article._id === id));
+    const articleAuthor = useSelector(getUserById(article.author));
     const currentUserId = useSelector(getCurrentUserId());
     const history = useHistory();
     const handleEdit = () => {
@@ -22,7 +39,7 @@ const ArticlePage = ({ id }) => {
     };
     return (
         <>
-            {!isLoading && author
+            {!isLoading && dataStatus
                 ? (<div className='container mt-2 pb-5 shadow'>
                     <div className="card">
                         <div className="card-header text-center">

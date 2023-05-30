@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import UserImageCard from "../../common/cards/UserImageCard";
-// import UserSocialNetworksCard from "../../common/cards/UserSocialNetworksCard";
 import UserInfoCard from "../../common/cards/UserInfoCard";
 import { Redirect } from "react-router-dom";
-import api from "../../../../api";
 import ArticlesTable from "../../ui/articlesTable";
 import Loading from "../../ui/loading";
 import { getUserById } from "../../../store/users";
+import { getArticlesList } from "../../../store/articles";
 
 const UserPage = ({ id }) => {
     const user = useSelector(getUserById(id));
-    // const { state } = useLocation() // это для хлебных крошек
-    const [articlesList, setArticlesList] = useState();
-    useEffect(() => {
-        api.articles.fetchAll().then(data => {
-            setArticlesList(data.filter(item => item.author === user._id));
-        });
-    }, []);
+    const articles = useSelector(getArticlesList());
+    const articlesList = articles.filter(item => item.author === user._id);
 
     return (
         <>
@@ -26,7 +20,7 @@ const UserPage = ({ id }) => {
                 state={state}
                 memberName={`${member.name} ${member.lastName}`}
             /> */}
-            {user
+            {user && articles
                 ? (<div className='container mt-2 pb-5 shadow'>
                     <h3>Страница пользователя</h3>
                     <div className='row gutters-sm'>

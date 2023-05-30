@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../../../../api";
+// import API from "../../../../api";
 import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
@@ -9,18 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUserId } from "../../../store/users";
 import { createArticle } from "../../../store/articles";
 import { useHistory } from "react-router-dom";
+import { getCategories } from "../../../store/categories";
 // import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUserId = useSelector(getCurrentUserId());
-    const [categories, setCategories] = useState();
-    useEffect(() => {
-        API.categories.fetchAll().then((data) => {
-            setCategories(data);
-        });
-    }, []);
+    const categories = useSelector(getCategories());
+    // const [categories, setCategories] = useState();
+    // useEffect(() => {
+    //     API.categories.fetchAll().then((data) => {
+    //         setCategories(data);
+    //     });
+    // }, []);
 
     const [inputData, setInputData] = useState({
         // _id: "",

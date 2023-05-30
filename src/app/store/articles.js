@@ -6,25 +6,32 @@ const articleSlice = createSlice({
     initialState: {
         entities: null,
         isLoading: true,
+        dataLoaded: false,
         error: null
     },
     reducers: {
         // запрос на получение данных:
         articlesRequested: (state) => {
             state.isLoading = true;
+            state.dataLoaded = false;
         },
         articlesReceived: (state, action) => {
             state.entities = action.payload;
             state.isLoading = false;
+            state.dataLoaded = true;
         },
         articlesRequestFailed: (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
+            state.dataLoaded = false;
         },
 
         // создание данных:
         // articleCreateRequested, // createAction("articles/articleCreateRequested");
         articleCreated: (state, action) => {
+            if (!Array.isArray(state.entities)) {
+                state.entities = [];
+            }
             state.entities.push(action.payload);
         },
         // articleCreateFailed, // createAction("articles/articleCreateFailed");
@@ -115,6 +122,7 @@ export const getArticById = (articleId) => (state) => {
         return state.articles.entities.find(article => article._id === articleId);
     }
 };
-export const getArticlesLoadStatus = () => (state) => state.comments.isLoading;
+export const getArticlesLoadStatus = () => (state) => state.articles.isLoading;
+export const getArticlesDataStatus = () => (state) => state.articles.dataLoaded;
 
 export default articlesReducer;
