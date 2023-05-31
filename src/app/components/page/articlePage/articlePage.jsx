@@ -3,39 +3,37 @@ import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
 import Comments from "../../common/comments/comments";
 import {
-    // useDispatch,
+    useDispatch,
     useSelector
 } from "react-redux";
 import {
     // getArticlesList,
     // getArticById,
     getArticlesDataStatus,
+    removeArticle,
     getArticlesLoadStatus
-    // loadArticlesList
 } from "../../../store/articles";
 import { getCurrentUserId, getUserById } from "../../../store/users";
-// import { useHistory } from "react-router-dom";
+import {
+    useHistory,
+    useParams
+} from "react-router-dom";
 
 const ArticlePage = ({ article }) => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const { articleId } = useParams();
     const isLoading = useSelector(getArticlesLoadStatus());
     const dataStatus = useSelector(getArticlesDataStatus());
-    // useEffect(() => {
-    //     dispatch(loadArticlesList());
-    // }, [id]);
-    // console.log("loadStatus", isLoading);
-    // console.log("dataStatus", dataStatus);
-    // if (isLoading) return "loading...";
-    // const article = useSelector(getArticById(id));
-    // const article = useSelector(getArticlesList().find(article => article._id === id));
     const articleAuthor = useSelector(getUserById(article.author));
     const currentUserId = useSelector(getCurrentUserId());
-    // const history = useHistory();
+    const history = useHistory();
     const handleEdit = () => {
-        // history.push(`/articles/${id}/edit`);
+        history.push(`/articles/${articleId}/edit`);
     };
     const handleRemove = () => {
-        // console.log(`remove article ${id}`);
+        console.log(`remove article ${articleId}`);
+        dispatch(removeArticle(articleId));
+        history.push(`/articles`);
     };
     return (
         <>
@@ -81,7 +79,7 @@ const ArticlePage = ({ article }) => {
 };
 
 ArticlePage.propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.object
 };
 
 export default ArticlePage;

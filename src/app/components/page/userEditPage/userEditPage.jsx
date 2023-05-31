@@ -211,18 +211,6 @@ const UserEditPage = ({ id }) => {
                             value={inputData.birthDate}
                             onChange={handleChange}
                         />
-                        {/* <RadioField
-                            options={[
-                                { name: "Читатель", value: "reader" },
-                                { name: "Автор", value: "author" }
-                            ]}
-                            value={inputData.accountType}
-                            name="accountType"
-                            onChange={handleChange}
-                            label="Регистрируетесь как:"
-                        /> */}
-                        {/* <p>Социальные сети</p>
-                        <AddLinksForm changeLink={handleChangeLink} /> */}
                         <button
                             className="btn btn-dark w-25 mx-2"
                             type="submit"

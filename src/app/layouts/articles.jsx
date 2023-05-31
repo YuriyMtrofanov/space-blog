@@ -7,11 +7,9 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getArticById } from "../store/articles";
 
-// Обернуть в HOC Articlesloader
 const Articles = () => {
     const { articleId, edit } = useParams();
     const article = useSelector(getArticById(articleId));
-    // const isLoading = useSelector(getArticlesLoadStatus());
     return (
         <>
             <ArticlesLoader>

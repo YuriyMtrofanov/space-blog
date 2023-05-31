@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+// import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
-import { editArticleInfo, getArticById } from "../../../store/articles";
-// import api from "../../../../api";
+import { editArticleInfo, getArticById, removeArticle } from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
 
 const ArticleEditPage = () => {
@@ -14,10 +14,7 @@ const ArticleEditPage = () => {
     const history = useHistory();
     const { articleId } = useParams();
     const article = useSelector(getArticById(articleId));
-
-    // затычка покачто:
     const categories = useSelector(getCategories());
-    // const categories = api.categories.categories;
     const categoriesList = categories.map(item => ({
         value: item._id,
         label: item.name
@@ -82,6 +79,16 @@ const ArticleEditPage = () => {
         validate();
     }, [inputData]);
 
+    const handleClick = () => {
+        history.goBack();
+    };
+
+    const handleRemove = () => {
+        dispatch(removeArticle());
+        console.log("remove article");
+        history.replace("/articles");
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const isValid = validate();
@@ -94,11 +101,18 @@ const ArticleEditPage = () => {
             content: inputData.content
         };
         dispatch(editArticleInfo(articleId, outputData));
-        history.replace("/articles");
+        history.goBack();
     };
     return (
         <div className="container">
             <div className="row">
+                <a
+                    role="button"
+                    className="col-1 text-secondary mt-2 h5"
+                    onClick={handleClick}
+                >
+                    <i className="bi bi-caret-left">Назад</i>
+                </a>
                 <div className="col-md-8 offset-md-2 shadow p-4">
                     <h1 className="text-start">Добро пожаловать в редактор статей</h1>
                     <p>Здесь ты можешь материал своей публикации</p>
@@ -142,6 +156,7 @@ const ArticleEditPage = () => {
                         >
                             Сохранить
                         </button>
+                        <a role="button" className="start-50 text-secondary h5" onClick={handleRemove}>Удалить</a>
                     </form>
                 </div>
             </div>

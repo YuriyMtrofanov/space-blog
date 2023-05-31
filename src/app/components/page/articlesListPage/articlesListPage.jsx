@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import api from "../../../../api";
 import Loading from "../../ui/loading";
 import ArticlesTable from "../../ui/articlesTable";
-// import TopArticles from "./topArticles.jsx";
 import Categories from "../../ui/categories";
 import TextField from "../../common/forms/textField";
 import { useSelector } from "react-redux";
@@ -14,13 +12,6 @@ const ArticlesListPage = () => {
     const isLoading = useSelector(getArticlesLoadStatus());
     const [inputData, setInputData] = useState("");
     const categories = useSelector(getCategories());
-    // console.log(categories);
-    // const [categories, setCategories] = useState();
-    // useEffect(() => {
-    //     api.categories.fetchAll().then(data => {
-    //         setCategories(data);
-    //     });
-    // }, []);
 
     const [selectedProperty, setSelectedProperty] = useState();
     const handleItemSelect = (params) => {
@@ -39,8 +30,6 @@ const ArticlesListPage = () => {
             filteredData = data.filter(article => article.content.toLowerCase().includes(inputData.toLowerCase()));
         } else if (selectedProperty) {
             filteredData = data.filter(article => article.category === selectedProperty);
-            console.log(selectedProperty);
-            console.log(data.map(i => i.category));
         } return filteredData;
     };
     if (!isLoading) {
