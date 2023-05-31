@@ -8,15 +8,15 @@ import {
 } from "react-redux";
 import {
     // getArticlesList,
-    getArticById,
+    // getArticById,
     getArticlesDataStatus,
     getArticlesLoadStatus
     // loadArticlesList
 } from "../../../store/articles";
 import { getCurrentUserId, getUserById } from "../../../store/users";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
-const ArticlePage = ({ id }) => {
+const ArticlePage = ({ article }) => {
     // const dispatch = useDispatch();
     const isLoading = useSelector(getArticlesLoadStatus());
     const dataStatus = useSelector(getArticlesDataStatus());
@@ -26,16 +26,16 @@ const ArticlePage = ({ id }) => {
     // console.log("loadStatus", isLoading);
     // console.log("dataStatus", dataStatus);
     // if (isLoading) return "loading...";
-    const article = useSelector(getArticById(id));
+    // const article = useSelector(getArticById(id));
     // const article = useSelector(getArticlesList().find(article => article._id === id));
     const articleAuthor = useSelector(getUserById(article.author));
     const currentUserId = useSelector(getCurrentUserId());
-    const history = useHistory();
+    // const history = useHistory();
     const handleEdit = () => {
-        history.push(`/articles/${id}/edit`);
+        // history.push(`/articles/${id}/edit`);
     };
     const handleRemove = () => {
-        console.log(`remove article ${id}`);
+        // console.log(`remove article ${id}`);
     };
     return (
         <>
@@ -81,7 +81,7 @@ const ArticlePage = ({ id }) => {
 };
 
 ArticlePage.propTypes = {
-    id: PropTypes.string.isRequired
+    article: PropTypes.object.isRequired
 };
 
 export default ArticlePage;
