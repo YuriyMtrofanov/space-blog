@@ -168,5 +168,16 @@ export const getCurrentUserData = () => (state) => {
         ? state.users.entities.find((user) => user._id === state.users.auth.userId)
         : null;
 };
+export const getSelectedArticlesList = (userId) => (state) => {
+    if (state.users.entities) {
+        return state.users.entities.find(user => user._id === userId).selectedArticlesList;
+    }
+};
+export const getSelectedArticlesStatus = (userId, articleId) => (state) => {
+    if (state.users.entities) {
+        return state.users.entities.find(user => user._id === userId)
+            .selectedArticlesList.find(item => item === articleId);
+    }
+};
 
 export default usersReducer;

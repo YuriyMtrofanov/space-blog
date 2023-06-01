@@ -3,6 +3,7 @@ import ArticlePage from "../components/page/articlePage";
 import FavoriteArticles from "../components/ui/favoriteArticles";
 import { useParams } from "react-router-dom";
 import ArticlesLoader from "../components/ui/HOC/articlesLoader";
+import UsersLoader from "../components/ui/HOC/usersLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { getArticById, getArticlesList, loadArticlesList } from "../store/articles";
 
@@ -18,10 +19,12 @@ const Favorites = () => {
     return (
         <>
             <ArticlesLoader>
-                {articleId
-                    ? (<ArticlePage article={article}/>)
-                    : (<FavoriteArticles articles={articles}/>)
-                }
+                <UsersLoader>
+                    {articleId
+                        ? (<ArticlePage article={article}/>)
+                        : (<FavoriteArticles articles={articles}/>)
+                    }
+                </UsersLoader>
             </ArticlesLoader>
         </>
     );

@@ -1,24 +1,44 @@
-import React, { useState } from "react";
-// import api from "../../../../api";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getUserById } from "../../../store/users";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    editUserInfo,
+    getCurrentUserData,
+    getSelectedArticlesList,
+    getSelectedArticlesStatus,
+    getUserById
+} from "../../../store/users";
 
 const ArticleCard = ({ article }) => {
+    const dispatch = useDispatch();
     const user = useSelector(getUserById(article.author));
-    const { firstName, lastName, selectedArticlesList } = user;
+    const { firstName, lastName } = user;
+    const currentUser = useSelector(getCurrentUserData());
+    const [isSelected, setIsSelected] = useState(false);
+    const selectedArticles = useSelector(getSelectedArticlesList(currentUser._id));
+    const favorites = useSelector(getSelectedArticlesStatus(currentUser._id, article._id));
 
-    const [isSelected, setIsSelected] = useState(true);
-    const outputData = [];
-    const handleClick = () => {
-        setIsSelected(prevState => !prevState);
-        outputData.push(article._id);
-        if (!selectedArticlesList.find(item => item._id === article._id)) {
-            console.log({
-                ...user,
-                selectedArticlesList: outputData
-            });
+    // задаю состояние для иконок избранного
+    useEffect(() => {
+        favorites ? setIsSelected(false) : setIsSelected(true);
+    }, []);
+
+    const handleChange = () => {
+        if (favorites) {
+            setIsSelected(true);
+            const outputData = {
+                ...currentUser,
+                selectedArticlesList: selectedArticles.filter(item => (item !== article._id))
+            };
+            dispatch(editUserInfo(outputData));
+        } else {
+            setIsSelected(false);
+            const outputData = {
+                ...currentUser,
+                selectedArticlesList: [...selectedArticles, article._id]
+            };
+            dispatch(editUserInfo(outputData));
         }
     };
     const toggleBookmark = () => {
@@ -40,7 +60,7 @@ const ArticleCard = ({ article }) => {
                     <ul>
                         <li>{article.content}</li>
                     </ul>
-                    <h5><i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleClick}></i> В список для чтения</h5>
+                    <h5><i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i> В список для чтения</h5>
                     <span className="card-subtitle mb-2 text-muted">
                         {new Date(article.date).toLocaleDateString()}{" "}
                         <b>{ firstName }{" "}{ lastName }</b>{" "}

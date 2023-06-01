@@ -10,7 +10,6 @@ import Users from "./layouts/users";
 import Favorites from "./layouts/favorites";
 import ArticleCreatePage from "./components/page/articleCreatePage/articleCreatePage";
 import AppLoader from "./components/ui/HOC/appLoader";
-// import ArticlesLoader from "./components/ui/HOC/articlesLoader";
 
 function App() {
     return (
@@ -18,17 +17,14 @@ function App() {
             <AppLoader>
                 <NavBar/>
                 <Switch>
-                    {/* <ArticlesLoader> */}
                     <Route path = "/" exact component={Main}/>
                     <Route path = "/users/:userId?/:edit?" component={Users}/>
                     <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
                     <Route path = "/favorites/:articleId?" component={Favorites}/>
                     <Route path = "/create" component={ArticleCreatePage} />
                     {/* <Route path = "/admin" component={AdminPage}/> */}
-                    {/* </ArticlesLoader> */}
                     <Route path = "/login/:type?" component={Login}/>
                     <Route path = "/logout" component={LogOut} />
-                    {/* <Route path = "/404" component = {NotFoundPage}/> */}
                     <Redirect to = "/"/>
                     {/* <Redirect from = "../users/" to = "/loading"/> */}
                 </Switch>
