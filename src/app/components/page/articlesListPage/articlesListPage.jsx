@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from "react";
-import api from "../../../../api";
+import React, { useState } from "react";
 import Loading from "../../ui/loading";
 import ArticlesTable from "../../ui/articlesTable";
-// import TopArticles from "./topArticles.jsx";
 import Categories from "../../ui/categories";
 import TextField from "../../common/forms/textField";
+import { useSelector } from "react-redux";
+import { getArticlesList, getArticlesLoadStatus } from "../../../store/articles";
+import { getCategories } from "../../../store/categories";
 
 const ArticlesListPage = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [articlesList, setArticlesList] = useState();
-    const [categories, setCategories] = useState();
+    const articlesList = useSelector(getArticlesList());
+    const isLoading = useSelector(getArticlesLoadStatus());
     const [inputData, setInputData] = useState("");
-    // const params = useParams();
-
-    useEffect(() => {
-        api.articles.fetchAll().then(data => {
-            setArticlesList(data);
-        });
-        api.categories.fetchAll().then(data => {
-            setCategories(data);
-        });
-    }, []);
-    useEffect(() => {
-        if (articlesList && categories) return setIsLoading(false);
-    }, [articlesList, categories]);
+    const categories = useSelector(getCategories());
 
     const [selectedProperty, setSelectedProperty] = useState();
     const handleItemSelect = (params) => {
@@ -35,7 +23,6 @@ const ArticlesListPage = () => {
     const handleInputChange = (target) => {
         handleClearList();
         setInputData(target.value);
-        console.log(target.value);
     };
     function filterArticles(data) {
         let filteredData = data;
@@ -74,7 +61,6 @@ const ArticlesListPage = () => {
                         }
                         <div className="col-lg-9 mb-2">
                             <form>
-                                {/* <h1>Все статьи: </h1> */}
                                 <TextField
                                     type = "text"
                                     name = "search"

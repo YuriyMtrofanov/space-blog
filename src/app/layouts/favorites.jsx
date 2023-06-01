@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ArticlePage from "../components/page/articlePage";
-// import ArticlesList from "../components/page/articlesListPage/articlesListPage";
-import ArticlesTable from "../components/ui/articlesTable";
+import FavoriteArticles from "../components/ui/favoriteArticles";
 import { useParams } from "react-router-dom";
-import api from "../../api";
+import ArticlesLoader from "../components/ui/HOC/articlesLoader";
+import UsersLoader from "../components/ui/HOC/usersLoader";
+import { useDispatch, useSelector } from "react-redux";
+import { getArticById, getArticlesList, loadArticlesList } from "../store/articles";
 
 const Favorites = () => {
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // получаем из localStorage
     const { articleId } = useParams();
-    const [favoritesIds, setFavoritesIds] = useState();
-    const [articles, setArticles] = useState();
+    const dispatch = useDispatch();
     useEffect(() => {
-        api.users.getById(currentUserId).then((data) => {
-            setFavoritesIds(data.selectedArticlesList);
-        });
-        api.articles.fetchAll().then((data) => {
-            setArticles(data);
-        });
+        dispatch(loadArticlesList());
     }, []);
-    if (articles && favoritesIds) {
-        const favoriteArticles = favoritesIds.map(id => articles.find((item) => item._id === id));
-        return (
-            <>
-                {articleId
-                    ? (<ArticlePage id={articleId}/>)
-                    : (<div className="container mt-2 pb-5">
-                        <div className="row">
-                            <div className="col-lg-9 mb-2">
-                                <h1>список избранных статей</h1>
-                                <ArticlesTable {...{ articles: favoriteArticles }}/>
-                            </div>
-                        </div>
-                    </div>
-                    )
-                }
-            </>
-        );
-    };
+    const articles = useSelector(getArticlesList());
+    const article = useSelector(getArticById(articleId));
+
+    return (
+        <>
+            <ArticlesLoader>
+                <UsersLoader>
+                    {articleId
+                        ? (<ArticlePage article={article}/>)
+                        : (<FavoriteArticles articles={articles}/>)
+                    }
+                </UsersLoader>
+            </ArticlesLoader>
+        </>
+    );
 };
 
 export default Favorites;

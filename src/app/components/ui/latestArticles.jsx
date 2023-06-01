@@ -1,18 +1,10 @@
-// Список из ограниченного количества статей с наилучшим рейтингом
-import React, { useEffect, useState } from "react";
-import API from "../../../api";
+import React from "react";
+import PropTypes from "prop-types";
 import ArticleCardSmall from "../common/cards/articleCardSmall";
 import _ from "lodash";
 
-const LatestArticles = () => {
-    const [articles, setArticles] = useState([]);
+const LatestArticles = ({ articles }) => {
     const sortBy = { iter: "date", order: "desc" };
-    useEffect(() => {
-        API.articles.fetchAll().then(data => {
-            setArticles(data);
-        });
-    }, []);
-    // 4 статьи поместятся на экране, поэтому отрезаем все кроме первых 4х индексов в массиве
     const sortedArticles = _.orderBy(articles, [sortBy.iter], [sortBy.order]).slice(0, 4);
 
     return (
@@ -24,6 +16,10 @@ const LatestArticles = () => {
                 )}
         </>
     );
+};
+
+LatestArticles.propTypes = {
+    articles: PropTypes.array
 };
 
 export default LatestArticles;

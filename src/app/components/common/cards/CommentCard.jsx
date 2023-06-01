@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import api from "../../../../api";
+// import api from "../../../../api";
 // import { Link } from "react-router-dom";
 import { displayDate } from "../../../utils/displayDate";
-// import { useSelector } from "react-redux";
-// import { getCurrentUserId, getUserById } from "../../../store/users";
+import { useSelector } from "react-redux";
+import { getCurrentUserId, getUserById } from "../../../store/users";
 
 const CommentCard = ({
     content,
@@ -13,10 +13,10 @@ const CommentCard = ({
     userId,
     onRemove
 }) => {
-    // const user = useSelector(getUserById(userId));
-    const user = api.users.users.find(u => u._id === userId);
-    // const currentUserId = useSelector(getCurrentUserId());
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // заглушка
+    const user = useSelector(getUserById(userId));
+    // const user = api.users.users.find(u => u._id === userId);
+    const currentUserId = useSelector(getCurrentUserId());
+    // const currentUserId = "67rdca3eeb7f6fgeed471815"; // заглушка
     return (
         <div className="card-body mb-3 d-flex flex-start ">
             <img

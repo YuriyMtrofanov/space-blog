@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
-import API from "../../../../api";
+// import API from "../../../../api";
 import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import CheckBoxField from "../../common/forms/checkBoxField";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUserId } from "../../../store/users";
+import { createArticle } from "../../../store/articles";
+import { useHistory } from "react-router-dom";
+import { getCategories } from "../../../store/categories";
 // import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
-    const currentUserId = "67rdca3eeb7f6fgeed471815"; // получаем из localStorage
-    const [categories, setCategories] = useState();
-    useEffect(() => {
-        API.categories.fetchAll().then((data) => {
-            setCategories(data);
-        });
-    }, []);
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const currentUserId = useSelector(getCurrentUserId());
+    const categories = useSelector(getCategories());
+    // const [categories, setCategories] = useState();
+    // useEffect(() => {
+    //     API.categories.fetchAll().then((data) => {
+    //         setCategories(data);
+    //     });
+    // }, []);
 
     const [inputData, setInputData] = useState({
         // _id: "",
@@ -92,12 +100,11 @@ const ArticleCreatePage = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            // _id: nanoid(),
             date: Date.now(),
             author: currentUserId
         };
-        console.log("Output data", outputData);
-        // dispatch(createArticle(outputData));
+        dispatch(createArticle(outputData));
+        history.replace("/articles");
     };
 
     if (categories) {

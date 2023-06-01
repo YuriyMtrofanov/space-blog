@@ -1,3 +1,7 @@
 export function getAge(date) {
-    return new Date(Date.now()).getFullYear() - new Date(date).getFullYear();
+    if (typeof date === "number") {
+        return new Date(Date.now()).getFullYear() - new Date(date).getFullYear();
+    } else {
+        return new Date(Date.now()).getFullYear() - date.split("-")[0];
+    }
 };
