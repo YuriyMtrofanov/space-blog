@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-// import API from "../../../../api";
+import React, { useState } from "react";
 import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
@@ -10,6 +9,7 @@ import { getCurrentUserId } from "../../../store/users";
 import { createArticle } from "../../../store/articles";
 import { useHistory } from "react-router-dom";
 import { getCategories } from "../../../store/categories";
+import useValidate from "../../../hooks/useValidate";
 // import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
@@ -17,35 +17,20 @@ const ArticleCreatePage = () => {
     const history = useHistory();
     const currentUserId = useSelector(getCurrentUserId());
     const categories = useSelector(getCategories());
-    // const [categories, setCategories] = useState();
-    // useEffect(() => {
-    //     API.categories.fetchAll().then((data) => {
-    //         setCategories(data);
-    //     });
-    // }, []);
 
     const [inputData, setInputData] = useState({
         // _id: "",
-        name: "", // валидация min/max
-        author: "", // currentUserId
-        date: "", // автоматически Date.now()
-        img: "", // валидация по типу ссылки
-        category: "", // select field
+        name: "",
+        author: "",
+        date: "",
+        img: "",
+        category: "",
         content: "",
-        rate: 0, // значение по умолчанию
+        rate: 0,
         licence: false
     });
-    const [errors, setErrors] = useState({});
 
-    const handleChange = (target) => {
-    // const handleChange = (target) => {
-        setInputData((prevState) => ({
-            ...prevState,
-            [target.name]: target.value
-        }));
-    };
-
-    const validatorConfig = {
+    const validationConfig = {
         name: {
             isRequired: {
                 message: "Введите название статьи"
@@ -82,17 +67,14 @@ const ArticleCreatePage = () => {
         }
     };
 
-    const validate = () => {
-        const errors = validator(inputData, validatorConfig);
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
+    const { errors, isAbled, validate } = useValidate({}, inputData, validator, validationConfig);
+
+    const handleChange = (target) => {
+        setInputData((prevState) => ({
+            ...prevState,
+            [target.name]: target.value
+        }));
     };
-
-    useEffect(() => {
-        validate();
-    }, [inputData]);
-
-    const isValid = Object.keys(errors).length === 0;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -164,7 +146,7 @@ const ArticleCreatePage = () => {
                             <button
                                 className="btn btn-dark w-100 mx-auto"
                                 type="submit"
-                                disabled={!isValid}
+                                disabled={!isAbled}
                             >
                                 Сохранить
                             </button>

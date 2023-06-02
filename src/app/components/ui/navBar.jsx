@@ -13,12 +13,13 @@ const NavBar = () => {
                     <li className="nav-item">
                         <Link className="nav-link active text-light" aria-current="page" to="/"><h5>Главная</h5></Link>
                     </li>
+                    {isLoggedIn &&
                     <li className="nav-item">
                         <Link className="nav-link active text-light" aria-current="page" to="/articles"><h5>Публикации</h5></Link>
-                    </li>
+                    </li>}
                     {isLoggedIn &&
                         <li className="nav-item">
-                            <Link className="nav-link active text-light" aria-current="page" to="/favorites"><h5>Избранное</h5></Link>
+                            <Link className="nav-link active text-light" aria-current="page" to="/favorites"><h5>Закладки</h5></Link>
                         </li>
                     }
                     {isLoggedIn &&
@@ -26,6 +27,11 @@ const NavBar = () => {
                             <Link className="nav-link active text-light" aria-current="page" to="/create"><h5>Создать</h5></Link>
                         </li>
                     }
+                    {/* {isLoggedIn &&
+                        <li className="nav-item">
+                            <Link className="nav-link active text-light" aria-current="page" to="/admin"><h5>Админ</h5></Link>
+                        </li>
+                    } */}
                 </ul>
                 <div className="d-flex">
                     {isLoggedIn

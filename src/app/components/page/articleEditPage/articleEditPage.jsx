@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { validator } from "../../../utils/validator";
@@ -8,6 +7,7 @@ import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import { editArticleInfo, getArticById, removeArticle } from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
+import useValidate from "../../../hooks/useValidate";
 
 const ArticleEditPage = () => {
     const dispatch = useDispatch();
@@ -27,16 +27,7 @@ const ArticleEditPage = () => {
         content: article.content
     });
 
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (target) => {
-        setInputData((prevState) => ({
-            ...prevState,
-            [target.name]: target.value
-        }));
-    };
-
-    const validatorConfig = {
+    const validationConfig = {
         name: {
             isRequired: {
                 message: "Введите название статьи"
@@ -67,17 +58,14 @@ const ArticleEditPage = () => {
         }
     };
 
-    const validate = () => {
-        const errors = validator(inputData, validatorConfig);
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
+    const { errors, isAbled, validate } = useValidate({}, inputData, validator, validationConfig);
+
+    const handleChange = (target) => {
+        setInputData((prevState) => ({
+            ...prevState,
+            [target.name]: target.value
+        }));
     };
-
-    const isValid = Object.keys(errors).length === 0;
-
-    useEffect(() => {
-        validate();
-    }, [inputData]);
 
     const handleClick = () => {
         history.goBack();
@@ -152,7 +140,7 @@ const ArticleEditPage = () => {
                         <button
                             className="btn btn-dark w-100 mx-auto"
                             type="submit"
-                            disabled={!isValid}
+                            disabled={!isAbled}
                         >
                             Сохранить
                         </button>
