@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/forms/textField";
 import CheckBoxField from "../common/forms/checkBoxField";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/users";
-// import { useHistory } from "react-router-dom";
-// import customHistory from "../../utils/history";
+import { useHistory } from "react-router-dom";
+import useValidate from "../../hooks/useValidate";
 
 const loginForm = () => {
-    // const history = useHistory();
+    const history = useHistory();
     const dispatch = useDispatch();
     const [inputData, setInputData] = useState({
         email: "",
         password: "",
         stayOn: false
     });
-    const [errors, setErrors] = useState({});
-    const [enterError, setEnterError] = useState(null);
+
     const validationConfig = {
         email: {
             isRequired: {
@@ -43,6 +42,9 @@ const loginForm = () => {
         }
     };
 
+    const { errors, isAbled, validate } = useValidate({}, inputData, validator, validationConfig);
+    const [enterError, setEnterError] = useState(null);
+
     const handleChange = (target) => {
         setInputData((prevState) => ({
             ...prevState,
@@ -50,18 +52,6 @@ const loginForm = () => {
         }));
         setEnterError(null);
     };
-
-    const validate = () => {
-        const errors = validator(inputData, validationConfig);
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-
-    const isAbled = Object.keys(errors).length === 0;
-
-    useEffect(() => {
-        validate();
-    }, [inputData]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -72,10 +62,8 @@ const loginForm = () => {
         //     : "/";
         dispatch(login({
             payload: inputData
-            // redirect
         }));
-        // history.replace("/users");
-        // console.log("login", { payload: inputData, redirect });
+        history.replace("/");
     };
 
     return (

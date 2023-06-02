@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/forms/textField";
 import RadioField from "../common/forms/radioField";
@@ -7,6 +7,7 @@ import CheckBoxField from "../common/forms/checkBoxField";
 import DateField from "../common/forms/dateField";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../store/users";
+import useValidate from "../../hooks/useValidate";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -17,15 +18,15 @@ const RegisterForm = () => {
         password: "",
         city: "",
         country: "",
-        sex: "male", // задано значение по умолчанию
+        sex: "male",
         img: "http://...",
         birthDate: "", // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
         about: "",
-        accountType: "reader", // задается по умолчанию, вручную изменю в БД на "admin"
+        accountType: "reader",
         licence: false
     });
-    const [errors, setErrors] = useState({});
-    const validatorConfig = {
+
+    const validationConfig = {
         firstName: {
             isRequired: {
                 message: "Имя обязательно для заполнения"
@@ -90,24 +91,14 @@ const RegisterForm = () => {
         }
     };
 
+    const { errors, isAbled, validate } = useValidate({}, inputData, validator, validationConfig);
+
     const handleChange = (target) => {
         setInputData((prevState) => ({
             ...prevState,
             [target.name]: target.value
         }));
     };
-
-    useEffect(() => {
-        validate();
-    }, [inputData]);
-
-    const validate = () => {
-        const errors = validator(inputData, validatorConfig);
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-
-    const isAbled = Object.keys(errors).length === 0;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -119,7 +110,6 @@ const RegisterForm = () => {
             selectedArticlesList: [],
             rate: 0
         };
-        console.log("register data", outputData);
         dispatch(signUp(outputData));
     };
 
@@ -221,13 +211,10 @@ const RegisterForm = () => {
                     onChange={handleChange}
                     label="Регистрируетесь как:"
                 />
-                {/* <p>Социальные сети</p>
-                <AddLinksForm changeLink={handleChangeLink} /> */}
                 <DateField
                     label="Дата рождения"
                     type="text"
                     name="birthDate"
-                    // value={birthDate}
                     value={inputData.birthDate}
                     onChange={handleChange}
                 />
