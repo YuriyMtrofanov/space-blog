@@ -10,7 +10,6 @@ const articleSlice = createSlice({
         error: null
     },
     reducers: {
-        // запрос на получение данных:
         articlesRequested: (state) => {
             state.isLoading = true;
             state.dataLoaded = false;
@@ -25,18 +24,12 @@ const articleSlice = createSlice({
             state.isLoading = false;
             state.dataLoaded = false;
         },
-
-        // создание данных:
-        // articleCreateRequested, // createAction("articles/articleCreateRequested");
         articleCreated: (state, action) => {
             if (!Array.isArray(state.entities)) {
                 state.entities = [];
             }
             state.entities.push(action.payload);
         },
-        // articleCreateFailed, // createAction("articles/articleCreateFailed");
-        // редактирование данных:
-        // articleEditRequested, // createAction("articles/articleEditRequested");
         articleEdited: (state, action) => {
             if (!Array.isArray(state.entities)) {
                 state.entities = [];
@@ -45,14 +38,9 @@ const articleSlice = createSlice({
                 article._id === action.payload._id
             )] = action.payload;
         },
-        // articleEditFailed, // createAction("articles/articleEditFailed");
-
-        // удаление данных:
-        // articleRemoveRequested, // createAction("articles/articleRemoveRequested");
         articleRemoved: (state, action) => {
             state.entities = state.entities.filter(article => article._id !== action.payload);
         }
-        // articleRemoveFailed, // createAction("articles/articleRemoveFailed");
     }
 });
 
@@ -115,7 +103,6 @@ export const removeArticle = (articleId) => async (dispatch) => {
     }
 };
 
-// селекторы:
 export const getArticlesList = () => (state) => state.articles.entities;
 export const getArticById = (articleId) => (state) => {
     if (state.articles.entities) {

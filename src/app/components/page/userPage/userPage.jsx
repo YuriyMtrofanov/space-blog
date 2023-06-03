@@ -12,7 +12,7 @@ import { getArticlesList } from "../../../store/articles";
 const UserPage = ({ id }) => {
     const user = useSelector(getUserById(id));
     const articles = useSelector(getArticlesList());
-    const articlesList = articles.filter(item => item.author === user._id);
+    const articlesList = articles.filter(item => (item.author === user._id));
 
     return (
         <>
@@ -20,7 +20,7 @@ const UserPage = ({ id }) => {
                 state={state}
                 memberName={`${member.name} ${member.lastName}`}
             /> */}
-            {user && articles
+            {user && articles && articlesList
                 ? (<div className='container mt-2 pb-5 shadow'>
                     <h3>Страница пользователя</h3>
                     <div className='row gutters-sm'>

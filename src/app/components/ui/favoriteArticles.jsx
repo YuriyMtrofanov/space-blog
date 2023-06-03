@@ -17,7 +17,7 @@ const FavoriteArticles = ({ articles }) => {
                     <div className="row">
                         <div className="col-lg-9 mb-2">
                             <h1>список избранных статей</h1>
-                            <ArticlesTable {...{ articles: favoriteArticles }}/>
+                            <ArticlesTable { ...{ articles: favoriteArticles } }/>
                         </div>
                     </div>
                 </div>

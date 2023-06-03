@@ -5,9 +5,14 @@ import { validator } from "../../../utils/validator";
 import TextField from "../../common/forms/textField";
 import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
-import { editArticleInfo, getArticById, removeArticle } from "../../../store/articles";
+import {
+    editArticleInfo,
+    getArticById,
+    removeArticle
+} from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
 import useValidate from "../../../hooks/useValidate";
+import ModalCard from "../../common/modal/modalCard";
 
 const ArticleEditPage = () => {
     const dispatch = useDispatch();
@@ -71,10 +76,14 @@ const ArticleEditPage = () => {
         history.goBack();
     };
 
+    const [modalActive, setModalActive] = useState(false);
+
     const handleRemove = () => {
-        dispatch(removeArticle());
-        console.log("remove article");
+        setModalActive(true);
+        console.log(`remove article ${articleId}`);
+        dispatch(removeArticle(articleId));
         history.replace("/articles");
+        // setModalActive(false);
     };
 
     const handleSubmit = async (event) => {
@@ -91,64 +100,70 @@ const ArticleEditPage = () => {
         dispatch(editArticleInfo(articleId, outputData));
         history.goBack();
     };
+
     return (
-        <div className="container">
-            <div className="row">
-                <a
-                    role="button"
-                    className="col-1 text-secondary mt-2 h5"
-                    onClick={handleClick}
-                >
-                    <i className="bi bi-caret-left">Назад</i>
-                </a>
-                <div className="col-md-8 offset-md-2 shadow p-4">
-                    <h1 className="text-start">Добро пожаловать в редактор статей</h1>
-                    <p>Здесь ты можешь материал своей публикации</p>
-                    <form onSubmit={handleSubmit}>
-                        <TextField
-                            label="Название статьи"
-                            type="name"
-                            name="name"
-                            value={inputData.name}
-                            onChange={handleChange}
-                            error={errors.name}
-                        />
-                        <TextField
-                            label="Ссылка на изображение"
-                            type="img"
-                            name="img"
-                            value={inputData.img}
-                            onChange={handleChange}
-                            error={errors.img}
-                        />
-                        <SelectField
-                            label="Тематика статьи"
-                            defaultOption="Выбрать из списка..."
-                            options={categoriesList}
-                            name="category"
-                            onChange={handleChange}
-                            value={inputData.category}
-                            error={errors.category}
-                        />
-                        <TextAreaField
-                            label="Текст статьи"
-                            name="content"
-                            value={inputData.content || ""}
-                            onChange={handleChange}
-                            error={errors.content}
-                        />
-                        <button
-                            className="btn btn-dark w-100 mx-auto"
-                            type="submit"
-                            disabled={!isAbled}
-                        >
-                            Сохранить
-                        </button>
-                        <a role="button" className="start-50 text-secondary h5" onClick={handleRemove}>Удалить</a>
-                    </form>
+        <>
+            <div className="modal-container">
+                <ModalCard active={modalActive} setActive={setModalActive}/>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <a
+                        role="button"
+                        className="col-1 text-secondary mt-2 h5"
+                        onClick={handleClick}
+                    >
+                        <i className="bi bi-caret-left">Назад</i>
+                    </a>
+                    <div className="col-md-8 offset-md-2 shadow p-4">
+                        <h1 className="text-start">Добро пожаловать в редактор статей</h1>
+                        <p>Здесь ты можешь материал своей публикации</p>
+                        <form onSubmit={handleSubmit}>
+                            <TextField
+                                label="Название статьи"
+                                type="name"
+                                name="name"
+                                value={inputData.name}
+                                onChange={handleChange}
+                                error={errors.name}
+                            />
+                            <TextField
+                                label="Ссылка на изображение"
+                                type="img"
+                                name="img"
+                                value={inputData.img}
+                                onChange={handleChange}
+                                error={errors.img}
+                            />
+                            <SelectField
+                                label="Тематика статьи"
+                                defaultOption="Выбрать из списка..."
+                                options={categoriesList}
+                                name="category"
+                                onChange={handleChange}
+                                value={inputData.category}
+                                error={errors.category}
+                            />
+                            <TextAreaField
+                                label="Текст статьи"
+                                name="content"
+                                value={inputData.content || ""}
+                                onChange={handleChange}
+                                error={errors.content}
+                            />
+                            <button
+                                className="btn btn-dark w-100 mx-auto"
+                                type="submit"
+                                disabled={!isAbled}
+                            >
+                                Сохранить
+                            </button>
+                            <a role="button" className="start-50 text-secondary h5" onClick={handleRemove}>Удалить</a>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

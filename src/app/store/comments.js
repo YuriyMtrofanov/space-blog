@@ -48,11 +48,12 @@ const commentCreateFailed = createAction("comments/commentCreateFailed");
 const commentRemoveRequest = createAction("comments/commentRemoveRequest");
 const commentRemoveFailed = createAction("comments/commentRemoveFailed");
 
-export const loadCommentsList = () => async (dispatch, getState) => {
+export const loadCommentsList = (pageId) => async (dispatch, getState) => {
     dispatch(commentsRequested());
     try {
-        const { content } = await commentService.get();
+        const { content } = await commentService.get(pageId);
         dispatch(commentsReceived(content));
+        // console.log("loadCommentsList content:", content);
     } catch (error) {
         dispatch(commentsRequestFailed(error.message));
     }
@@ -71,7 +72,7 @@ export const createComment = (payload) => async (dispatch) => {
 export const removeComment = (commentId) => async (dispatch) => {
     dispatch(commentRemoveRequest());
     try {
-        const { content } = await commentService.removeComment(commentId);
+        const { content } = await commentService.delete(commentId);
         if (!content) {
             dispatch(commentRemoveSuccessed(commentId));
         }
