@@ -55,12 +55,13 @@ const ArticleCard = ({ article }) => {
                 <img src={article.img} style={{ height: "30rem" }} className="card-img-top" alt="image"/>
                 <div className="card-body p-2">
                     <Link to={`/articles/${article._id}`}>
-                        <h5 className="card-title text-dark p-1">{article.name}</h5>
+                        <h5 className="card-title text-dark text-center p-1">{article.name}</h5>
                     </Link>
-                    <ul>
-                        <li>{article.content}</li>
-                    </ul>
-                    <h5><i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i> В список для чтения</h5>
+                    <p className="mx-3">{article.content.slice(0, 560) + "..."}</p>
+                    <Link to={`/articles/${article._id}`}>
+                        <p className="card-title text-dark text-center p-1">Читать далее</p>
+                    </Link>
+                    <h5><i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i> В закладки</h5>
                     <span className="card-subtitle mb-2 text-muted">
                         {new Date(article.date).toLocaleDateString()}{" "}
                         <b>{ firstName }{" "}{ lastName }</b>{" "}

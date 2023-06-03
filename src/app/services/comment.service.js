@@ -2,13 +2,14 @@ import httpService from "./http.service";
 const commentEndpoint = "comment/";
 
 const commentService = {
-    get: async (articleId) => {
+    get: async (pageId) => {
         const { data } = await httpService.get(commentEndpoint, {
             params: {
-                orderBy: "articleId",
-                equalTo: `${articleId}`
+                orderBy: "pageId",
+                equalTo: `${pageId}`
             }
         });
+        // console.log("commentService:", data, pageId);
         return data;
     },
     create: async (payload) => {

@@ -30,14 +30,9 @@ const ArticlePage = ({ article }) => {
     const handleEdit = () => {
         history.push(`/articles/${articleId}/edit`);
     };
-    // const handleRemove = () => {
-    //     console.log(`remove article ${articleId}`);
-    //     dispatch(removeArticle(articleId));
-    //     history.push(`/articles`);
-    // };
     return (
         <>
-            {!isLoading && dataStatus
+            {!isLoading && dataStatus && articleAuthor
                 ? (<div className='container mt-2 pb-5 shadow'>
                     <div className="card">
                         <div className="card-header text-center">
