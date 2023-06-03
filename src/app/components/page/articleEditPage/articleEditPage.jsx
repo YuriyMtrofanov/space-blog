@@ -7,8 +7,7 @@ import SelectField from "../../common/forms/selectField";
 import TextAreaField from "../../common/forms/textAreaField";
 import {
     editArticleInfo,
-    getArticById,
-    removeArticle
+    getArticById
 } from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
 import useValidate from "../../../hooks/useValidate";
@@ -80,10 +79,6 @@ const ArticleEditPage = () => {
 
     const handleRemove = () => {
         setModalActive(true);
-        console.log(`remove article ${articleId}`);
-        dispatch(removeArticle(articleId));
-        history.replace("/articles");
-        // setModalActive(false);
     };
 
     const handleSubmit = async (event) => {
@@ -110,7 +105,7 @@ const ArticleEditPage = () => {
                 <div className="row">
                     <a
                         role="button"
-                        className="col-1 text-secondary mt-2 h5"
+                        className="col-3 text-secondary mt-3 h5"
                         onClick={handleClick}
                     >
                         <i className="bi bi-caret-left">Назад</i>
@@ -151,14 +146,16 @@ const ArticleEditPage = () => {
                                 onChange={handleChange}
                                 error={errors.content}
                             />
-                            <button
-                                className="btn btn-dark w-100 mx-auto"
-                                type="submit"
-                                disabled={!isAbled}
-                            >
-                                Сохранить
-                            </button>
-                            <a role="button" className="start-50 text-secondary h5" onClick={handleRemove}>Удалить</a>
+                            <div className="text-center">
+                                <button
+                                    className="btn btn-dark mx-2"
+                                    type="submit"
+                                    disabled={!isAbled}
+                                >
+                                    <h5>Сохранить</h5>
+                                </button>
+                                <a role="button" className="start-50 text-secondary h5 mx-2" onClick={handleRemove}>Удалить</a>
+                            </div>
                         </form>
                     </div>
                 </div>
