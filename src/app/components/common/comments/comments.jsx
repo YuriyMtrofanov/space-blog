@@ -35,7 +35,7 @@ const Comments = () => {
     };
     const handleRemoveComment = (id) => {
         dispatch(removeComment(id));
-        console.log("remove comment", id);
+        // console.log("remove comment", id);
     };
     // const commentsList = comments.filter(comment => comment.pageId === params.articleId);
     const sortedComments = orderBy(comments, ["created_at"], ["desc"]);

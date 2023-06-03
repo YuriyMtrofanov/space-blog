@@ -2,8 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import ArticleCard from "../../common/cards/articleCard";
 import LatestArticles from "../../ui/latestArticles";
+import { useSelector } from "react-redux";
+import { getArticById } from "../../../store/articles";
 
-const MainPage = ({ articles, recomended }) => {
+const MainPage = ({ articles }) => {
+    const recomendedId = "647b3d9fc0d854c6b28335b3";
+    const recomendedArticle = useSelector(getArticById(recomendedId));
+    if (!recomendedArticle) return "Loading...";
     return (
         <div className="container mt-2 pb-5 shadow">
             <h1>Читай, пиши сам, развивайся</h1>
@@ -11,7 +16,7 @@ const MainPage = ({ articles, recomended }) => {
             <div className="row">
                 <div className="p-3">
                     <h3>Статья недели</h3>
-                    <ArticleCard article={recomended}/>
+                    <ArticleCard article={recomendedArticle}/>
                 </div>
                 <LatestArticles articles={articles}/>
                 <div className="p-3">
@@ -23,8 +28,7 @@ const MainPage = ({ articles, recomended }) => {
 };
 
 MainPage.propTypes = {
-    articles: PropTypes.array,
-    recomended: PropTypes.object
+    articles: PropTypes.array
 };
 
 export default MainPage;

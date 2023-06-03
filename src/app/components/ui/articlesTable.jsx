@@ -5,7 +5,6 @@ import Loading from "./loading";
 import ArticlesLoader from "./HOC/articlesLoader";
 
 const ArticlesTable = ({ articles }) => {
-    // console.log(articles);
     return (
         <ArticlesLoader>
             {articles

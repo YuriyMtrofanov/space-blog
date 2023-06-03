@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
 import Comments from "../../common/comments/comments";
 import {
-    useDispatch,
+    // useDispatch,
     useSelector
 } from "react-redux";
 import {
     // getArticlesList,
     // getArticById,
     getArticlesDataStatus,
-    removeArticle,
+    // removeArticle,
     getArticlesLoadStatus
 } from "../../../store/articles";
 import { getCurrentUserId, getUserById } from "../../../store/users";
@@ -20,7 +20,7 @@ import {
 } from "react-router-dom";
 
 const ArticlePage = ({ article }) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { articleId } = useParams();
     const isLoading = useSelector(getArticlesLoadStatus());
     const dataStatus = useSelector(getArticlesDataStatus());
@@ -30,11 +30,11 @@ const ArticlePage = ({ article }) => {
     const handleEdit = () => {
         history.push(`/articles/${articleId}/edit`);
     };
-    const handleRemove = () => {
-        console.log(`remove article ${articleId}`);
-        dispatch(removeArticle(articleId));
-        history.push(`/articles`);
-    };
+    // const handleRemove = () => {
+    //     console.log(`remove article ${articleId}`);
+    //     dispatch(removeArticle(articleId));
+    //     history.push(`/articles`);
+    // };
     return (
         <>
             {!isLoading && dataStatus
@@ -60,7 +60,7 @@ const ArticlePage = ({ article }) => {
                             {currentUserId === articleAuthor._id &&
                                 <div className="d-flex justify-content-end">
                                     <button className="btn btn-dark text-light mx-2" onClick={handleEdit}>Редактировать</button>
-                                    <button className="btn btn-secondary mx-2" onClick={handleRemove}>Удалить</button>
+                                    {/* <button className="btn btn-secondary mx-2" onClick={handleRemove}>Удалить</button> */}
                                 </div>
                             }
                         </span>

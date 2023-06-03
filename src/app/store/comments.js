@@ -71,7 +71,7 @@ export const createComment = (payload) => async (dispatch) => {
 export const removeComment = (commentId) => async (dispatch) => {
     dispatch(commentRemoveRequest());
     try {
-        const { content } = await commentService.removeComment(commentId);
+        const { content } = await commentService.delete(commentId);
         if (!content) {
             dispatch(commentRemoveSuccessed(commentId));
         }

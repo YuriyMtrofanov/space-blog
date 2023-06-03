@@ -6,6 +6,7 @@ import TextField from "../../common/forms/textField";
 import { useSelector } from "react-redux";
 import { getArticlesList, getArticlesLoadStatus } from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
+import ArticlesLoader from "../../ui/HOC/articlesLoader";
 
 const ArticlesListPage = () => {
     const articlesList = useSelector(getArticlesList());
@@ -69,7 +70,9 @@ const ArticlesListPage = () => {
                                     onChange = {handleInputChange}
                                 />
                             </form>
-                            <ArticlesTable {...{ articles: filteredArticles }}/>
+                            <ArticlesLoader>
+                                <ArticlesTable {...{ articles: filteredArticles }}/>
+                            </ArticlesLoader>
                         </div>
                     </div>
                 </div>
