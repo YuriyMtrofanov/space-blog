@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { validator } from "../../../utils/validator";
 import PropTypes from "prop-types";
 import TextField from "../../common/forms/textField";
@@ -8,6 +8,7 @@ import DateField from "../../common/forms/dateField";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserInfo, getCurrentUserData } from "../../../store/users";
 import { useHistory } from "react-router-dom";
+import useValidate from "../../../hooks/useValidate";
 
 const UserEditPage = ({ id }) => {
     const history = useHistory();
@@ -24,16 +25,8 @@ const UserEditPage = ({ id }) => {
         about: currentUser.about,
         birthDate: currentUser.birthDate
     });
-    const [errors, setErrors] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        if (inputData && isLoading) {
-            setIsLoading(false);
-        }
-    }, [inputData]);
-
-    const validatorConfig = {
+    const validationConfig = {
         firstName: {
             isRequired: {
                 message: "Имя обязательно для заполнения"
@@ -77,9 +70,7 @@ const UserEditPage = ({ id }) => {
         }
     };
 
-    useEffect(() => {
-        validate();
-    }, [inputData]);
+    const { errors, isAbled, validate } = useValidate({}, inputData, validator, validationConfig);
 
     const handleChange = (target) => {
         setInputData((prevState) => ({
@@ -88,15 +79,7 @@ const UserEditPage = ({ id }) => {
         }));
     };
 
-    const validate = () => {
-        const errors = validator(inputData, validatorConfig);
-        setErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-
-    const isAbled = Object.keys(errors).length === 0;
-
-    const handleClich = () => {
+    const handleBack = () => {
         history.goBack();
     };
 
@@ -116,7 +99,6 @@ const UserEditPage = ({ id }) => {
             about: inputData.about,
             birthDate: inputData.birthDate
         };
-        console.log(outputData);
         dispatch(editUserInfo(outputData));
         history.push(`/users/${id}`);
     };
@@ -207,14 +189,13 @@ const UserEditPage = ({ id }) => {
                             label="Дата рождения"
                             type="text"
                             name="birthDate"
-                            // value={birthDate}
                             value={inputData.birthDate}
                             onChange={handleChange}
                         />
                         <button
                             className="btn btn-dark w-25 mx-2"
                             type="submit"
-                            onClick={handleClich}
+                            onClick={handleBack}
                         >
                             <i className="bi bi-caret-left"></i>Назад
                         </button>
