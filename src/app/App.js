@@ -10,6 +10,7 @@ import Users from "./layouts/users";
 import Favorites from "./layouts/favorites";
 import ArticleCreatePage from "./components/page/articleCreatePage/articleCreatePage";
 import AppLoader from "./components/ui/HOC/appLoader";
+import Admin from "./layouts/admin";
 
 function App() {
     return (
@@ -22,7 +23,7 @@ function App() {
                     <Route path = "/articles/:articleId?/:edit?" component={Articles}/>
                     <Route path = "/favorites/:articleId?" component={Favorites}/>
                     <Route path = "/create" component={ArticleCreatePage} />
-                    {/* <Route path = "/admin" component={AdminPage}/> */}
+                    <Route path = "/admin" component={Admin}/>
                     <Route path = "/login/:type?" component={Login}/>
                     <Route path = "/logout" component={LogOut} />
                     <Redirect to = "/"/>
