@@ -8,7 +8,6 @@ const Admin = () => {
     const articles = useSelector(getArticlesList());
     return (
         <>
-            <h1>Admin</h1>
             {articles
                 ? (<AdminPage { ...{ articlesList: articles } }/>)
                 : (<Loading/>)}

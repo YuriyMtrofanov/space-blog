@@ -3,14 +3,10 @@ import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
 import Comments from "../../common/comments/comments";
 import {
-    // useDispatch,
     useSelector
 } from "react-redux";
 import {
-    // getArticlesList,
-    // getArticById,
     getArticlesDataStatus,
-    // removeArticle,
     getArticlesLoadStatus
 } from "../../../store/articles";
 import { getCurrentUserId, getUserById } from "../../../store/users";
@@ -20,7 +16,6 @@ import {
 } from "react-router-dom";
 
 const ArticlePage = ({ article }) => {
-    // const dispatch = useDispatch();
     const { articleId } = useParams();
     const isLoading = useSelector(getArticlesLoadStatus());
     const dataStatus = useSelector(getArticlesDataStatus());
