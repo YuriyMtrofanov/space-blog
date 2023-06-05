@@ -5,15 +5,15 @@ import Loading from "../../ui/loading";
 // import { getUsersList } from "../../../store/users";
 import TableHeader from "../../common/table/tableHeader";
 import TableBody from "../../common/table/tableBody";
-// import ModalCard from "../../common/modal/modalCard";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getArticlesLoadStatus, removeArticle } from "../../../store/articles";
 import TextField from "../../common/forms/textField";
+import { paginate } from "../../../utils/paginate";
+import Pagination from "../../ui/pagination";
 
 const AdminPage = ({ articlesList }) => {
     const isLoading = useSelector(getArticlesLoadStatus());
-    // const [modalActive, setModalActive] = useState(false);
     const [inputData, setInputData] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
@@ -21,9 +21,7 @@ const AdminPage = ({ articlesList }) => {
         history.push(`/articles/${id}/edit`);
     };
     const onDelete = (id) => {
-        console.log(`article delete ${id}`);
         dispatch(removeArticle(id));
-        // setModalActive(true);
     };
     const handleInputChange = (target) => {
         setInputData(target.value);
@@ -35,17 +33,22 @@ const AdminPage = ({ articlesList }) => {
         }
         return filteredData;
     };
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (pageIndex) => {
+        setCurrentPage(pageIndex);
+    };
+
     if (articlesList && !isLoading) {
         const filteredArticles = filterArticles(articlesList);
+        const count = filteredArticles.length;
+        const pageSize = 3;
+        const articlesCropp = paginate(filteredArticles, currentPage, pageSize);
         return (
             <>
-                {/* <div className="modal-container">
-                    <ModalCard active={modalActive} setActive={setModalActive}/>
-                </div> */}
                 <div className='container mt-2 pb-5 shadow'>
-                    <div className="row">
-                        <h1 className="text-center">Articles Table</h1>
-                        <form className="col-6">
+                    <div className="row center">
+                        <h1 className="text-center">Список статей</h1>
+                        <form className="col-6 mx-auto">
                             <TextField
                                 type = "text"
                                 name = "search"
@@ -57,7 +60,7 @@ const AdminPage = ({ articlesList }) => {
                         <table className="table table-hover mx-auto">
                             <TableHeader/>
                             <tbody>
-                                {filteredArticles.map(item =>
+                                {articlesCropp.map(item =>
                                     <TableBody
                                         key={item._id}
                                         article={item}
@@ -67,6 +70,14 @@ const AdminPage = ({ articlesList }) => {
                                 )}
                             </tbody>
                         </table>
+                        <div className="d-flex justify-content-center">
+                            <Pagination
+                                itemsCount = { count }
+                                pageSize = { pageSize }
+                                currentPage = { currentPage }
+                                onPageChange = { handlePageChange }
+                            />
+                        </div>
                     </div>
                 </div>
             </>
