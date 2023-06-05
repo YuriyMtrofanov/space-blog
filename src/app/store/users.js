@@ -86,13 +86,11 @@ const userEditRequested = createAction("users/userEditRequested");
 const userEditFailed = createAction("users/userEditFailed");
 
 export const signUp = (payload) => async (dispatch) => {
-    // const history = useHistory();
     dispatch(authRequested());
     try {
         const data = await authService.register(payload);
-        localStorageService.setTokens(data); // записываем ключи в localStorage
-        dispatch(authRequestSucceeded({ userId: data.userId })); // state.auth = { userId: data.userId }
-        // history.push("/");
+        localStorageService.setTokens(data);
+        dispatch(authRequestSucceeded({ userId: data.userId }));
     } catch (error) {
         dispatch(authRequestFailed(error.message));
     }

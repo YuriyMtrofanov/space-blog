@@ -7,6 +7,7 @@ import CheckBoxField from "../common/forms/checkBoxField";
 import DateField from "../common/forms/dateField";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../store/users";
+import randomInt from "../../../app/utils/randomInt";
 import useValidate from "../../hooks/useValidate";
 
 const RegisterForm = () => {
@@ -106,9 +107,8 @@ const RegisterForm = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
-            socialNetworks: [],
             selectedArticlesList: [],
-            rate: 0
+            rate: randomInt(0, 50)
         };
         dispatch(signUp(outputData));
     };
