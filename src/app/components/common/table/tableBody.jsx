@@ -8,7 +8,6 @@ const TableBody = ({ article, onEdit, onDelete }) => {
     const author = useSelector(getUserById(article.author));
     const { firstName, lastName } = author;
     const category = useSelector(getCategoryById(article.category));
-    // console.log("TableBody:", category);
     const handleEdit = (id) => {
         onEdit(id);
     };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
+import UsersLoader from "../../ui/HOC/usersLoader";
 // import { useSelector } from "react-redux";
 // import { getUsersList } from "../../../store/users";
 import TableHeader from "../../common/table/tableHeader";
@@ -41,11 +42,11 @@ const AdminPage = ({ articlesList }) => {
     if (articlesList && !isLoading) {
         const filteredArticles = filterArticles(articlesList);
         const count = filteredArticles.length;
-        const pageSize = 3;
+        const pageSize = 10;
         const articlesCropp = paginate(filteredArticles, currentPage, pageSize);
         return (
             <>
-                <div className='container mt-2 pb-5 shadow'>
+                <div className='container-lg mt-2 pb-3 shadow'>
                     <div className="row center">
                         <h1 className="text-center">Список статей</h1>
                         <form className="col-6 mx-auto">
@@ -59,16 +60,18 @@ const AdminPage = ({ articlesList }) => {
                         </form>
                         <table className="table table-hover mx-auto">
                             <TableHeader/>
-                            <tbody>
-                                {articlesCropp.map(item =>
-                                    <TableBody
-                                        key={item._id}
-                                        article={item}
-                                        onEdit={onEdit}
-                                        onDelete={onDelete}
-                                    />
-                                )}
-                            </tbody>
+                            <UsersLoader>
+                                <tbody>
+                                    {articlesCropp.map(item =>
+                                        <TableBody
+                                            key={item._id}
+                                            article={item}
+                                            onEdit={onEdit}
+                                            onDelete={onDelete}
+                                        />
+                                    )}
+                                </tbody>
+                            </UsersLoader>
                         </table>
                         <div className="d-flex justify-content-center">
                             <Pagination
