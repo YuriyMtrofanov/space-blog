@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavProfile from "./navProfile";
 import { useSelector } from "react-redux";
-import { getIsLoggedIn } from "../../store/users";
+import { getCurrentUserAccoutnType, getIsLoggedIn } from "../../store/users";
 
 const NavBar = () => {
     const isLoggedIn = useSelector(getIsLoggedIn());
+    const accountType = useSelector(getCurrentUserAccoutnType());
     return (
         <nav className="navbar navbar-light bg-dark bg-gradient">
             <div className="container-fluid">
@@ -22,16 +23,16 @@ const NavBar = () => {
                             <Link className="nav-link active text-light" aria-current="page" to="/favorites"><h5>Закладки</h5></Link>
                         </li>
                     }
-                    {isLoggedIn &&
+                    {isLoggedIn && accountType !== "reader" &&
                         <li className="nav-item">
                             <Link className="nav-link active text-light" aria-current="page" to="/create"><h5>Создать</h5></Link>
                         </li>
                     }
-                    {/* {isLoggedIn &&
+                    {isLoggedIn && accountType === "admin" &&
                         <li className="nav-item">
-                            <Link className="nav-link active text-light" aria-current="page" to="/admin"><h5>Админ</h5></Link>
+                            <Link className="nav-link active text-light" aria-current="page" to="/admin"><h5>Администратор</h5></Link>
                         </li>
-                    } */}
+                    }
                 </ul>
                 <div className="d-flex">
                     {isLoggedIn

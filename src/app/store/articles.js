@@ -104,6 +104,11 @@ export const removeArticle = (articleId) => async (dispatch) => {
 };
 
 export const getArticlesList = () => (state) => state.articles.entities;
+export const getUsersArticlesList = (userId) => (state) => {
+    if (state.articles.entities) {
+        return state.articles.entities.filter(article => article.author === userId);
+    }
+};
 export const getArticById = (articleId) => (state) => {
     if (state.articles.entities) {
         return state.articles.entities.find(article => article._id === articleId);

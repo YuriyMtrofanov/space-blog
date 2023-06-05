@@ -5,14 +5,12 @@ import UserImageCard from "../../common/cards/UserImageCard";
 import UserInfoCard from "../../common/cards/UserInfoCard";
 import { Redirect } from "react-router-dom";
 import ArticlesTable from "../../ui/articlesTable";
-import Loading from "../../ui/loading";
 import { getUserById } from "../../../store/users";
-import { getArticlesList } from "../../../store/articles";
+import { getUsersArticlesList } from "../../../store/articles";
 
 const UserPage = ({ id }) => {
     const user = useSelector(getUserById(id));
-    const articles = useSelector(getArticlesList());
-    const articlesList = articles.filter(item => (item.author === user._id));
+    const articlesList = useSelector(getUsersArticlesList(id));
 
     return (
         <>
@@ -20,22 +18,18 @@ const UserPage = ({ id }) => {
                 state={state}
                 memberName={`${member.name} ${member.lastName}`}
             /> */}
-            {user && articles && articlesList
+            {user && articlesList
                 ? (<div className='container mt-2 pb-5 shadow'>
                     <h3>Страница пользователя</h3>
                     <div className='row gutters-sm'>
                         <div className='col-4 p-1 mb-2'>
                             <UserImageCard user={user}/>
-                            {/* <UserSocialNetworksCard /> */}
                         </div>
                         <div className='col-md-8 p-1 mb-2'>
                             <UserInfoCard user={user}/>
                             <div className="container flex p-1">
                                 <h3>Список статей</h3>
-                                {articlesList
-                                    ? (<ArticlesTable { ...{ articles: articlesList } }/>)
-                                    : (<Loading/>)
-                                }
+                                <ArticlesTable { ...{ articles: articlesList } }/>
                             </div>
                         </div>
                     </div>

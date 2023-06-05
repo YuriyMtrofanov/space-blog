@@ -10,6 +10,7 @@ import { createArticle } from "../../../store/articles";
 import { useHistory } from "react-router-dom";
 import { getCategories } from "../../../store/categories";
 import useValidate from "../../../hooks/useValidate";
+import randomInt from "../../../utils/randomInt";
 // import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
@@ -82,6 +83,7 @@ const ArticleCreatePage = () => {
         if (!isValid) return;
         const outputData = {
             ...inputData,
+            rate: randomInt(0, 50),
             date: Date.now(),
             author: currentUserId
         };
