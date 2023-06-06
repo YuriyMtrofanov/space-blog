@@ -12,7 +12,10 @@ const LatestArticles = ({ articles }) => {
             <h3>Список последних публикаций</h3>
             {articles.length > 0 &&
                 latestArticles.map(item =>
-                    (<ArticleCardSmall key={item._id} article={item} />)
+                    (<div key={item._id} className="col-md-3 col-sm-6 p-3">
+                        <ArticleCardSmall article={item} />
+                    </div>
+                    )
                 )}
         </UsersLoader>
     );

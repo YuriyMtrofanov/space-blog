@@ -18,13 +18,7 @@ const MainPage = ({ articles, users }) => {
                         <RecomendedArticle articles={articles}/>
                     </div>
                     <LatestArticles articles={articles}/>
-                    <h3>Список топ-авторов</h3>
-                    <div className="col-md-3 col-sm-6 p-3">
-                        <TopAuthors users={users}/>
-                    </div>
-                    {/* <div className="p-3">
-                        <h3>Список топ-авторов</h3>
-                    </div> */}
+                    <TopAuthors users={users}/>
                 </div>
             </div>
         );

@@ -9,9 +9,14 @@ const TopAuthors = ({ users }) => {
     const TopAuthors = _.orderBy(users, [sortBy.iter], [sortBy.order]).slice(0, 4);
     return (
         <UsersLoader>
+            <h3>Список топ-авторов</h3>
             {users.length > 0 &&
                 TopAuthors.map(item =>
-                    (<UserImageCard key={item._id} user={item} />)
+                    (
+                        <div key={item._id} className="col-md-3 col-sm-6 p-3">
+                            <UserImageCard user={item} />
+                        </div>
+                    )
                 )}
         </UsersLoader>
     );
