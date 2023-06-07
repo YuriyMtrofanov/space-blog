@@ -1,6 +1,6 @@
 import React from "react";
-// import { getAge } from "../../../utils/getAge";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const UserCardSmall = ({ user }) => {
     return (
@@ -30,9 +30,11 @@ const UserCardSmall = ({ user }) => {
                         alt="image"/>
                 </div>
                 <div className="container">
-                    <h4 className="card-title text-secondary">
-                        <b>{user.firstName}{" "}{user.lastName}</b>
-                    </h4>
+                    <Link to={`/users/${user._id}/`}>
+                        <h4 className="card-title text-secondary">
+                            <b>{user.firstName}{" "}{user.lastName}</b>
+                        </h4>
+                    </Link>
                 </div>
             </div>
         </div>
