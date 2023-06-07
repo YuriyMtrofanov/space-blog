@@ -11,10 +11,7 @@ const LatestArticles = ({ articles }) => {
         <UsersLoader>
             {articles.length > 0 &&
                 latestArticles.map(item =>
-                    (<div key={item._id} className="col-md-3 col-sm-6 p-3">
-                        <ArticleCardSmall article={item} />
-                    </div>
-                    )
+                    (<ArticleCardSmall key={item._id} article={item} />)
                 )}
         </UsersLoader>
     );

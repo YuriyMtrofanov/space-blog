@@ -11,6 +11,9 @@ const NavBar = () => {
         <nav className="navbar navbar-light mx-100 pt-3">
             <div className="container-fluid">
                 <ul className="nav">
+                    <li className="nav-item mx-3">
+                        <h3><b>Space Blog</b></h3>
+                    </li>
                     <li className="nav-item">
                         <Link className="nav-link active text-light" aria-current="page" to="/"><h5>Главная</h5></Link>
                     </li>

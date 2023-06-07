@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
         return !isSelected ? "-fill" : "";
     };
     return (
-        <div className="container m-2">
+        <div className="container m-2 article-card-sm">
             <div className="row">
                 <div
                     className="col-xl-6 col-lg-12 article-card-content"
@@ -53,7 +53,7 @@ const ArticleCard = ({ article }) => {
                         textAlign: "justify"
                     }}
                 >
-                    <h5 className="card-title h2 mb-3">
+                    <h5 className="card-title h2 mb-3 mt-2">
                         <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i>{" "}
                         {article.name}
                     </h5>
