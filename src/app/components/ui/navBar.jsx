@@ -8,7 +8,7 @@ const NavBar = () => {
     const isLoggedIn = useSelector(getIsLoggedIn());
     const accountType = useSelector(getCurrentUserAccoutnType());
     return (
-        <nav className="navbar navbar-light bg-dark bg-gradient">
+        <nav className="navbar navbar-light mx-100 pt-3">
             <div className="container-fluid">
                 <ul className="nav">
                     <li className="nav-item">

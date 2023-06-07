@@ -7,26 +7,34 @@ const ArticleCardSmall = ({ article }) => {
         <>
             {article &&
                 <div
-                    className="card"
+                    className="col"
                     style={{
-                        alignItems: "center",
-                        textAlign: "center",
-                        padding: "1rem",
-                        height: "25rem",
-                        maxHeight: "30rem"
+                        // alignItems: "center",
+                        // textAlign: "center",
+                        // padding: "1rem",
+                        // height: "25rem",
+                        // maxHeight: "30rem"
                     }}>
-                    <img src={article.img} className="card-img-top" style={{ maxWight: "13rem" }} alt="image"/>
-                    <div className="card-body">
-                        <Link className= "text-dark" to={`/articles/${article._id}`}>
-                            <h6 >{article.name}</h6>
-                        </Link>
-                        <p className="card-text">{article.content.slice(0, 200) + "..."}</p>
+                    <div className="article-card-small">
+                        <div className="article-card-small-image">
+                            <img
+                                src={article.img}
+                                className="card-img-top w-100"
+                                style={{ maxWight: "15rem" }}
+                                alt="image"/>
+                        </div>
+                        <div className="article-card-small-body-content">
+                            <h6 className="card-title h5"><b>{article.name}</b></h6>
+                            <p className="card-text">{article.content.slice(0, 100) + "..."}</p>
+                            <Link to={`/articles/${article._id}`}>
+                                <p className="card-title text-center text-secondary mb-4">Читать далее</p>
+                            </Link>
+                        </div>
+                        <span className="article-card-small-subtitle">
+                            {new Date(article.date).toLocaleDateString()}{" "}
+                            {/* <b>{ firstName }{" "}{ lastName }</b>{" "} */}
+                        </span>
                     </div>
-                    <span className="card-subtitle p-2 text-muted">
-                        {new Date(article.date).toLocaleDateString()}{" "}
-                        <i className="bi bi-hand-thumbs-up"></i>{" "}
-                        <i className="bi bi-hand-thumbs-down"></i>
-                    </span>
                 </div>
             }
         </>

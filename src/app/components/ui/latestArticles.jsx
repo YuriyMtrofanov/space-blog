@@ -9,7 +9,6 @@ const LatestArticles = ({ articles }) => {
     const latestArticles = _.orderBy(articles, [sortBy.iter], [sortBy.order]).slice(0, 4);
     return (
         <UsersLoader>
-            <h3>Список последних публикаций</h3>
             {articles.length > 0 &&
                 latestArticles.map(item =>
                     (<div key={item._id} className="col-md-3 col-sm-6 p-3">

@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./components/common/protectedRoute/protectedRoute";
 import ProtectedRouteAuthor from "./components/common/protectedRoureAuthor";
@@ -11,7 +12,6 @@ import LogOut from "./layouts/logOut";
 import NavBar from "./components/ui/navBar";
 import Users from "./layouts/users";
 import Favorites from "./layouts/favorites";
-// import ArticleCreatePage from "./components/page/articleCreatePage/articleCreatePage";
 import AppLoader from "./components/ui/HOC/appLoader";
 import Admin from "./layouts/admin";
 import Create from "./layouts/create";
