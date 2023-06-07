@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import RecomendedArticle from "../../ui/recomendedArticle";
 import LatestArticles from "../../ui/latestArticles";
-// import TopAuthors from "../../ui/topAuthors";
+import TopAuthors from "../../ui/topAuthors";
 import Loading from "../../ui/loading";
 
 const MainPage = ({ articles, users }) => {
@@ -18,7 +18,7 @@ const MainPage = ({ articles, users }) => {
                     </div>
                 </div>
                 <div className="container main-page-container-body">
-                    <div className="row mt-2">
+                    <div className="row">
                         <div className="col-xxl-12 recomended-article">
                             <h3 className="text-light my-3">Статья недели</h3>
                             <RecomendedArticle articles={articles}/>
@@ -27,6 +27,10 @@ const MainPage = ({ articles, users }) => {
                     <div className="row mt-3">
                         <h3 className="text-light my-3">Последние публикации</h3>
                         <LatestArticles articles={articles}/>
+                    </div>
+                    <div className="row mt-3">
+                        <h3 className="text-light my-3">Популярные авторы</h3>
+                        <TopAuthors users={users}/>
                     </div>
                     {/* <div className="row article-card-small">
                         <h3 className="mt-5">Список последних публикаций</h3>
