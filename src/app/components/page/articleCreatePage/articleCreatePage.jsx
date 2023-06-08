@@ -11,7 +11,6 @@ import { useHistory } from "react-router-dom";
 import { getCategories } from "../../../store/categories";
 import useValidate from "../../../hooks/useValidate";
 import randomInt from "../../../utils/randomInt";
-// import { nanoid } from "nanoid";
 
 const ArticleCreatePage = () => {
     const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const ArticleCreatePage = () => {
     const categories = useSelector(getCategories());
 
     const [inputData, setInputData] = useState({
-        // _id: "",
         name: "",
         author: "",
         date: "",
@@ -77,6 +75,10 @@ const ArticleCreatePage = () => {
         }));
     };
 
+    const handleBack = () => {
+        history.goBack();
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const isValid = validate();
@@ -92,7 +94,6 @@ const ArticleCreatePage = () => {
     };
 
     if (categories) {
-        // в дальнейшем проверку нужно убрать, а ковертацию данных перенести выше
         const categoriesList = categories.map(item => ({
             value: item._id,
             label: item.name
@@ -107,7 +108,14 @@ const ArticleCreatePage = () => {
             >
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-8 offset-md-2 shadow p-4 article-form-container">
+                        <a
+                            role="button"
+                            className="col-3 text-secondary h5"
+                            onClick={handleBack}
+                        >
+                            <i className="bi bi-caret-left">Назад</i>
+                        </a>
+                        <div className="col-md-8 offset-md-2 p-4 article-form-container">
                             <h1 className="text-center text-secondary">Добро пожаловать в редактор статей</h1>
                             <h5 className="text-center text-secondary">Здесь ты можешь добавлять материалы на сайт и публиковать их.</h5>
                             <h5 className="text-center text-secondary">Заполни поля и отправь данные на модерацию.</h5>

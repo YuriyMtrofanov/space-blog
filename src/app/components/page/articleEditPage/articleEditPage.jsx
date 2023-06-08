@@ -71,7 +71,7 @@ const ArticleEditPage = () => {
         }));
     };
 
-    const handleClick = () => {
+    const handleBack = () => {
         history.goBack();
     };
 
@@ -112,7 +112,7 @@ const ArticleEditPage = () => {
                     <a
                         role="button"
                         className="col-3 text-secondary mt-3 h5"
-                        onClick={handleClick}
+                        onClick={handleBack}
                     >
                         <i className="bi bi-caret-left">Назад</i>
                     </a>
