@@ -9,13 +9,13 @@
   font-family: 'Montserrat', sans-serif, rgb(169, 168, 168)  0;
 }
 
-.navbar {
-  /* font-family: 'Lexend Exa', sans-serif; */
+/* .navbar {
+  font-family: 'Lexend Exa', sans-serif;
   color: rgb(222, 222, 225);
   background-color: rgb(10, 24, 44);
-  /* opacity: 85%; */
+  opacity: 85%;
   position: flex;
-}
+} */
 .main-page-container {
   background-color: rgb(7, 19, 37);
   /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */

@@ -32,11 +32,6 @@ const MainPage = ({ articles, users }) => {
                         <h3 className="text-light my-3">Популярные авторы</h3>
                         <TopAuthors users={users}/>
                     </div>
-                    {/* <div className="row article-card-small">
-                        <h3 className="mt-5">Список последних публикаций</h3>
-                        <LatestArticles articles={articles}/>
-                        <TopAuthors users={users}/>
-                    </div> */}
                 </div>
                 <div className="main-page-container-footer">
                     <h1 className="text-light">All rights reserved</h1>
