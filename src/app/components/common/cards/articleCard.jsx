@@ -19,7 +19,6 @@ const ArticleCard = ({ article }) => {
     const selectedArticles = useSelector(getSelectedArticlesList(currentUser._id));
     const favorites = useSelector(getSelectedArticlesStatus(currentUser._id, article._id));
 
-    // задаю состояние для иконок избранного
     useEffect(() => {
         favorites ? setIsSelected(false) : setIsSelected(true);
     }, []);
@@ -45,32 +44,49 @@ const ArticleCard = ({ article }) => {
         return !isSelected ? "-fill" : "";
     };
     return (
-        <>
-            <div className="card card-sm text-dark bg-opacity-75 mb-2">
-                {/* <div className="card-header p-2">
+        <div className="container m-2 article-card-sm">
+            <div className="row">
+                <div
+                    className="col-xl-6 col-lg-12 article-card-content"
+                    style={{
+                        color: "grey",
+                        textAlign: "justify"
+                    }}
+                >
+                    <h5 className="card-title h2 mb-3 mt-2">
+                        <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i>{" "}
+                        {article.name}
+                    </h5>
+                    <p className="card-content">{article.content.slice(0, 700) + "..."}</p>
                     <Link to={`/articles/${article._id}`}>
-                        <h5>{article.name}</h5>
+                        <p className="text-center text-secondary mb-4">Читать далее</p>
                     </Link>
-                </div> */}
-                <img src={article.img} style={{ height: "30rem" }} className="card-img-top" alt="image"/>
-                <div className="card-body p-2">
-                    <Link to={`/articles/${article._id}`}>
-                        <h5 className="card-title text-dark text-center p-1">{article.name}</h5>
-                    </Link>
-                    <p className="mx-3">{article.content.slice(0, 560) + "..."}</p>
-                    <Link to={`/articles/${article._id}`}>
-                        <p className="card-title text-dark text-center p-1">Читать далее</p>
-                    </Link>
-                    <h5><i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i> В закладки</h5>
-                    <span className="card-subtitle mb-2 text-muted">
-                        {new Date(article.date).toLocaleDateString()}{" "}
-                        <b>{ firstName }{" "}{ lastName }</b>{" "}
-                        <i className="bi bi-hand-thumbs-up"></i>{" "}
-                        <i className="bi bi-hand-thumbs-down"></i>
+                    <span className="card-subtitle mb-2 text-muted" style={{
+                        color: "white",
+                        justifyContent: "start",
+                        alignItems: "baseline",
+                        bottom: 0
+                    }}>
+                        <p>
+                            {new Date(article.date).toLocaleDateString().toString()}
+                            <b>{" by "}{ firstName }{" "}{ lastName }</b>
+                        </p>
                     </span>
                 </div>
+                <div className="col-xl-6 col-lg-12 article-card-image">
+                    <img
+                        className="img-fluid"
+                        alt="image"
+                        src={article.img}
+                        style={{
+                            alignItems: "end",
+                            height: "auto",
+                            width: "100%"
+                        }}
+                    />
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

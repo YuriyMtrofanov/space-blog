@@ -1,34 +1,51 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ArticleCard from "../../common/cards/articleCard";
+import RecomendedArticle from "../../ui/recomendedArticle";
 import LatestArticles from "../../ui/latestArticles";
-import { useSelector } from "react-redux";
-import { getArticById } from "../../../store/articles";
+import TopAuthors from "../../ui/topAuthors";
+import Loading from "../../ui/loading";
 
-const MainPage = ({ articles }) => {
-    const recomendedId = "647b3d9fc0d854c6b28335b3";
-    const recomendedArticle = useSelector(getArticById(recomendedId));
-    if (!recomendedArticle) return "Loading...";
-    return (
-        <div className="container mt-2 pb-5 shadow">
-            <h1>Читай, пиши сам, развивайся</h1>
-            <h5 className="text-secondary">Предлагаем вашему вниманию платформу для поиска информации о космосе</h5>
-            <div className="row">
-                <div className="p-3">
-                    <h3>Статья недели</h3>
-                    <ArticleCard article={recomendedArticle}/>
+const MainPage = ({ articles, users }) => {
+    if (articles && users) {
+        return (
+            <div className="main-page-container mx-100 my-100">
+                <div className="main-page-container-header mx-100">
+                    <div className="row">
+                        <h1><b>Добро пожаловать в Space Blog</b></h1>
+                        <p className="h5 p-1">На данном ресурсе публикуются материалы о ближнем и дальнем космосе</p>
+                        <p className="h5 p-1">Здесь ты найдешь все что тебя интересует о космосе и нашей планете</p>
+                        <p className="h5 p-1">Читай статьи на интересующие тебя бемы, оставляй комментарии и пиши статьи сам</p>
+                    </div>
                 </div>
-                <LatestArticles articles={articles}/>
-                <div className="p-3">
-                    <h3>Список топ-авторов</h3>
+                <div className="container main-page-container-body">
+                    <div className="row">
+                        <div className="col-xxl-12 recomended-article">
+                            <h3 className="text-light my-3">Статья недели</h3>
+                            <RecomendedArticle articles={articles}/>
+                        </div>
+                    </div>
+                    <div className="row mt-3">
+                        <h3 className="text-light my-3">Последние публикации</h3>
+                        <LatestArticles articles={articles}/>
+                    </div>
+                    <div className="row mt-3">
+                        <h3 className="text-light my-3">Популярные авторы</h3>
+                        <TopAuthors users={users}/>
+                    </div>
+                </div>
+                <div className="main-page-container-footer">
+                    <h1 className="text-light">All rights reserved</h1>
                 </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (<Loading/>);
+    }
 };
 
 MainPage.propTypes = {
-    articles: PropTypes.array
+    articles: PropTypes.array,
+    users: PropTypes.array
 };
 
 export default MainPage;

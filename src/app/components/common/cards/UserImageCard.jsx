@@ -14,11 +14,12 @@ const UserImageCard = ({ user }) => {
 
     return (
         <div
-            className="card mb-3"
+            className="card"
             style={{
                 alignItems: "center",
                 textAlign: "center",
                 padding: "1rem",
+                // border: "none",
                 shadow: "2px"
             }}
         >
@@ -38,7 +39,7 @@ const UserImageCard = ({ user }) => {
                 <img
                     className="card-img-top rounded-circle p-2"
                     src={user.img}
-                    alt="user umage"
+                    alt="user image"
                     // width="100"
                     style={{
                         maxWidth: "20rem",

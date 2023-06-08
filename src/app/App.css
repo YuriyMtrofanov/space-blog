@@ -1,3 +1,93 @@
+.body {
+  background-color: rgb(24, 48, 84);
+}
+
+.App {
+  /* text-align: center; */
+  /* font-family: 'Poppins', sans-serif; */
+  background-color: rgb(24, 48, 84);
+  font-family: 'Montserrat', sans-serif, rgb(169, 168, 168)  0;
+}
+
+/* .navbar {
+  font-family: 'Lexend Exa', sans-serif;
+  color: rgb(222, 222, 225);
+  background-color: rgb(10, 24, 44);
+  opacity: 85%;
+  position: flex;
+} */
+.main-page-container {
+  background-color: rgb(7, 19, 37);
+  /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
+}
+  .main-page-container-header {
+    font-family: 'Montserrat', sans-serif, Black  0;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(222, 222, 225);
+    background-color: rgb(10, 24, 44);
+    height: 35vmin;
+    background-image: url("https://frazy.su/wp-content/uploads/2016/04/5.jpg");
+    text-align: center;
+  }
+
+.main-page-container-body {
+  background-color: rgb(10, 24, 44);
+  background-image: "url()";
+  font-family: 'Montserrat', sans-serif;
+}
+
+.article-card-sm {
+  background-color: rgb(10, 24, 44);
+}
+
+  /* .recomended-article {
+    font-family: 'Montserrat', sans-serif;
+  } */
+    /* .recomended-article.card-body-content {
+      text-align: start;
+      width: 37rem;
+    } */
+    /* .recomended-article .card-subtitle {
+      justify-content: end;
+      align-items: "baseline";
+      bottom: 0;
+    } */
+
+  /* .latest-articles {
+    height: 28rem;
+    background-color: rgb(26, 61, 112);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: rgb(222, 222, 225);
+    text-align: start;
+  } */
+
+
+
+/* .article-card-small {
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(222, 222, 225);
+  background-color: rgb(12, 25, 43);
+  align-items: "center";
+  height: 28rem;
+}
+
+.article-card-small .card-body-content {
+  text-align: center;
+  height: 15rem;
+  padding: 1rem;
+}
+
+.article-card-subtitle {
+  text-align: center;
+} */
+
+
 /* .App {
   text-align: center;
 }
