@@ -17,10 +17,10 @@ const UserPage = ({ id }) => {
             {user && articlesList
                 ? (<div className='container pb-5 shadow'>
                     <div className='row gutters-sm'>
-                        <div className='col-4 p-1 mb-2'>
+                        <div className='col-4 p-1 mb-2 mt-2'>
                             <UserImageCard user={user}/>
                         </div>
-                        <div className='col-md-8 p-1 mb-2'>
+                        <div className='col-md-8 p-1 mb-2 mt-2'>
                             <UserInfoCard user={user}/>
                             <div className="container flex p-1 text-secondary">
                                 {/* <h3>Список статей</h3> */}

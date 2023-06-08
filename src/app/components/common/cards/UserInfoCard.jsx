@@ -8,7 +8,8 @@ const UserInfoCard = ({ user }) => {
             className="card user-info-card text-secondary"
             style={{
                 background: "rgb(10, 24, 44)",
-                border: "none"
+                border: "none",
+                marginLeft: "12px"
             }}
         >
             <div className="card-header">
