@@ -11,6 +11,10 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
     return (
         <div className="form-check mb-4">
             <input
+                style={{
+                    borderColor: "grey",
+                    marginLeft: "auto"
+                }}
                 className={getInputClasses()}
                 type="checkbox"
                 value=""
@@ -18,7 +22,7 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
                 onChange={handleChange}
                 checked={value}
             />
-            <label className="form-check-label" htmlFor={name}>
+            <label className="form-check-label text-secondary" htmlFor={name}>
                 {children}
             </label>
             {error && <div className="invalid-feedback">{error}</div>}

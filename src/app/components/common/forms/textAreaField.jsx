@@ -6,15 +6,19 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
         onChange({ name: target.name, value: target.value });
     };
     const getInputClasses = () => {
-        return "form-control" + (error ? " is-invalid" : "");
+        return "text-secondary form-control" + (error ? " is-invalid" : "");
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 text-secondary">
             <label htmlFor={name}>{label}</label>
-            {/* <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Обязательный пример текстового поля" required></textarea> */}
             <div className="input-group has-validation">
                 <textarea
+                    style={{
+                        background: "rgb(10, 24, 44)",
+                        borderColor: "grey",
+                        marginLeft: "12px"
+                    }}
                     id={name}
                     name={name}
                     value={value}

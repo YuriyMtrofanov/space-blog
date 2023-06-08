@@ -14,7 +14,7 @@ const SelectField = ({
         onChange({ name: target.name, value: target.value });
     };
     const getInputClasses = () => {
-        return "form-select" + (error ? " is-invalid" : "");
+        return "text-secondary form-select" + (error ? " is-invalid" : "");
     };
 
     const optionsArray =
@@ -24,8 +24,16 @@ const SelectField = ({
 
     return (
         <div className="mb-4">
-            <label htmlFor={name} className="form-check">{label}</label>
+            <label
+                htmlFor={name}
+                className="form-check text-secondary"
+            >{label}</label>
             <select
+                style={{
+                    background: "rgb(10, 24, 44)",
+                    borderColor: "grey",
+                    marginLeft: "12px"
+                }}
                 className={getInputClasses()}
                 id={name}
                 name={name}

@@ -98,62 +98,78 @@ const ArticleCreatePage = () => {
             label: item.name
         }));
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 offset-md-2 shadow p-4">
-                        <h1 className="text-start">Добро пожаловать в редактор статей</h1>
-                        <p>Здесь ты можешь добавлять материалы на сайт и публиковать их.</p>
-                        <p>Заполни поля и отправь данные на модерацию.</p>
-                        <form onSubmit={handleSubmit}>
-                            <TextField
-                                label="Название статьи"
-                                type="name"
-                                name="name"
-                                value={inputData.name}
-                                onChange={handleChange}
-                                error={errors.name}
-                            />
-                            <TextField
-                                label="Ссылка на изображение"
-                                type="img"
-                                name="img"
-                                value={inputData.img}
-                                onChange={handleChange}
-                                error={errors.img}
-                            />
-                            <SelectField
-                                label="Тематика статьи"
-                                defaultOption="Выбрать из списка..."
-                                options={categoriesList}
-                                name="category"
-                                onChange={handleChange}
-                                value={inputData.category}
-                                error={errors.category}
-                            />
-                            <TextAreaField
-                                label="Текст статьи"
-                                name="content"
-                                value={inputData.content || ""}
-                                onChange={handleChange}
-                                error={errors.content}
-                            />
-                            <CheckBoxField
-                                value={inputData.licence}
-                                onChange={handleChange}
-                                name="licence"
-                                error={errors.licence}
-                            >
-                                Подтвердить <a>лицензионное соглашение</a>
-                            </CheckBoxField>
-                            <button
-                                className="btn btn-dark w-100 mx-auto"
-                                type="submit"
-                                disabled={!isAbled}
-                            >
-                                Сохранить
-                            </button>
-                        </form>
+            <div
+                className="article-create-container mx-100"
+                style={{
+                    height: "auto",
+                    minHeight: "65rem"
+                }}
+            >
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2 shadow p-4 article-form-container">
+                            <h1 className="text-center text-secondary">Добро пожаловать в редактор статей</h1>
+                            <h5 className="text-center text-secondary">Здесь ты можешь добавлять материалы на сайт и публиковать их.</h5>
+                            <h5 className="text-center text-secondary">Заполни поля и отправь данные на модерацию.</h5>
+                            <form onSubmit={handleSubmit}>
+                                <TextField
+                                    label="Название статьи"
+                                    type="name"
+                                    name="name"
+                                    value={inputData.name}
+                                    onChange={handleChange}
+                                    error={errors.name}
+                                />
+                                <TextField
+                                    label="Ссылка на изображение"
+                                    type="img"
+                                    name="img"
+                                    value={inputData.img}
+                                    onChange={handleChange}
+                                    error={errors.img}
+                                />
+                                <SelectField
+                                    label="Выбери тему статьи"
+                                    defaultOption="Выбрать из списка..."
+                                    options={categoriesList}
+                                    name="category"
+                                    onChange={handleChange}
+                                    value={inputData.category}
+                                    error={errors.category}
+                                />
+                                <TextAreaField
+                                    label="Текст статьи"
+                                    name="content"
+                                    value={inputData.content || ""}
+                                    onChange={handleChange}
+                                    error={errors.content}
+                                />
+                                <CheckBoxField
+                                    value={inputData.licence}
+                                    onChange={handleChange}
+                                    name="licence"
+                                    error={errors.licence}
+                                >
+                                    Подтвердить <a>лицензионное соглашение</a>
+                                </CheckBoxField>
+                                <div className="d-flex justify-content-center">
+                                    <button
+                                        className="btn btn-secondary justify-center mt-2 w-50"
+                                        style={{
+                                            color: "rgb(10, 24, 44)"
+                                        }}
+                                        type="submit"
+                                        disabled={!isAbled}
+                                    >
+                                        <b>Сохранить</b>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div className="main-page-container-footer">
+                    <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
                 </div>
             </div>
         );

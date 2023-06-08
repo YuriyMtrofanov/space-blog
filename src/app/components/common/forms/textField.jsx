@@ -25,7 +25,7 @@ const TextField = ({
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 text-secondary">
             <label htmlFor={name}>{ label }</label>
             <div className="input-group has-validation">
                 <input
