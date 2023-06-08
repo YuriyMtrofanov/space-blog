@@ -10,7 +10,9 @@ const NavBar = () => {
     return (
         <nav
             className="navbar navbar-light sticky-top mx-100"
-            style={{ backgroundColor: "rgb(10, 24, 44)" }}
+            style={{
+                backgroundColor: "rgb(10, 24, 44)"
+            }}
         >
             <div className="container-fluid">
                 <ul className="nav">

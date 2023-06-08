@@ -97,7 +97,13 @@ const ArticleEditPage = () => {
     };
 
     return (
-        <>
+        <div
+            className="article-edit-container mx-100"
+            style={{
+                height: "auto",
+                minHeight: "65rem"
+            }}
+        >
             <div className="modal-container">
                 <ModalCard active={modalActive} setActive={setModalActive}/>
             </div>
@@ -110,9 +116,9 @@ const ArticleEditPage = () => {
                     >
                         <i className="bi bi-caret-left">Назад</i>
                     </a>
-                    <div className="col-md-8 offset-md-2 shadow p-4">
-                        <h1 className="text-start">Добро пожаловать в редактор статей</h1>
-                        <p>Здесь ты можешь материал своей публикации</p>
+                    <div className="col-md-8 offset-md-2 shadow p-4 article-form-container">
+                        <h1 className="text-center text-secondary">Добро пожаловать в редактор статей</h1>
+                        <h5 className="text-center text-secondary">Здесь ты можешь материал своей публикации</h5>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 label="Название статьи"
@@ -148,11 +154,14 @@ const ArticleEditPage = () => {
                             />
                             <div className="text-center">
                                 <button
-                                    className="btn btn-dark mx-2"
+                                    className="btn btn-secondary mx-2"
+                                    style={{
+                                        color: "rgb(10, 24, 44)"
+                                    }}
                                     type="submit"
                                     disabled={!isAbled}
                                 >
-                                    <h5>Сохранить</h5>
+                                    <b>Сохранить</b>
                                 </button>
                                 <a role="button" className="start-50 text-secondary h5 mx-2" onClick={handleRemove}>Удалить</a>
                             </div>
@@ -160,7 +169,10 @@ const ArticleEditPage = () => {
                     </div>
                 </div>
             </div>
-        </>
+            <div className="main-page-container-footer">
+                <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
+            </div>
+        </div>
     );
 };
 
