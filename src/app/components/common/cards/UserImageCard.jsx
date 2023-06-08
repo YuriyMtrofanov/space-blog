@@ -45,7 +45,6 @@ const UserImageCard = ({ user }) => {
                     className="card-img-top rounded-circle p-2"
                     src={user.img}
                     alt="user image"
-                    // width="100"
                     style={{
                         maxWidth: "20rem",
                         borderRadius: "50%",

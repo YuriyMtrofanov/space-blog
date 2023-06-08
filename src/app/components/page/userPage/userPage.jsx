@@ -15,7 +15,7 @@ const UserPage = ({ id }) => {
     return (
         <div className="user-page-container mx-100">
             {user && articlesList
-                ? (<div className='container pb-5 shadow'>
+                ? (<div className='container pb-5'>
                     <div className='row gutters-sm'>
                         <div className='col-4 p-1 mb-2 mt-2'>
                             <UserImageCard user={user}/>
@@ -23,7 +23,7 @@ const UserPage = ({ id }) => {
                         <div className='col-md-8 p-1 mb-2 mt-2'>
                             <UserInfoCard user={user}/>
                             <div className="container flex p-1 text-secondary">
-                                {/* <h3>Список статей</h3> */}
+                                <h5 className="text-center">Список публикаций:</h5>
                                 <ArticlesTable { ...{ articles: articlesList } }/>
                             </div>
                         </div>

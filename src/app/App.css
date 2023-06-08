@@ -3,8 +3,6 @@
 }
 
 .App {
-  /* text-align: center; */
-  /* font-family: 'Poppins', sans-serif; */
   background-color: rgb(24, 48, 84);
   font-family: 'Montserrat', sans-serif, rgb(169, 168, 168)  0;
 }
@@ -41,86 +39,7 @@
   /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
 }
 
-  /* .recomended-article {
-    font-family: 'Montserrat', sans-serif;
-  } */
-    /* .recomended-article.card-body-content {
-      text-align: start;
-      width: 37rem;
-    } */
-    /* .recomended-article .card-subtitle {
-      justify-content: end;
-      align-items: "baseline";
-      bottom: 0;
-    } */
-
-  /* .latest-articles {
-    height: 28rem;
-    background-color: rgb(26, 61, 112);
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    color: rgb(222, 222, 225);
-    text-align: start;
-  } */
-
-
-
-/* .article-card-small {
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(222, 222, 225);
-  background-color: rgb(12, 25, 43);
-  align-items: "center";
-  height: 28rem;
+.articles-list-container {
+  background-color: rgb(7, 19, 37);
+  /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
 }
-
-.article-card-small .card-body-content {
-  text-align: center;
-  height: 15rem;
-  padding: 1rem;
-}
-
-.article-card-subtitle {
-  text-align: center;
-} */
-
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #194db4;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

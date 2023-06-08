@@ -34,7 +34,7 @@ const MainPage = ({ articles, users }) => {
                     </div>
                 </div>
                 <div className="main-page-container-footer">
-                    <h1 className="text-light">All rights reserved</h1>
+                    <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
                 </div>
             </div>
         );
