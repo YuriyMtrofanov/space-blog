@@ -13,29 +13,24 @@ const UserPage = ({ id }) => {
     const articlesList = useSelector(getUsersArticlesList(id));
 
     return (
-        <>
-            {/* <Breadcrumbs
-                state={state}
-                memberName={`${member.name} ${member.lastName}`}
-            /> */}
+        <div className="user-page-container mx-100">
             {user && articlesList
-                ? (<div className='container mt-2 pb-5 shadow'>
-                    <h3>Страница пользователя</h3>
+                ? (<div className='container pb-5 shadow'>
                     <div className='row gutters-sm'>
                         <div className='col-4 p-1 mb-2'>
                             <UserImageCard user={user}/>
                         </div>
                         <div className='col-md-8 p-1 mb-2'>
                             <UserInfoCard user={user}/>
-                            <div className="container flex p-1">
-                                <h3>Список статей</h3>
+                            <div className="container flex p-1 text-secondary">
+                                {/* <h3>Список статей</h3> */}
                                 <ArticlesTable { ...{ articles: articlesList } }/>
                             </div>
                         </div>
                     </div>
                 </div>)
                 : (<Redirect to='/' />)}
-        </>
+        </div>
     );
 };
 

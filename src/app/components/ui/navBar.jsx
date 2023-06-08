@@ -9,7 +9,7 @@ const NavBar = () => {
     const accountType = useSelector(getCurrentUserAccoutnType());
     return (
         <nav
-            className="navbar navbar-light mx-100 pt-3"
+            className="navbar navbar-light sticky-top mx-100"
             style={{ backgroundColor: "rgb(10, 24, 44)" }}
         >
             <div className="container-fluid">

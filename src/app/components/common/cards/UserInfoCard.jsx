@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 const UserInfoCard = ({ user }) => {
     const { about, firstName, lastName } = user;
     return (
-        <div className="card">
+        <div
+            className="card user-info-card text-secondary"
+            style={{
+                background: "rgb(10, 24, 44)",
+                border: "none"
+            }}
+        >
             <div className="card-header">
                 <h3>
                     <b>{firstName}{" "}{lastName}</b>
@@ -12,7 +18,7 @@ const UserInfoCard = ({ user }) => {
             </div>
             <div className="card-body">
                 <div className="card-about mb-2">
-                    <h5> Краткая информация о себе: </h5>
+                    <h5> Об авторе: </h5>
                     <ul>
                         {about}
                     </ul>
