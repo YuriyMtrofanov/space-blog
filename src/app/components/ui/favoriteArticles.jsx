@@ -13,12 +13,18 @@ const FavoriteArticles = ({ articles }) => {
     return (
         <>
             {!isLoading &&
-                <div className="container mt-2 pb-5">
+                <div className="container">
                     <div className="row">
-                        <div className="col-lg-9 mb-2">
-                            <h1>список избранных статей</h1>
+                        <div className="col-1"></div>
+                        <div className="col-lg-10 mb-2">
+                            <h1 className="text-secondary text-center">
+                                Закладки
+                            </h1>
                             <ArticlesTable { ...{ articles: favoriteArticles } }/>
                         </div>
+                    </div>
+                    <div className="main-page-container-footer mb-5">
+                        <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
                     </div>
                 </div>
             }

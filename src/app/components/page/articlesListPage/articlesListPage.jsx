@@ -36,7 +36,13 @@ const ArticlesListPage = () => {
     if (!isLoading) {
         const filteredArticles = filterArticles(articlesList);
         return (
-            <div className="articles-list-container mx-100 my-100">
+            <div
+                className="articles-list-container mx-100 my-100"
+                style={{
+                    height: "auto",
+                    minHeight: "65rem"
+                }}
+            >
                 <div className='container pb-5'>
                     <div className="row">
                         {categories &&

@@ -8,7 +8,13 @@ import Loading from "../../ui/loading";
 const MainPage = ({ articles, users }) => {
     if (articles && users) {
         return (
-            <div className="main-page-container mx-100 my-100">
+            <div
+                className="main-page-container mx-100 my-100"
+                style={{
+                    height: "auto",
+                    minHeight: "65rem"
+                }}
+            >
                 <div className="main-page-container-header mx-100">
                     <div className="row">
                         <h1><b>Добро пожаловать в Space Blog</b></h1>

@@ -13,7 +13,13 @@ const UserPage = ({ id }) => {
     const articlesList = useSelector(getUsersArticlesList(id));
 
     return (
-        <div className="user-page-container mx-100">
+        <div
+            className="user-page-container mx-100"
+            style={{
+                height: "auto",
+                minHeight: "65rem"
+            }}
+        >
             {user && articlesList
                 ? (<div className='container pb-5'>
                     <div className='row gutters-sm'>
