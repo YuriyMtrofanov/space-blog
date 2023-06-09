@@ -14,11 +14,14 @@ const CommentCard = ({
     onRemove
 }) => {
     const user = useSelector(getUserById(userId));
-    // const user = api.users.users.find(u => u._id === userId);
     const currentUserId = useSelector(getCurrentUserId());
-    // const currentUserId = "67rdca3eeb7f6fgeed471815"; // заглушка
     return (
-        <div className="card-body mb-3 d-flex flex-start ">
+        <div
+            className="card-body mb-3 d-flex flex-start text-secondary"
+            style={{
+                backgroundColor: "rgb(10, 24, 44)"
+            }}
+        >
             <img
                 src={user.img}
                 className="rounded-circle shadow-1-strong me-3"
@@ -39,7 +42,7 @@ const CommentCard = ({
                         </p>
                         {currentUserId === userId && (
                             <button
-                                className="btn btn-sm text-primary d-flex align-items-center"
+                                className="btn btn-sm text-secondary d-flex align-items-center"
                                 onClick={() => onRemove(id)}
                             >
                                 <i className="bi bi-x-lg"></i>

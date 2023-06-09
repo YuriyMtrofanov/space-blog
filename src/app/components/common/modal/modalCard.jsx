@@ -11,10 +11,9 @@ const ModalCard = ({ active, setActive }) => {
     const history = useHistory();
     const { articleId } = useParams();
     const handleClick = () => {
-        console.log("ModalCard, delete:", articleId);
         setActive(false);
         dispatch(removeArticle(articleId));
-        history.push(`/articles`);
+        history.goBack();
     };
 
     const handleBack = () => {

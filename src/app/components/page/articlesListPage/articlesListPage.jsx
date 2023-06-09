@@ -36,28 +36,34 @@ const ArticlesListPage = () => {
     if (!isLoading) {
         const filteredArticles = filterArticles(articlesList);
         return (
-            <>
-                <div className='container mt-2 pb-5 shadow'>
-                    {/* <Breadcrumbs
-                        state={state}
-                        memberName={`${member.name} ${member.lastName}`}
-                    /> */}
-                    <h3>Breadcrumbs / articles /</h3>
+            <div
+                className="articles-list-container mx-100 my-100"
+                style={{
+                    height: "auto",
+                    minHeight: "65rem"
+                }}
+            >
+                <div className='container pb-5'>
                     <div className="row">
                         {categories &&
-                            <div className="col-lg-3 mt-4 mb-2">
-                                <h1>Категории</h1>
+                            <div className="col-lg-3 mt-2 mb-2">
+                                <h3 className="text-secondary text-center">
+                                    Фильтр по темам
+                                </h3>
                                 <Categories
                                     items = {categories}
                                     selectedItem = { selectedProperty }
                                     onItemSelect = { handleItemSelect }
-                                    valueProperty = "_id" // параметр по умолчанию
-                                    contentProperty = "name" // параметр по умолчанию
+                                    valueProperty = "_id"
+                                    contentProperty = "name"
                                 />
                                 <button
-                                    className = "btn btn-secondary mt-2"
+                                    className = "btn btn-secondary mt-2 w-100"
+                                    style={{
+                                        color: "rgb(10, 24, 44)"
+                                    }}
                                     onClick = {handleClearList}
-                                > Сброс </button>
+                                > <b>Сброс</b></button>
                             </div>
                         }
                         <div className="col-lg-9 mb-2">
@@ -76,10 +82,13 @@ const ArticlesListPage = () => {
                         </div>
                     </div>
                 </div>
-            </>
+                <div className="main-page-container-footer mb-5">
+                    <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
+                </div>
+            </div>
         );
     } else {
-        return <Loading />; // спиннер
+        return <Loading />;
     };
 };
 

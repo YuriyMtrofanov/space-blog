@@ -3,19 +3,10 @@
 }
 
 .App {
-  /* text-align: center; */
-  /* font-family: 'Poppins', sans-serif; */
   background-color: rgb(24, 48, 84);
   font-family: 'Montserrat', sans-serif, rgb(169, 168, 168)  0;
 }
 
-/* .navbar {
-  font-family: 'Lexend Exa', sans-serif;
-  color: rgb(222, 222, 225);
-  background-color: rgb(10, 24, 44);
-  opacity: 85%;
-  position: flex;
-} */
 .main-page-container {
   background-color: rgb(7, 19, 37);
   /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
@@ -43,86 +34,49 @@
   background-color: rgb(10, 24, 44);
 }
 
-  /* .recomended-article {
-    font-family: 'Montserrat', sans-serif;
-  } */
-    /* .recomended-article.card-body-content {
-      text-align: start;
-      width: 37rem;
-    } */
-    /* .recomended-article .card-subtitle {
-      justify-content: end;
-      align-items: "baseline";
-      bottom: 0;
-    } */
-
-  /* .latest-articles {
-    height: 28rem;
-    background-color: rgb(26, 61, 112);
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    color: rgb(222, 222, 225);
-    text-align: start;
-  } */
-
-
-
-/* .article-card-small {
-  font-family: 'Montserrat', sans-serif;
-  color: rgb(222, 222, 225);
-  background-color: rgb(12, 25, 43);
-  align-items: "center";
-  height: 28rem;
+.user-page-container {
+  background-color: rgb(7, 19, 37);
+  /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
 }
 
-.article-card-small .card-body-content {
-  text-align: center;
-  height: 15rem;
-  padding: 1rem;
+.articles-list-container {
+  background-color: rgb(7, 19, 37);
+  /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
 }
 
-.article-card-subtitle {
-  text-align: center;
-} */
-
-
-/* .App {
-  text-align: center;
+.favorites-container {
+  background-color: rgb(7, 19, 37);
+  /* background-image: url("https://phonoteka.org/uploads/posts/2021-06/1624846288_4-phonoteka_org-p-temnii-kosmos-oboi-krasivo-5.jpg"); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.article-create-container {
+  background-color: rgb(7, 19, 37);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.article-form-container {
+  background-color: rgb(10, 24, 44);
 }
 
-.App-header {
-  background-color: #194db4;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.article-edit-container {
+  background-color: rgb(7, 19, 37);
 }
 
-.App-link {
-  color: #61dafb;
+.admin-page-container {
+  background-color: rgb(7, 19, 37);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.article-page-container {
+  background-color: rgb(7, 19, 37);
+}
+
+.article-page-container-body {
+  background-color: rgb(10, 24, 44);
+}
+
+.login-form-container {
+  background-color: rgb(7, 19, 37);
+}
+
+.login-form-container-body {
+  background-color: rgb(10, 24, 44);
+}

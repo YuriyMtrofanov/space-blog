@@ -17,16 +17,22 @@ const Favorites = () => {
     const article = useSelector(getArticById(articleId));
 
     return (
-        <>
-            <ArticlesLoader>
-                <UsersLoader>
+        <ArticlesLoader>
+            <UsersLoader>
+                <div
+                    className="favorites-container mx-100 my-100"
+                    style={{
+                        height: "auto",
+                        minHeight: "65rem"
+                    }}
+                >
                     {articleId
                         ? (<ArticlePage article={article}/>)
                         : (<FavoriteArticles articles={articles}/>)
                     }
-                </UsersLoader>
-            </ArticlesLoader>
-        </>
+                </div>
+            </UsersLoader>
+        </ArticlesLoader>
     );
 };
 

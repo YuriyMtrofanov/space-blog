@@ -14,6 +14,7 @@ const TableBody = ({ article, onEdit, onDelete }) => {
     const handleDelete = (id) => {
         onDelete(id);
     };
+
     if (!author && !category) return "loading...";
     return (
         <tr className="text-center">

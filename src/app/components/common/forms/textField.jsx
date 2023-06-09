@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const TextField = ({
-    label, // Заголовок поля
+    label,
     type,
     name,
     value,
@@ -21,14 +21,19 @@ const TextField = ({
     };
 
     const getInputClasses = () => {
-        return "form-control" + (error ? " is-invalid" : "");
+        return "text-secondary form-control" + (error ? " is-invalid" : "");
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 text-secondary">
             <label htmlFor={name}>{ label }</label>
             <div className="input-group has-validation">
                 <input
+                    style={{
+                        background: "rgb(10, 24, 44)",
+                        borderColor: "grey",
+                        marginLeft: "12px"
+                    }}
                     type = {showPassword ? "text" : type}
                     id = {name}
                     name = {name}

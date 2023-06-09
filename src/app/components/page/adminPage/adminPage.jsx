@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Loading from "../../ui/loading";
 import UsersLoader from "../../ui/HOC/usersLoader";
-// import { useSelector } from "react-redux";
-// import { getUsersList } from "../../../store/users";
 import TableHeader from "../../common/table/tableHeader";
 import TableBody from "../../common/table/tableBody";
 import { useHistory } from "react-router-dom";
@@ -45,10 +43,18 @@ const AdminPage = ({ articlesList }) => {
         const pageSize = 10;
         const articlesCropp = paginate(filteredArticles, currentPage, pageSize);
         return (
-            <>
-                <div className='container-lg mt-2 pb-3 shadow'>
+            <div
+                className="admin-page-container mx-100"
+                style={{
+                    height: "auto",
+                    minHeight: "65rem"
+                }}
+            >
+                <div className='container-lg p-5 article-form-container'>
                     <div className="row center">
-                        <h1 className="text-center">Список статей</h1>
+                        <h1 className="text-center text-secondary">
+                            Редактор контента
+                        </h1>
                         <form className="col-6 mx-auto">
                             <TextField
                                 type = "text"
@@ -58,7 +64,9 @@ const AdminPage = ({ articlesList }) => {
                                 onChange = {handleInputChange}
                             />
                         </form>
-                        <table className="table table-hover mx-auto">
+                        <table
+                            className="table table-hover table-dark text-secondary mx-auto"
+                        >
                             <TableHeader/>
                             <UsersLoader>
                                 <tbody>
@@ -83,7 +91,7 @@ const AdminPage = ({ articlesList }) => {
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     } else {
         return <Loading/>;

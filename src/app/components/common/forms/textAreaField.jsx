@@ -1,20 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextAreaField = ({ label, name, value, onChange, error }) => {
+const TextAreaField = ({ label, name, value, onChange, heigh, error }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
     };
     const getInputClasses = () => {
-        return "form-control" + (error ? " is-invalid" : "");
+        return "text-secondary form-control" + (error ? " is-invalid" : "");
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 text-secondary">
             <label htmlFor={name}>{label}</label>
-            {/* <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Обязательный пример текстового поля" required></textarea> */}
             <div className="input-group has-validation">
                 <textarea
+                    style={{
+                        background: "rgb(10, 24, 44)",
+                        borderColor: "grey",
+                        // height: "15rem",
+                        height: heigh,
+                        marginLeft: "12px"
+                    }}
                     id={name}
                     name={name}
                     value={value}
@@ -27,7 +33,8 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
     );
 };
 TextAreaField.defaultProps = {
-    type: "text"
+    type: "text",
+    height: "15rem"
 };
 TextAreaField.propTypes = {
     label: PropTypes.string,
@@ -35,6 +42,7 @@ TextAreaField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
+    heigh: PropTypes.string,
     error: PropTypes.string
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const DateField = ({
-    label, // Заголовок поля
+    label,
     type,
     name,
     value,
@@ -12,18 +12,22 @@ const DateField = ({
 }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
-        // console.log(target.name, target.value);
     };
 
     const getInputClasses = () => {
-        return "form-control" + (error ? " is-invalid" : "");
+        return "text-secondary form-control" + (error ? " is-invalid" : "");
     };
 
     return (
-        <div className="mb-4">
+        <div className="mb-4 text-secondary">
             <label htmlFor="inputDate">{ label }</label>
             <div className="input-group date has-validation">
                 <input
+                    style={{
+                        backgroundColor: "rgb(10, 24, 44)",
+                        borderColor: "grey",
+                        marginLeft: "auto"
+                    }}
                     type = "date"
                     id = {name}
                     name = {name}

@@ -1,25 +1,31 @@
-// Компонент с темами статей для быстрой вильтрации контента по темам.
 import React from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 
 const Сategories = ({
-    items, // список всех тем
-    selectedItem, // выбранная тема в списке фильтрации
-    onItemSelect, // хендлер обнуляющий список фильтрации
-    valueProperty, // "_id"
-    contentProperty // "name"
+    items,
+    selectedItem,
+    onItemSelect,
+    valueProperty,
+    contentProperty
 }) => {
     if (_.isArray(items) === true) {
         return (
-            <ul className="list-group">
-                {/* <h1>Группы статей</h1> */}
+            <ul
+                className="list-group"
+                style={{
+                    border: "2px"
+                }}
+            >
                 {items.map(item => (
                     <li
                         key = { item[valueProperty] }
-                        className = {"list-group-item " + (item[valueProperty] === selectedItem ? "active" : "")}
+                        className = {"text-secondary list-group-item " + (item[valueProperty] === selectedItem ? "active" : "")}
                         onClick = {() => onItemSelect(item[valueProperty])}
                         role = "button"
+                        style={{
+                            background: "rgb(10, 24, 44)"
+                        }}
                     >
                         <h5>{ item[contentProperty] }</h5>
                     </li>

@@ -26,7 +26,9 @@ function NavProfile() {
                     className="img-responsive rounded-circle"
                 />
             </div>
-            <div className={"w-100 text-light dropdown-menu" + (isOpen ? " show" : "")}>
+            <div
+                className={"w-100 text-light dropdown-menu" + (isOpen ? " show" : "")}
+            >
                 <Link
                     to={`/users/${currentUser._id}`}
                     className="dropdown-item"

@@ -57,9 +57,6 @@ const loginForm = () => {
         event.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        // const redirect = customHistory.location.state
-        //     ? customHistory.location.state.from.pathname
-        //     : "/";
         dispatch(login({
             payload: inputData
         }));
@@ -92,13 +89,18 @@ const loginForm = () => {
                 Оставаться в системе
             </CheckBoxField>
             {enterError && <p className="text-danger">{enterError}</p>}
-            <button
-                className="btn btn-dark w-100 mx-auto"
-                type="submit"
-                disabled={!isAbled || enterError}
-            >
-                Submit
-            </button>
+            <div className="d-flex justify-content-center">
+                <button
+                    className="btn btn-secondary justify-center mt-2 w-50"
+                    style={{
+                        color: "rgb(10, 24, 44)"
+                    }}
+                    type="submit"
+                    disabled={!isAbled || enterError}
+                >
+                    <b>Подтвердить</b>
+                </button>
+            </div>
         </form>
     );
 };

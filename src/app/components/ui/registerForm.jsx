@@ -115,7 +115,7 @@ const RegisterForm = () => {
 
     return (
         <>
-            <p>Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
+            <p className="text-secondary">Дорогой пользователь, внимательно заполни все поля и отправь данные.</p>
             <form onSubmit={handleSubmit}>
                 <TextField
                     label="Электронная почта"
@@ -177,6 +177,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
                 <RadioField
+                    className="text-secondary"
                     options={[
                         { name: "Male", value: "male" },
                         { name: "Female", value: "female" },
@@ -226,13 +227,18 @@ const RegisterForm = () => {
                 >
                     Подтвердить <a>лицензионное соглашение</a>
                 </CheckBoxField>
-                <button
-                    className="btn btn-dark w-100 mx-auto"
-                    type="submit"
-                    disabled={!isAbled}
-                >
-                    Submit
-                </button>
+                <div className="d-flex justify-content-center">
+                    <button
+                        className="btn btn-secondary justify-center mt-2 w-50"
+                        style={{
+                            color: "rgb(10, 24, 44)"
+                        }}
+                        type="submit"
+                        disabled={!isAbled}
+                    >
+                        <b>Подтвердить</b>
+                    </button>
+                </div>
             </form>
         </>
     );
