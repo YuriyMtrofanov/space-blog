@@ -146,6 +146,7 @@ const ArticleEditPage = () => {
                                 error={errors.category}
                             />
                             <TextAreaField
+                                heigh="15rem"
                                 label="Текст статьи"
                                 name="content"
                                 value={inputData.content || ""}

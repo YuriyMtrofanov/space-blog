@@ -2,6 +2,7 @@ import { orderBy } from "lodash";
 import React, { useEffect } from "react";
 import AddCommentForm from "../forms/addCommentForm";
 import CommentsList from "./commentsList";
+import CommentsLoader from "../../ui/HOC/commentsLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loading from "../../ui/loading";
@@ -64,10 +65,12 @@ const Comments = () => {
                         <h2>Комментарии</h2>
                         <hr />
                         {!isLoading
-                            ? (<CommentsList
-                                comments={sortedComments}
-                                onRemove={handleRemoveComment}
-                            />)
+                            ? (<CommentsLoader>
+                                <CommentsList
+                                    comments={sortedComments}
+                                    onRemove={handleRemoveComment}
+                                />
+                            </CommentsLoader>)
                             : <Loading />
                         }
                     </div>

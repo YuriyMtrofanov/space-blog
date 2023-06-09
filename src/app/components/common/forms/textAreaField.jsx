@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextAreaField = ({ label, name, value, onChange, error }) => {
+const TextAreaField = ({ label, name, value, onChange, heigh, error }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
     };
@@ -17,7 +17,8 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
                     style={{
                         background: "rgb(10, 24, 44)",
                         borderColor: "grey",
-                        height: "15rem",
+                        // height: "15rem",
+                        height: heigh,
                         marginLeft: "12px"
                     }}
                     id={name}
@@ -32,7 +33,8 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
     );
 };
 TextAreaField.defaultProps = {
-    type: "text"
+    type: "text",
+    height: "15rem"
 };
 TextAreaField.propTypes = {
     label: PropTypes.string,
@@ -40,6 +42,7 @@ TextAreaField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
+    heigh: PropTypes.string,
     error: PropTypes.string
 };
 

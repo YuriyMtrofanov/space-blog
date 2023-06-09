@@ -85,7 +85,7 @@ const ArticleCardLg = ({ article }) => {
                             />
                             {currentUserId === author._id &&
                                 <button
-                                    className="position-absolute top-0 start-0 btn btn-light btn-sm text-secondary"
+                                    className="position-absolute top-0 end-0 btn btn-light btn-sm text-secondary"
                                     style={{
                                         background: "rgb(10, 24, 44)",
                                         border: "none"

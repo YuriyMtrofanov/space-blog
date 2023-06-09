@@ -42,6 +42,7 @@ const AddCommentForm = ({ onSubmit }) => {
             <form
                 onSubmit={handleSubmit}>
                 <TextAreaField
+                    heigh= "5rem"
                     value={data.content || ""}
                     onChange={handleChange}
                     name="content"
