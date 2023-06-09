@@ -37,9 +37,10 @@ const AddCommentForm = ({ onSubmit }) => {
         clearForm();
     };
     return (
-        <div>
-            <h2>Оставить комментарий</h2>
-            <form onSubmit={handleSubmit}>
+        <>
+            <h2 className="text-secondary">Оставить комментарий</h2>
+            <form
+                onSubmit={handleSubmit}>
                 <TextAreaField
                     value={data.content || ""}
                     onChange={handleChange}
@@ -48,10 +49,16 @@ const AddCommentForm = ({ onSubmit }) => {
                     error={errors.content}
                 />
                 <div className="d-flex justify-content-end">
-                    <button className="btn btn-dark text-light">Опубликовать</button>
+                    <button
+                        className="btn btn-secondary"
+                        style={{
+                            color: "rgb(10, 24, 44)"
+                        }}
+                    ><b>Опубликовать</b>
+                    </button>
                 </div>
             </form>
-        </div>
+        </>
     );
 };
 AddCommentForm.propTypes = {

@@ -34,15 +34,33 @@ const Comments = () => {
     const sortedComments = orderBy(comments, ["created_at"], ["desc"]);
     return (
         <>
-            <div className="card mb-2">
+            <div
+                className="card mb-2"
+                style={{
+                    border: "none"
+                }}
+            >
                 {" "}
-                <div className="card-body ">
+                <div
+                    className="card-body"
+                    style={{
+                        backgroundColor: "rgb(10, 24, 44)"
+                    }}
+                >
                     <AddCommentForm onSubmit={handleSubmit} />
                 </div>
             </div>
             {sortedComments.length > 0 && (
-                <div className="card mb-3">
-                    <div className="card-body ">
+                <div
+                    className="card mb-3"
+                    style={{
+                        backgroundColor: "rgb(10, 24, 44)",
+                        border: "none"
+                    }}
+                >
+                    <div
+                        className="card-body text-secondary h5"
+                    >
                         <h2>Комментарии</h2>
                         <hr />
                         {!isLoading

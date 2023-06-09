@@ -25,7 +25,7 @@ const ArticlePage = ({ article }) => {
                         >
                             <div className='container article-page-container-body pb-5'>
                                 <ArticleCardLg article={ article }/>
-                                <div className="row">
+                                <div className="d-flex flex-row justify-content-center">
                                     <div className="col-8">
                                         <Comments/>
                                     </div>

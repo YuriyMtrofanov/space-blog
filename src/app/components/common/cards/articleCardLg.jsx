@@ -59,7 +59,12 @@ const ArticleCardLg = ({ article }) => {
                                 <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i>{" "}
                                 {article.name}
                             </h5>
-                            <p className="card-content">{article.content}</p>
+                            <p
+                                className="card-content"
+                                style={{
+                                    textAlign: "justify"
+                                }}
+                            >{article.content}</p>
                             <span className="card-subtitle mb-2 text-secondary">
                                 <p>
                                     {new Date(article.date).toLocaleDateString().toString()}
