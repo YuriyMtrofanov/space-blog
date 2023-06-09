@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { getArticlesList, getArticlesLoadStatus } from "../../../store/articles";
 import { getCategories } from "../../../store/categories";
 import ArticlesLoader from "../../ui/HOC/articlesLoader";
+import Pagination from "../../ui/pagination";
+import { paginate } from "../../../utils/paginate";
 
 const ArticlesListPage = () => {
     const articlesList = useSelector(getArticlesList());
@@ -33,8 +35,15 @@ const ArticlesListPage = () => {
             filteredData = data.filter(article => article.category === selectedProperty);
         } return filteredData;
     };
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (pageIndex) => {
+        setCurrentPage(pageIndex);
+    };
     if (!isLoading) {
         const filteredArticles = filterArticles(articlesList);
+        const count = filteredArticles.length;
+        const pageSize = 5;
+        const articlesCropp = paginate(filteredArticles, currentPage, pageSize);
         return (
             <div
                 className="articles-list-container mx-100 my-100"
@@ -77,10 +86,18 @@ const ArticlesListPage = () => {
                                 />
                             </form>
                             <ArticlesLoader>
-                                <ArticlesTable {...{ articles: filteredArticles }}/>
+                                <ArticlesTable {...{ articles: articlesCropp }}/>
                             </ArticlesLoader>
                         </div>
                     </div>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <Pagination
+                        itemsCount = { count }
+                        pageSize = { pageSize }
+                        currentPage = { currentPage }
+                        onPageChange = { handlePageChange }
+                    />
                 </div>
                 <div className="main-page-container-footer mb-5">
                     <h5 className="text-secondary text-center">Created by Mitrofanov Yuriy</h5>
