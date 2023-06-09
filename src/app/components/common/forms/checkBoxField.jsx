@@ -12,6 +12,7 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
         <div className="form-check mb-4">
             <input
                 style={{
+                    backgroundColor: "rgb(20, 50, 90)",
                     borderColor: "grey",
                     marginLeft: "auto"
                 }}

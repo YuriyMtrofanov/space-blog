@@ -64,3 +64,11 @@
 .admin-page-container {
   background-color: rgb(7, 19, 37);
 }
+
+.login-form-container {
+  background-color: rgb(7, 19, 37);
+}
+
+.login-form-container-body {
+  background-color: rgb(10, 24, 44);
+}
