@@ -65,6 +65,14 @@
   background-color: rgb(7, 19, 37);
 }
 
+.article-page-container {
+  background-color: rgb(7, 19, 37);
+}
+
+.article-page-container-body {
+  background-color: rgb(10, 24, 44);
+}
+
 .login-form-container {
   background-color: rgb(7, 19, 37);
 }
