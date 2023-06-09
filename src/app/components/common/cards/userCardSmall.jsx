@@ -13,28 +13,33 @@ const UserCardSmall = ({ user }) => {
                     color: "grey",
                     textAlign: "center",
                     backgroundColor: "rgb(10, 24, 44)",
-                    height: "30rem",
+                    height: "24rem",
                     border: "none",
                     maxHeight: "40rem"
                 }}
             >
-                <div className="user-card-sm-image">
+                <div className="user-card-sm-image pt-3">
                     <img
                         src={user.img}
                         className="card-img-top w-100 p-2"
                         style={{
-                            maxWidth: "20rem",
+                            maxWidth: "17rem",
+                            maxHeight: "17rem",
                             borderRadius: "50%",
                             margin: "auto"
                         }}
                         alt="image"/>
                 </div>
-                <div className="container">
+                <div className="container mt-2">
                     <Link to={`/users/${user._id}/`}>
                         <h4 className="card-title text-secondary">
                             <b>{user.firstName}{" "}{user.lastName}</b>
                         </h4>
                     </Link>
+                    <h6 className="card-title text-secondary mt-3">
+                        <i className="bi bi-geo-alt p-1"></i>
+                        {user.city}{", "}{user.country}
+                    </h6>
                 </div>
             </div>
         </div>

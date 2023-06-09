@@ -47,6 +47,7 @@ const UserImageCard = ({ user }) => {
                     alt="user image"
                     style={{
                         maxWidth: "20rem",
+                        maxHeight: "20rem",
                         borderRadius: "50%",
                         margin: "auto"
                     }}

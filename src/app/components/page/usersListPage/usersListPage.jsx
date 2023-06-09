@@ -1,22 +1,30 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { getUsersList, getUsersLoadingStatus } from "../../../store/users";
+import UsersLoader from "../../ui/HOC/usersLoader";
+import UsersTable from "../../ui/usersTable";
 
 const UsersListPage = () => {
+    const users = useSelector(getUsersList());
+    const isLoading = useSelector(getUsersLoadingStatus());
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6 offset-md-3 shadow p-4">
-                    <div className="card card-sm text-dark bg-light bg-opacity-75 mb-2 p-4">
-                        <h1>Страница всех авторов</h1>
+        <div
+            className="users-list-page-container mx-100"
+            style={{
+                height: "auto",
+                minHeight: "65rem"
+            }}
+        >
+            {!isLoading && users &&
+                <div className="container pb-5">
+                    <div className="row">
+                        <UsersLoader>
+                            <UsersTable { ...{ users }}/>
+                        </UsersLoader>
                     </div>
-                </div>
-            </div>
+                </div>}
         </div>
     );
 };
-
-// UsersListPage.PropTypes = {
-//     id: PropTypes.string.isRequired
-// };
 
 export default UsersListPage;

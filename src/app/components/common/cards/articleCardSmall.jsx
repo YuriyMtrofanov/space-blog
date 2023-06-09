@@ -30,7 +30,10 @@ const ArticleCardSmall = ({ article }) => {
                             <img
                                 src={article.img}
                                 className="card-img-top w-100"
-                                style={{ maxWight: "15rem" }}
+                                style={{
+                                    maxWight: "15rem",
+                                    height: "13rem"
+                                }}
                                 alt="image"/>
                         </div>
                         <div
