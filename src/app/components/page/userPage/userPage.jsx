@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import UserImageCard from "../../common/cards/UserImageCard";
@@ -11,7 +11,7 @@ import { getUsersArticlesList } from "../../../store/articles";
 const UserPage = ({ id }) => {
     const user = useSelector(getUserById(id));
     const articlesList = useSelector(getUsersArticlesList(id));
-
+    const [type, setType] = useState("stack");
     return (
         <div
             className="user-page-container mx-100"
@@ -29,8 +29,15 @@ const UserPage = ({ id }) => {
                         <div className='col-md-8 p-1 mb-2 mt-2'>
                             <UserInfoCard user={user}/>
                             <div className="container flex p-1 text-secondary">
-                                <h5 className="text-center">Список публикаций:</h5>
-                                <ArticlesTable { ...{ articles: articlesList } }/>
+                                <h5 className="text-center">
+                                    <b className="col-1 mt-4">
+                                        <i type="button" className="bi bi-hdd-stack text-secondary" onClick={() => setType("stack")}></i>
+                                        <b>{" | "}</b>
+                                        <i type="button" className="bi bi-grid text-secondary" onClick={() => setType("grid")}></i>
+                                    </b>
+                                    {" "}Список публикаций:
+                                </h5>
+                                <ArticlesTable { ...{ articles: articlesList, displayType: type } }/>
                             </div>
                         </div>
                     </div>
