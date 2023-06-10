@@ -30,6 +30,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.article-card-lg {
+  background-color: rgb(10, 24, 44);
+}
+
 .article-card-sm {
   background-color: rgb(10, 24, 44);
 }

@@ -42,14 +42,15 @@ const ArticlesListPage = () => {
     if (!isLoading) {
         const filteredArticles = filterArticles(articlesList);
         const count = filteredArticles.length;
-        const pageSize = 5;
+        const pageSize = 6;
         const articlesCropp = paginate(filteredArticles, currentPage, pageSize);
+        const [type, setType] = useState("stack");
         return (
             <div
                 className="articles-list-container mx-100 my-100"
                 style={{
                     height: "auto",
-                    minHeight: "65rem"
+                    minHeight: "135rem"
                 }}
             >
                 <div className='container pb-5'>
@@ -76,17 +77,24 @@ const ArticlesListPage = () => {
                             </div>
                         }
                         <div className="col-lg-9 mb-2">
-                            <form>
-                                <TextField
-                                    type = "text"
-                                    name = "search"
-                                    placeholder = "Search"
-                                    value = {inputData}
-                                    onChange = {handleInputChange}
-                                />
-                            </form>
+                            <div className="container d-flex flex-row">
+                                <b className="col-1 mt-4">
+                                    <i type="button" className="bi bi-hdd-stack text-secondary h4" onClick={() => setType("stack")}></i>
+                                    <b>{" | "}</b>
+                                    <i type="button" className="bi bi-grid text-secondary h4" onClick={() => setType("grid")}></i>
+                                </b>
+                                <form className="col-11">
+                                    <TextField
+                                        type = "text"
+                                        name = "search"
+                                        placeholder = "Search"
+                                        value = {inputData}
+                                        onChange = {handleInputChange}
+                                    />
+                                </form>
+                            </div>
                             <ArticlesLoader>
-                                <ArticlesTable {...{ articles: articlesCropp }}/>
+                                <ArticlesTable {...{ articles: articlesCropp, displayType: type }}/>
                             </ArticlesLoader>
                         </div>
                     </div>
