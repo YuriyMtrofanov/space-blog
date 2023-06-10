@@ -30,6 +30,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.article-card-lg {
+  background-color: rgb(10, 24, 44);
+}
+
 .article-card-sm {
   background-color: rgb(10, 24, 44);
 }
@@ -79,4 +83,8 @@
 
 .login-form-container-body {
   background-color: rgb(10, 24, 44);
+}
+
+.users-list-page-container {
+  background-color: rgb(7, 19, 37);
 }

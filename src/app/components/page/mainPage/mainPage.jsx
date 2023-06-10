@@ -4,6 +4,7 @@ import RecomendedArticle from "../../ui/recomendedArticle";
 import LatestArticles from "../../ui/latestArticles";
 import TopAuthors from "../../ui/topAuthors";
 import Loading from "../../ui/loading";
+import { Link } from "react-router-dom";
 
 const MainPage = ({ articles, users }) => {
     if (articles && users) {
@@ -35,7 +36,9 @@ const MainPage = ({ articles, users }) => {
                         <LatestArticles articles={articles}/>
                     </div>
                     <div className="row mt-3">
-                        <h3 className="text-light my-3">Популярные авторы</h3>
+                        <Link to="/users">
+                            <h3 className="text-light my-3">Популярные авторы</h3>
+                        </Link>
                         <TopAuthors users={users}/>
                     </div>
                 </div>

@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
         return !isSelected ? "-fill" : "";
     };
     return (
-        <div className="container m-2 article-card-sm">
+        <div className="container m-2 article-card-lg">
             <div className="row">
                 <div
                     className="col-xl-6 col-lg-12 article-card-content"

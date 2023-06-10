@@ -6,17 +6,17 @@ import {
     getUserById
 } from "../../../store/users";
 
-const ArticleCardSmall = ({ article }) => {
+const ArticleCardMd = ({ article }) => {
     const user = useSelector(getUserById(article.author));
     const { firstName, lastName } = user;
     return (
         <>
             {article &&
                 <div
-                    className="col-lg-3 col-sm-6 p-1"
+                    className="col-xl-4 col-lg-6 col-md-12"
                 >
                     <div
-                        className="card article-card-sm"
+                        className="card article-card-sm mt-4"
                         style={{
                             color: "grey",
                             textAlign: "center",
@@ -42,8 +42,8 @@ const ArticleCardSmall = ({ article }) => {
                                 verticalAlign: "text-bottom"
                             }}
                         >
-                            <h6 className="card-title h5"><b>{article.name}</b></h6>
-                            <p className="card-text">{article.content.slice(0, 100) + "..."}</p>
+                            <h6 className="card-title h5"><b>{article.name.slice(0, 30) + "..."}</b></h6>
+                            <p className="card-text">{article.content.slice(0, 70) + "..."}</p>
                             <Link to={`/articles/${article._id}`}>
                                 <p className="card-title text-center text-secondary mb-2">Читать далее</p>
                             </Link>
@@ -61,8 +61,8 @@ const ArticleCardSmall = ({ article }) => {
     );
 };
 
-ArticleCardSmall.propTypes = {
+ArticleCardMd.propTypes = {
     article: PropTypes.object
 };
 
-export default ArticleCardSmall;
+export default ArticleCardMd;

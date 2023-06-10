@@ -1,24 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ArticleCard from "../common/cards/articleCard";
-import Loading from "./loading";
-import ArticlesLoader from "./HOC/articlesLoader";
+import ArticleCardMd from "../common/cards/articleCardMd";
+import UsersLoader from "./HOC/usersLoader";
 
-const ArticlesTable = ({ articles }) => {
+const ArticlesTable = ({ articles, displayType }) => {
     return (
-        <ArticlesLoader>
-            {articles
-                ? (articles.map(article => (
+        <UsersLoader>
+            {displayType === "stack"
+                ? articles.map(article => (
                     <ArticleCard key={article._id} {...{ article }}/>
-                )))
-                : (<Loading />)
+                ))
+                : (<div className="row">
+                    {articles.map(article => (
+                        <ArticleCardMd key={article._id} {...{ article }}/>
+                    ))}
+                </div>)
             }
-        </ArticlesLoader>
+        </UsersLoader>
     );
 };
 
 ArticlesTable.propTypes = {
-    articles: PropTypes.array
+    articles: PropTypes.array,
+    displayType: PropTypes.string
 };
 
 export default ArticlesTable;
