@@ -60,7 +60,7 @@ const loginForm = () => {
         dispatch(login({
             payload: inputData
         }));
-        history.replace("/");
+        history.push("/");
     };
 
     return (
