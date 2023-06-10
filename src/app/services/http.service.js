@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import configFile from "../config.json";
 import localStorageService from "./localStorage.service";
 import authService from "./auth.service";
-// import { httpAuth } from "../hooks/useAuth";
 const http = axios.create({
     baseURL: configFile.apiEndpoint
 });
@@ -16,7 +15,6 @@ http.interceptors.request.use(
             const containSlash = /\/$/gi.test(config.url);
             config.url =
                 (containSlash ? config.url.slice(0, -1) : config.url) + ".json";
-            // условие для работы с firebase
             if (refreshToken && expiresDate < Date.now()) {
                 const data = await authService.refresh();
                 localStorageService.setTokens({
@@ -31,18 +29,9 @@ http.interceptors.request.use(
                 config.params = { ...config.params, auth: accessToken };
             }
         } else {
-            // условие для работы с localhost
-            if (refreshToken && expiresDate < Date.now()) { // Строчка повторяется, поэтому её можно сохранить в константу isExpired
+            if (refreshToken && expiresDate < Date.now()) {
                 const data = await authService.refresh();
-                // в данном случае все ключи данных одинаковые, поэтому просто пишем data
-                // localStorageService.setTokens({
-                //     refreshToken: data.refreshToken,
-                //     accessToken: data.accessToken,
-                //     expiresIn: data.expiresIn,
-                //     userId: data.userId
-                // });
                 localStorageService.setTokens(data);
-                // console.log("authService data: ", data);
             }
             const accessToken = localStorageService.getAccessToken();
             if (accessToken) {
@@ -70,7 +59,7 @@ http.interceptors.response.use(
         if (configFile.isFireBase) {
             res.data = { content: transformData(res.data) };
         }
-        res.data = { content: res.data }; // для работы с localhost
+        res.data = { content: res.data };
         return res;
     },
     function (error) {

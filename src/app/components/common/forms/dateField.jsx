@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 
 const DateField = ({
     label,
-    type,
     name,
     value,
     onChange,
-    error,
-    placeholder
+    error
 }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });

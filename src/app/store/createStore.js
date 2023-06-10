@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import usersReducer from "./users";
-// import articlesReducer from "./articles";
 import categoriesReducer from "./categories";
 import commentsReducer from "./comments";
 import articlesReducer from "./articles";

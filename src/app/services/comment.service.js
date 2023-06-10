@@ -9,7 +9,6 @@ const commentService = {
                 equalTo: `${pageId}`
             }
         });
-        // console.log("commentService:", data, pageId);
         return data;
     },
     create: async (payload) => {

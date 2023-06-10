@@ -21,7 +21,7 @@ const RegisterForm = () => {
         country: "",
         sex: "male",
         img: "http://...",
-        birthDate: "", // Date.parse("1987-02-17"), new Date(540518400000).toLocaleString() = 17/02/1987
+        birthDate: "",
         about: "",
         accountType: "reader",
         licence: false

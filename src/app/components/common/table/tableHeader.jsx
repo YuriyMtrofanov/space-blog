@@ -9,8 +9,6 @@ const TableHeader = () => {
                 <th scope="col">Категория</th>
                 <th scope="col">Дата публикации</th>
                 <th scope="col">Рейтинг</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
     );

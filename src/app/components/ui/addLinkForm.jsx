@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import AddLink from "./addLink";
-// import Button from "../common/button";
 
 export default function AddLinksForm({ changeLink }) {
     const initialLink = {
@@ -15,7 +14,6 @@ export default function AddLinksForm({ changeLink }) {
 
     const addLinkComponent = () => {
         setLinks([...links, { ...initialLink, _id: nanoid() }]);
-        // console.log("AddLinksForm: ", links);
     };
 
     return (

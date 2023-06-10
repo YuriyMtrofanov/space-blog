@@ -2,8 +2,6 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 import userService from "../services/user.service";
 import authService from "../services/auth.service";
 import localStorageService from "../services/localStorage.service";
-// import history from "../utils/history";
-// import { useHistory } from "react-router-dom";
 
 const initialState = localStorageService.getAccessToken()
     ? {

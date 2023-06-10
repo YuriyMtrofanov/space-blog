@@ -17,7 +17,6 @@ const TextAreaField = ({ label, name, value, onChange, heigh, error }) => {
                     style={{
                         background: "rgb(10, 24, 44)",
                         borderColor: "grey",
-                        // height: "15rem",
                         height: heigh,
                         marginLeft: "12px"
                     }}
