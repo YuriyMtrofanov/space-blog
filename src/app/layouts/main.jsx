@@ -16,18 +16,18 @@ const Main = () => {
     const usersList = useSelector(getUsersList());
     const isUsersLoaded = useSelector(getDataStatus());
     const isLoggedIn = useSelector(getIsLoggedIn());
-    if (isArticlesLoaded && isUsersLoaded && isLoggedIn) {
-        return (
-            <ArticlesLoader>
-                {isLoggedIn
-                    ? (<MainPage articles={articlesList} users={usersList}/>)
-                    : (<Redirect to={"/login"}/>)
-                }
-            </ArticlesLoader>
-        );
-    } else {
-        return (<Loading />);
-    }
+    return (
+        <>
+            {isLoggedIn
+                ? (isArticlesLoaded && isUsersLoaded
+                    ? (<ArticlesLoader>
+                        <MainPage articles={articlesList} users={usersList}/>
+                    </ArticlesLoader>)
+                    : (<Loading />))
+                : (<Redirect to={"/login"}/>)
+            }
+        </>
+    );
 };
 
 export default Main;

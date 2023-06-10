@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import api from "../../../../api";
-// import { Link } from "react-router-dom";
 import { displayDate } from "../../../utils/displayDate";
 import { useSelector } from "react-redux";
 import { getCurrentUserId, getUserById } from "../../../store/users";

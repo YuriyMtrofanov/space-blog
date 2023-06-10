@@ -104,109 +104,124 @@ const UserEditPage = ({ id }) => {
     };
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8 offset-md-2 shadow p-4">
-                    <p>Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
-                    <form onSubmit={handleSubmit}>
-                        <TextField
-                            label="Электронная почта"
-                            name="email"
-                            value={inputData.email}
-                            onChange={handleChange}
-                            error={errors.email}
-                        />
-                        <div className="row">
-                            <div className="col-6">
-                                <TextField
-                                    label="Ваше имя"
-                                    type="firstName"
-                                    name="firstName"
-                                    value={inputData.firstName}
-                                    onChange={handleChange}
-                                    error={errors.firstName}
-                                />
+        <div
+            className="user-edit-container mx-100"
+            style={{
+                height: "65rem"
+            }}
+        >
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8 offset-md-2 article-form-container p-4">
+                        <p>Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
+                        <form onSubmit={handleSubmit}>
+                            <TextField
+                                label="Электронная почта"
+                                name="email"
+                                value={inputData.email}
+                                onChange={handleChange}
+                                error={errors.email}
+                            />
+                            <div className="row">
+                                <div className="col-6">
+                                    <TextField
+                                        label="Ваше имя"
+                                        type="firstName"
+                                        name="firstName"
+                                        value={inputData.firstName}
+                                        onChange={handleChange}
+                                        error={errors.firstName}
+                                    />
+                                </div>
+                                <div className="col-6">
+                                    <TextField
+                                        label="Ваша фамилия"
+                                        type="lastName"
+                                        name="lastName"
+                                        value={inputData.lastName}
+                                        onChange={handleChange}
+                                        error={errors.lastName}
+                                    />
+                                </div>
                             </div>
-                            <div className="col-6">
-                                <TextField
-                                    label="Ваша фамилия"
-                                    type="lastName"
-                                    name="lastName"
-                                    value={inputData.lastName}
-                                    onChange={handleChange}
-                                    error={errors.lastName}
-                                />
+                            <div className="row">
+                                <div className="col-6">
+                                    <TextField
+                                        label="Город"
+                                        type="city"
+                                        name="city"
+                                        value={inputData.city}
+                                        onChange={handleChange}
+                                        error={errors.city}
+                                    />
+                                </div>
+                                <div className="col-6">
+                                    <TextField
+                                        label="Страна"
+                                        type="country"
+                                        name="country"
+                                        value={inputData.country}
+                                        onChange={handleChange}
+                                        error={errors.country}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <TextField
-                                    label="Город"
-                                    type="city"
-                                    name="city"
-                                    value={inputData.city}
-                                    onChange={handleChange}
-                                    error={errors.city}
-                                />
+                            <RadioField
+                                options={[
+                                    { name: "Male", value: "male" },
+                                    { name: "Female", value: "female" },
+                                    { name: "Other", value: "other" }
+                                ]}
+                                value={inputData.sex}
+                                name="sex"
+                                onChange={handleChange}
+                                label="Выберите ваш пол"
+                            />
+                            <TextField
+                                label="Фото профиля"
+                                type="img"
+                                name="img"
+                                value={inputData.img}
+                                onChange={handleChange}
+                                error={errors.img}
+                            />
+                            <TextAreaField
+                                value={inputData.about || ""}
+                                onChange={handleChange}
+                                name="about"
+                                label="Пару слов о себе"
+                            />
+                            <DateField
+                                label="Дата рождения"
+                                type="text"
+                                name="birthDate"
+                                value={inputData.birthDate}
+                                onChange={handleChange}
+                            />
+                            <div className="d-flex justify-content-center">
+                                <button
+                                    className="btn btn-secondary w-25 mx-2"
+                                    style={{
+                                        color: "rgb(10, 24, 44)"
+                                    }}
+                                    type="submit"
+                                    onClick={handleBack}
+                                >
+                                    <i className="bi bi-caret-left"></i><b>Назад</b>
+                                </button>
+                                <button
+                                    className="btn btn-secondary w-25 mx-2"
+                                    style={{
+                                        color: "rgb(10, 24, 44)"
+                                    }}
+                                    type="submit"
+                                    disabled={!isAbled}
+                                >
+                                    <b>Сохранить</b>
+                                </button>
                             </div>
-                            <div className="col-6">
-                                <TextField
-                                    label="Страна"
-                                    type="country"
-                                    name="country"
-                                    value={inputData.country}
-                                    onChange={handleChange}
-                                    error={errors.country}
-                                />
-                            </div>
-                        </div>
-                        <RadioField
-                            options={[
-                                { name: "Male", value: "male" },
-                                { name: "Female", value: "female" },
-                                { name: "Other", value: "other" }
-                            ]}
-                            value={inputData.sex}
-                            name="sex"
-                            onChange={handleChange}
-                            label="Выберите ваш пол"
-                        />
-                        <TextField
-                            label="Фото профиля"
-                            type="img"
-                            name="img"
-                            value={inputData.img}
-                            onChange={handleChange}
-                            error={errors.img}
-                        />
-                        <TextAreaField
-                            value={inputData.about || ""}
-                            onChange={handleChange}
-                            name="about"
-                            label="Пару слов о себе"
-                        />
-                        <DateField
-                            label="Дата рождения"
-                            type="text"
-                            name="birthDate"
-                            value={inputData.birthDate}
-                            onChange={handleChange}
-                        />
-                        <button
-                            className="btn btn-dark w-25 mx-2"
-                            type="submit"
-                            onClick={handleBack}
-                        >
-                            <i className="bi bi-caret-left"></i>Назад
-                        </button>
-                        <button
-                            className="btn btn-dark w-25 mx-2"
-                            type="submit"
-                            disabled={!isAbled}
-                        >
-                            Сохранить
-                        </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

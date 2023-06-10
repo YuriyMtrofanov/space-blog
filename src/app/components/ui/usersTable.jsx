@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import UserImageCard from "../common/cards/UserImageCard";
 import UserCardSmall from "../common/cards/userCardSmall";
 
 const UsersTable = ({ users }) => {

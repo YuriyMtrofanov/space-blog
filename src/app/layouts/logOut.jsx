@@ -4,7 +4,6 @@ import { logout } from "../store/users";
 import { useHistory } from "react-router-dom";
 
 const LogOut = () => {
-    // const { logOut } = useAuth();
     const history = useHistory();
     const dispatch = useDispatch();
     useEffect(() => {
