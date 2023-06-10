@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+    editUserInfo,
+    getCurrentUserData,
+    getSelectedArticlesList,
+    getSelectedArticlesStatus,
     getUserById
 } from "../../../store/users";
 
 const ArticleCardMd = ({ article }) => {
+    const dispatch = useDispatch();
     const user = useSelector(getUserById(article.author));
     const { firstName, lastName } = user;
+    const currentUser = useSelector(getCurrentUserData());
+    const selectedArticles = useSelector(getSelectedArticlesList(currentUser._id));
+    const favorites = useSelector(getSelectedArticlesStatus(currentUser._id, article._id));
+    const [isSelected, setIsSelected] = useState(false);
+
+    useEffect(() => {
+        favorites ? setIsSelected(false) : setIsSelected(true);
+    }, []);
+
+    const handleChange = () => {
+        if (favorites) {
+            setIsSelected(true);
+            const outputData = {
+                ...currentUser,
+                selectedArticlesList: selectedArticles.filter(item => (item !== article._id))
+            };
+            dispatch(editUserInfo(outputData));
+        } else {
+            setIsSelected(false);
+            const outputData = {
+                ...currentUser,
+                selectedArticlesList: [...selectedArticles, article._id]
+            };
+            dispatch(editUserInfo(outputData));
+        }
+    };
+
+    const toggleBookmark = () => {
+        return !isSelected ? "-fill" : "";
+    };
+
     return (
         <>
             {article &&
@@ -27,6 +63,9 @@ const ArticleCardMd = ({ article }) => {
                         }}
                     >
                         <div className="article-card-sm-image">
+                            <h4 className="position-absolute top-2 start-2">
+                                <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}/>
+                            </h4>
                             <img
                                 src={article.img}
                                 className="card-img-top w-100"
