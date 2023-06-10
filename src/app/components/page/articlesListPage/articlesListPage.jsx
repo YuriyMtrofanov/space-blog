@@ -78,12 +78,12 @@ const ArticlesListPage = () => {
                         }
                         <div className="col-lg-9 mb-2">
                             <div className="container d-flex flex-row">
-                                <b className="col-1 mt-4">
-                                    <i type="button" className="bi bi-hdd-stack text-secondary h4" onClick={() => setType("stack")}></i>
+                                <b className="col-2 mt-4">
+                                    <i type="button" className="bi bi-hdd-stack text-secondary h2" onClick={() => setType("stack")}></i>
                                     <b>{" | "}</b>
-                                    <i type="button" className="bi bi-grid text-secondary h4" onClick={() => setType("grid")}></i>
+                                    <i type="button" className="bi bi-grid text-secondary h2" onClick={() => setType("grid")}></i>
                                 </b>
-                                <form className="col-11">
+                                <form className="col-10">
                                     <TextField
                                         type = "text"
                                         name = "search"
