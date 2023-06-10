@@ -57,7 +57,7 @@ const ArticleCard = ({ article }) => {
                         <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i>{" "}
                         {article.name}
                     </h3>
-                    <p className="card-content">{article.content.slice(0, 700) + "..."}</p>
+                    <p className="card-content">{article.content.slice(0, 450) + "..."}</p>
                     <Link to={`/articles/${article._id}`}>
                         <p className="text-center text-secondary mb-4">Читать далее</p>
                     </Link>

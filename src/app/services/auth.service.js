@@ -19,7 +19,6 @@ const authService = {
             email,
             password
         });
-        console.log("login, data:", data);
         return data;
     },
     refresh: async () => {

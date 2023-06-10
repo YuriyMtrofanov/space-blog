@@ -82,7 +82,7 @@ const ArticleCardMd = ({ article }) => {
                             }}
                         >
                             <h6 className="card-title h5"><b>{article.name.slice(0, 30) + "..."}</b></h6>
-                            <p className="card-text">{article.content.slice(0, 70) + "..."}</p>
+                            <p className="card-text">{article.content.slice(0, 150) + "..."}</p>
                             <Link to={`/articles/${article._id}`}>
                                 <p className="card-title text-center text-secondary mb-2">Читать далее</p>
                             </Link>

@@ -113,7 +113,7 @@ const UserEditPage = ({ id }) => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 offset-md-2 article-form-container p-4">
-                        <p>Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
+                        <p className="text-secondary">Дорогой посетитель, внимательно заполни все поля и отправь данные.</p>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 label="Электронная почта"
