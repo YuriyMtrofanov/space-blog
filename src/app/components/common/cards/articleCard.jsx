@@ -53,10 +53,10 @@ const ArticleCard = ({ article }) => {
                         textAlign: "justify"
                     }}
                 >
-                    <h5 className="card-title h2 mb-3 mt-2">
+                    <h3 className="card-title mb-3 mt-2">
                         <i className={"bi bi-bookmarks" + toggleBookmark()} onClick={handleChange}></i>{" "}
                         {article.name}
-                    </h5>
+                    </h3>
                     <p className="card-content">{article.content.slice(0, 700) + "..."}</p>
                     <Link to={`/articles/${article._id}`}>
                         <p className="text-center text-secondary mb-4">Читать далее</p>

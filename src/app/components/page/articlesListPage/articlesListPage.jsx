@@ -50,7 +50,7 @@ const ArticlesListPage = () => {
                 className="articles-list-container mx-100 my-100"
                 style={{
                     height: "auto",
-                    minHeight: "135rem"
+                    maxHeight: "170rem"
                 }}
             >
                 <div className='container pb-5'>
